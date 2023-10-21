@@ -7,9 +7,9 @@ import logo from '@/img/logo.png';
 
 function StartButton({ onClick }: { onClick: () => void }) {
   return (
-    <button className='flex gap-1 px-1 h-full items-center justify-center shadow-w95 cursor-w95-pointer active:shadow-w95-inverted' onClick={onClick}>
-      <Image src={logo} alt='Portfolio logo' className='h-full' />
-      <span className='mr-1'>Start</span>
+    <button className='flex gap-1 px-2 h-full items-center justify-center shadow-w95 cursor-w95-pointer active:shadow-w95-inverted' onClick={onClick}>
+      <Image src={logo} alt='Portfolio logo' className='h-full w-auto' />
+      <span>Start</span>
     </button>
   )
 }
