@@ -8,6 +8,12 @@ const config: Config = {
   ],
   theme: {
     extend: {
+      colors: {
+        'w95-cyan': '#008080',
+        'w95-blue': '#000080',
+        'w95-grey': '#C6C6C6',
+        'w95-dark-grey': '#808080',
+      },
       cursor: {
         'w95-auto': 'url(/cursors/auto.cur), auto',
         'w95-pointer': 'url(/cursors/pointer.cur), pointer',

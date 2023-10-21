@@ -17,7 +17,9 @@ export default function RootLayout({
 }) {
   return (
     <html lang="en">
-      <body className={`${w95.className} cursor-w95-auto`}>{children}</body>
+      <body className={`${w95.className} cursor-w95-auto bg-w95-cyan overflow-hidden h-screen w-screen flex flex-col`}>
+        {children}
+      </body>
     </html>
   )
 }
