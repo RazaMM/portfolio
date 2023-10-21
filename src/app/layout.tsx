@@ -17,7 +17,7 @@ export default function RootLayout({
 }) {
   return (
     <html lang="en">
-      <body className={w95.className}>{children}</body>
+      <body className={`${w95.className} cursor-w95-auto`}>{children}</body>
     </html>
   )
 }
