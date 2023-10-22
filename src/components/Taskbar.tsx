@@ -30,12 +30,12 @@ const StartMenu: React.FC<{
   active?: boolean
 }> = ({ active = false }) => (
   <div
-    className={classNames("flex w-80 max-w-full gap-2 p-1.5 absolute bottom-full left-0 bg-w95-grey shadow-w95", {
+    className={classNames("flex w-80 max-w-full gap-2 p-1.5 absolute bottom-full left-0 bg-w95-grey shadow-w95 mb-2", {
       'visible': active,
       'invisible': !active
     })}
   >
-    <span className="flex items-center min-w-8 py-2 text-xl text-white bg-w95-dark-grey rotate-180 writing-sideways-rl whitespace-nowrap tracking-widest">{"Raza Mahmood's Portfolio"}</span>
+    <span className="flex items-center min-w-8 py-2 text-xl text-white bg-w95-dark-grey rotate-180 writing-sideways-rl whitespace-nowrap tracking-widest">{"Raza's Portfolio"}</span>
     <div className="flex-1 flex flex-col justify-end">
       {programs.map((program, i) => (
         <button
