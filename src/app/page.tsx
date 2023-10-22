@@ -1,4 +1,3 @@
-import Taskbar from "@/components/Taskbar";
 import programs, { type Program } from "@/components/programs";
 import React from "react";
 import DesktopIcon from "@/components/DesktopIcon";

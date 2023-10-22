@@ -1,6 +1,8 @@
 import React from "react";
-import Biography from './Biography';
 import { StaticImageData } from "next/image";
+
+// Import all programs here
+import Biography from './Biography';
 
 export type Program = {
   id: string;
@@ -14,6 +16,7 @@ export type Program = {
   includeInStartMenu?: boolean;
 }
 
+// Ensure that all programs imported above are included in this array
 export default [
   Biography
 ] as Program[];
