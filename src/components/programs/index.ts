@@ -11,7 +11,7 @@ export type Program = {
     src: StaticImageData;
     alt: string;
   }
-  Component: () => React.JSX.Element;
+  Component: React.FC;
   includeInDesktop?: boolean;
   includeInStartMenu?: boolean;
 }
