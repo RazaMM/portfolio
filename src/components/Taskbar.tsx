@@ -1,11 +1,11 @@
 'use client';
 
 import React, { useEffect } from 'react';
-import { useTime } from '@/hooks/useTime';
+import { useTime } from '@/utils/useTime';
 import Image from 'next/image';
 import logo from '@/img/logo.png';
 import classNames from 'classnames';
-import { useFocusWithin } from '@/hooks/useFocusWithin';
+import { useFocusWithin } from '@/utils/useFocusWithin';
 import programs, { type Program } from '@/components/programs';
 
 const StartButton: React.FC<{
