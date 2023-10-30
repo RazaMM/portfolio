@@ -1,7 +1,7 @@
 import programs, { type Program } from '@/components/programs';
 import React from 'react';
 import DesktopIcon from '@/components/DesktopIcon';
-import ProgramWindow from '@/components/ProgramWindow';
+import ProgramWindow from '@/components/Window';
 
 export default function Home() {
   const test = programs[0];
