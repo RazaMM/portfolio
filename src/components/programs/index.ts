@@ -3,6 +3,8 @@ import { StaticImageData } from 'next/image';
 
 // Import all programs here
 import Biography from './Biography';
+import Education from './Education';
+import Experience from './Experience';
 
 export type Program = {
   id: string;
@@ -17,4 +19,4 @@ export type Program = {
 };
 
 // Ensure that all programs imported above are included in this array
-export default [Biography] as Program[];
+export default [Biography, Education, Experience] as Program[];
