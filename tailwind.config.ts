@@ -1,4 +1,4 @@
-import type { Config } from 'tailwindcss'
+import type { Config } from 'tailwindcss';
 
 const config: Config = {
   content: [
@@ -39,10 +39,10 @@ const config: Config = {
         'w95-alt-thin':
           '-2px -2px white, -2px 0 white, 0 -2px white, 2px 2px #818181, 0 2px #818181, 2px 0 #818181, -2px 2px #818181, -2px 2px white, 2px -2px white',
         'w95-alt-inverted-thin':
-          '-2px -2px #818181, -2px 0 #818181, 0 -2px #818181, 2px 2px white, 0 2px white, 2px 0 white, -2px 2px white, -2px 2px #818181, 2px -2px #818181'
-      }
+          '-2px -2px #818181, -2px 0 #818181, 0 -2px #818181, 2px 2px white, 0 2px white, 2px 0 white, -2px 2px white, -2px 2px #818181, 2px -2px #818181',
+      },
     },
   },
   plugins: [],
-}
-export default config
+};
+export default config;

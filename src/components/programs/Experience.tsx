@@ -1,14 +1,12 @@
 import React from 'react';
 import icon from '@/img/notepad.png';
-import { type Program } from "@/components/programs";
+import { type Program } from '@/components/programs';
 
 const Experience: React.FC = () => {
   return (
-    <div className="flex flex-col gap-4 items-center border-[2rem] md:border-[3rem] border-my-red bg-my-beige p-2 text-center w-[35rem] min-w-full min-h-full max-w-full">
-
-    </div>
+    <div className='border-my-red bg-my-beige flex min-h-full w-[35rem] min-w-full max-w-full flex-col items-center gap-4 border-[2rem] p-2 text-center md:border-[3rem]'></div>
   );
-}
+};
 
 Experience.displayName = 'Experience';
 
@@ -17,8 +15,7 @@ export default {
   name: 'My Education',
   icon: {
     src: icon,
-    alt: 'A pixelated image of a book with a purple cover'
+    alt: 'A pixelated image of a book with a purple cover',
   },
-  Component: Experience
+  Component: Experience,
 } as Program;
-
