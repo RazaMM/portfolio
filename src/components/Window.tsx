@@ -5,7 +5,7 @@ import Image from 'next/image';
 import { Program } from '@/components/programs';
 import { useDraggable } from '@/utils/useDraggable';
 
-export const ProgramWindow: React.FC<{ program: Program }> = ({ program }) => {
+export default function ProgramWindow({ program }: { program: Program }) {
   const { handle, dragged, isDragging } = useDraggable<HTMLDivElement, HTMLDivElement>();
 
   useEffect(() => {
@@ -35,6 +35,4 @@ export const ProgramWindow: React.FC<{ program: Program }> = ({ program }) => {
       </div>
     </div>
   );
-};
-
-export default ProgramWindow;
+}

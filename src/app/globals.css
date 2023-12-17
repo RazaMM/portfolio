@@ -7,6 +7,10 @@
     image-rendering: pixelated;
   }
 
+  button {
+    @apply cursor-w95-pointer;
+  }
+
   /* Custom scrollbar */
   ::-webkit-scrollbar {
     width: 16px;
