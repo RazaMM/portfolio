@@ -5,11 +5,12 @@ export function useDraggable<HandleType extends HTMLElement, DraggedType extends
   const handle = useRef<HandleType>(null);
   const dragged = useRef<DraggedType>(null);
   const [isDragging, setIsDragging] = useState(false);
-  let offsetX = 0;
-  let offsetY = 0;
 
   useEffect(() => {
-    const dragStart = (e) => {
+    let offsetX = 0;
+    let offsetY = 0;
+
+    const dragStart = (e: MouseEvent) => {
       // User has started dragging
       setIsDragging(true);
       document.addEventListener('mousemove', drag);
