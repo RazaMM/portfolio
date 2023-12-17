@@ -1,3 +1,5 @@
+'use client'
+
 import React from 'react';
 import icon from '@/img/notepad.png';
 import { type Program } from '@/components/programs';
@@ -11,8 +13,8 @@ const Experience: React.FC = () => {
 Experience.displayName = 'Experience';
 
 export default {
-  id: 'education',
-  name: 'My Education',
+  id: 'experience',
+  name: 'My Experience',
   icon: {
     src: icon,
     alt: 'A pixelated image of a book with a purple cover',
