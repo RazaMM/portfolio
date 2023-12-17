@@ -1,4 +1,4 @@
-'use client'
+'use client';
 
 import programs, { type Program } from '@/components/programs';
 import React from 'react';

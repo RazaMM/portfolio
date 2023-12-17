@@ -19,7 +19,9 @@
     width: 16px;
     height: 16px;
     background: silver;
-    box-shadow: inset 1px 1px #dfdfdf, inset -1px -1px gray;
+    box-shadow:
+      inset 1px 1px #dfdfdf,
+      inset -1px -1px gray;
     border: 1px solid;
     border-color: silver #000 #000 silver;
   }
