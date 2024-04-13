@@ -4,24 +4,60 @@ import React, { useEffect } from 'react';
 import Image from 'next/image';
 import { Program } from '@/components/programs';
 import { useDraggable } from '@/utils/useDraggable';
+import { ResizeDirection, useResizable } from '@/utils/useResizable';
 
 export default function ProgramWindow({ program }: { program: Program }) {
   const { handle, dragged, isDragging } = useDraggable<HTMLDivElement, HTMLDivElement>();
+  const { resized, direction } = useResizable<HTMLDivElement>();
 
   useEffect(() => {
-    if (isDragging) {
-      document.body.classList.add('cursor-w95-move');
-      document.body.classList.remove('cursor-w95-auto');
+    document.body.classList.add('cursor-w95-auto');
+    document.body.classList.remove('select-none');
+    document.body.classList.remove('cursor-w95-move');
+    document.body.classList.remove('cursor-w95-ns-resize');
+    document.body.classList.remove('cursor-w95-ew-resize');
+    document.body.classList.remove('cursor-w95-nwse-resize');
+    document.body.classList.remove('cursor-w95-nesw-resize');
+
+    if (isDragging || direction !== ResizeDirection.NONE) {
       document.body.classList.add('select-none');
-    } else {
-      document.body.classList.remove('cursor-w95-move');
-      document.body.classList.add('cursor-w95-auto');
-      document.body.classList.remove('select-none');
+      document.body.classList.remove('cursor-w95-auto');
+
+      if (isDragging) {
+        document.body.classList.add('cursor-w95-move');
+      } else {
+        switch (direction) {
+          case ResizeDirection.NORTH:
+          case ResizeDirection.SOUTH:
+            document.body.classList.add('cursor-w95-ns-resize');
+            break;
+          case ResizeDirection.EAST:
+          case ResizeDirection.WEST:
+            document.body.classList.add('cursor-w95-ew-resize');
+            break;
+          case ResizeDirection.NORTH_WEST:
+          case ResizeDirection.SOUTH_EAST:
+            document.body.classList.add('cursor-w95-nwse-resize');
+            break;
+          case ResizeDirection.NORTH_EAST:
+          case ResizeDirection.SOUTH_WEST:
+            document.body.classList.add('cursor-w95-nesw-resize');
+        }
+      }
     }
-  }, [isDragging]);
+  }, [direction, isDragging]);
 
   return (
-    <div className='absolute left-0 top-0 flex items-center justify-center' ref={dragged}>
+    <div
+      className='absolute left-0 top-0 flex items-center justify-center p-3'
+      ref={(el) => {
+        //@ts-expect-error
+        dragged.current = el;
+
+        //@ts-expect-error
+        resized.current = el;
+      }}
+    >
       <div className='flex w-96 flex-col items-center justify-center gap-1.5 bg-w95-grey px-1 pb-4 pt-1 shadow-w95'>
         <div className='flex h-6 w-full items-center bg-w95-blue px-2' ref={handle}>
           <Image src={program.icon.src} alt={program.icon.alt} className='mr-1 h-5 w-auto' />
