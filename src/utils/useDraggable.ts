@@ -17,11 +17,9 @@ export function useDraggable<HandleType extends HTMLElement, DraggedType extends
       document.addEventListener('mouseup', dragStop);
 
       // Get where the user clicked within the dragged element to offset x and y.
-      if (dragged.current) {
-        const rect = dragged.current.getBoundingClientRect();
-        offsetX = e.pageX - rect.left;
-        offsetY = e.pageY - rect.top;
-      }
+      const rect = dragged.current?.getBoundingClientRect();
+      offsetX = e.pageX - (rect?.left ?? 0);
+      offsetY = e.pageY - (rect?.top ?? 0);
     };
 
     const drag = (e: MouseEvent) => {
