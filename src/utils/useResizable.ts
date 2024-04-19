@@ -13,7 +13,12 @@ export enum ResizeDirection {
   NORTH_WEST,
 }
 
-export function useResizable<ElementType extends HTMLElement>() {
+export function useResizable<ElementType extends HTMLElement>(
+  minWidth = 100,
+  minHeight = 100,
+  maxWidth = Infinity,
+  maxHeight = Infinity
+) {
   const resized = useRef<ElementType>(null);
   const [isResizing, setIsResizing] = useState(false);
   const [direction, setDirection] = useState(ResizeDirection.NONE);
@@ -23,8 +28,6 @@ export function useResizable<ElementType extends HTMLElement>() {
   useEffect(() => {
     if (!resized.current) return;
 
-    let offsetX = 0;
-    let offsetY = 0;
     const style = window.getComputedStyle(resized.current);
 
     const resizeStart = (e: MouseEvent) => {
@@ -33,18 +36,58 @@ export function useResizable<ElementType extends HTMLElement>() {
 
       document.addEventListener('mousemove', resize);
       document.addEventListener('mouseup', resizeStop);
-
-      const rect = resized.current?.getBoundingClientRect();
-      offsetX = e.pageX - (rect?.left ?? 0);
-      offsetY = e.pageY - (rect?.top ?? 0);
     };
 
     const resize = (e: MouseEvent) => {
-      const x = clamp(e.clientX, 0, window.innerWidth) - offsetX;
-      const y = clamp(e.clientY, 0, window.innerHeight) - offsetY;
+      if (!resized.current || directionRef.current === ResizeDirection.NONE) return;
 
-      if (resized.current) {
-        console.log(x, y, ResizeDirection[directionRef.current]);
+      e.stopPropagation();
+      const rect = resized.current.getBoundingClientRect();
+
+      const x = clamp(e.clientX, 0, window.innerWidth);
+      const y = clamp(e.clientY, 0, window.innerHeight);
+
+      switch (directionRef.current) {
+        case ResizeDirection.EAST:
+          resized.current.style.width = `${clamp(x, minWidth, maxWidth)}px`;
+          break;
+
+        case ResizeDirection.WEST:
+          resized.current.style.width = `${clamp(rect.right - x, minWidth, maxWidth)}px`;
+          //resized.current.style.translate = `${newX}px`;
+          break;
+
+        case ResizeDirection.SOUTH:
+          resized.current.style.height = `${clamp(y - rect.top, minHeight, maxHeight)}px`;
+          break;
+
+        case ResizeDirection.NORTH:
+          resized.current.style.height = `${clamp(rect.bottom - y, minHeight, maxHeight)}px`;
+          //resized.current.style.top = `${newY}px`;
+          break;
+
+        case ResizeDirection.NORTH_WEST:
+          resized.current.style.height = `${clamp(rect.bottom - y, minHeight, maxHeight)}px`;
+          resized.current.style.width = `${clamp(rect.right - x, minWidth, maxWidth)}px`;
+          break;
+
+        case ResizeDirection.NORTH_EAST:
+          resized.current.style.height = `${clamp(rect.bottom - y, minHeight, maxHeight)}px`;
+          resized.current.style.width = `${clamp(x, minWidth, maxWidth)}px`;
+          break;
+
+        case ResizeDirection.SOUTH_WEST:
+          resized.current.style.height = `${clamp(y - rect.top, minHeight, maxHeight)}px`;
+          resized.current.style.width = `${clamp(rect.right - x, minWidth, maxWidth)}px`;
+          break;
+
+        case ResizeDirection.SOUTH_EAST:
+          resized.current.style.height = `${clamp(y - rect.top, minHeight, maxHeight)}px`;
+          resized.current.style.width = `${clamp(x, minWidth, maxWidth)}px`;
+          break;
+
+        default:
+          break;
       }
     };
 

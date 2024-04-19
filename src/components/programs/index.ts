@@ -18,6 +18,10 @@ export type Program = {
   Component: React.FC;
   includeInDesktop?: boolean;
   includeInStartMenu?: boolean;
+  minWindowWidth?: number;
+  minWindowHeight?: number;
+  maxWindowWidth?: number;
+  maxWindowHeight?: number;
 };
 
 // Ensure that all programs imported above are included in this array
