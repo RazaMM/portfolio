@@ -68,4 +68,6 @@ export default {
     alt: 'A pixelated image of a man wearing a blue shirt',
   },
   Component: Biography,
+  minWindowWidth: 320,
+  minWindowHeight: 554,
 } as Program;
