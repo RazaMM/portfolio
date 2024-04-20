@@ -22,8 +22,8 @@ export function useDraggable<HandleType extends HTMLElement, DraggedType extends
     };
 
     const drag = (e: MouseEvent) => {
-      const x = e.clientX - startX;
-      const y = e.clientY - startY;
+      const x = e.pageX - startX;
+      const y = e.pageY - startY;
 
       if (dragged.current) {
         dragged.current.style.setProperty('translate', `${x}px ${y}px`);
