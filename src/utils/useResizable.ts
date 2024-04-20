@@ -42,52 +42,43 @@ export function useResizable<ElementType extends HTMLElement>(
       if (!resized.current || directionRef.current === ResizeDirection.NONE) return;
 
       e.stopPropagation();
+
       const rect = resized.current.getBoundingClientRect();
+      const clampWidth = (val: number) => clamp(val, minWidth, maxWidth);
+      const clampHeight = (val: number) => clamp(val, minHeight, maxHeight);
 
-      const x = clamp(e.clientX, 0, window.innerWidth);
-      const y = clamp(e.clientY, 0, window.innerHeight);
+      // North
+      if (
+        directionRef.current === ResizeDirection.NORTH ||
+        directionRef.current === ResizeDirection.NORTH_WEST ||
+        directionRef.current === ResizeDirection.NORTH_EAST
+      ) {
+      }
 
-      switch (directionRef.current) {
-        case ResizeDirection.EAST:
-          resized.current.style.width = `${clamp(x, minWidth, maxWidth)}px`;
-          break;
+      // South
+      if (
+        directionRef.current === ResizeDirection.SOUTH ||
+        directionRef.current === ResizeDirection.SOUTH_WEST ||
+        directionRef.current === ResizeDirection.SOUTH_EAST
+      ) {
+        resized.current.style.height = `${clampHeight(e.clientY - (rect?.y ?? 0))}px`;
+      }
 
-        case ResizeDirection.WEST:
-          resized.current.style.width = `${clamp(rect.right - x, minWidth, maxWidth)}px`;
-          //resized.current.style.translate = `${newX}px`;
-          break;
+      // West
+      if (
+        directionRef.current === ResizeDirection.WEST ||
+        directionRef.current === ResizeDirection.NORTH_WEST ||
+        directionRef.current === ResizeDirection.SOUTH_WEST
+      ) {
+      }
 
-        case ResizeDirection.SOUTH:
-          resized.current.style.height = `${clamp(y - rect.top, minHeight, maxHeight)}px`;
-          break;
-
-        case ResizeDirection.NORTH:
-          resized.current.style.height = `${clamp(rect.bottom - y, minHeight, maxHeight)}px`;
-          //resized.current.style.top = `${newY}px`;
-          break;
-
-        case ResizeDirection.NORTH_WEST:
-          resized.current.style.height = `${clamp(rect.bottom - y, minHeight, maxHeight)}px`;
-          resized.current.style.width = `${clamp(rect.right - x, minWidth, maxWidth)}px`;
-          break;
-
-        case ResizeDirection.NORTH_EAST:
-          resized.current.style.height = `${clamp(rect.bottom - y, minHeight, maxHeight)}px`;
-          resized.current.style.width = `${clamp(x, minWidth, maxWidth)}px`;
-          break;
-
-        case ResizeDirection.SOUTH_WEST:
-          resized.current.style.height = `${clamp(y - rect.top, minHeight, maxHeight)}px`;
-          resized.current.style.width = `${clamp(rect.right - x, minWidth, maxWidth)}px`;
-          break;
-
-        case ResizeDirection.SOUTH_EAST:
-          resized.current.style.height = `${clamp(y - rect.top, minHeight, maxHeight)}px`;
-          resized.current.style.width = `${clamp(x, minWidth, maxWidth)}px`;
-          break;
-
-        default:
-          break;
+      // East
+      if (
+        directionRef.current === ResizeDirection.EAST ||
+        directionRef.current === ResizeDirection.NORTH_EAST ||
+        directionRef.current === ResizeDirection.SOUTH_EAST
+      ) {
+        resized.current.style.width = `${clampWidth(e.clientX - (rect?.x ?? 0))}px`;
       }
     };
 
