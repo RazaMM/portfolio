@@ -8,7 +8,15 @@ import { ResizeDirection, useResizable } from '@/utils/useResizable';
 import { useWindowDimensions } from '@/utils/useWindowDimensions';
 import classNames from 'classnames';
 
-export default function Window({ program, active }: { program: Program; active?: boolean }) {
+export default function Window({
+  program,
+  active,
+  onClose,
+}: {
+  program: Program;
+  active?: boolean;
+  onClose?: () => void;
+}) {
   const [windowWidth, windowHeight] = useWindowDimensions();
   const [draggingBounds, setDraggingBounds] = useState(defaultBounds);
   const { handle, dragged, isDragging } = useDraggable<HTMLDivElement, HTMLDivElement>(draggingBounds);
@@ -90,7 +98,10 @@ export default function Window({ program, active }: { program: Program; active?:
             <Image src={program.icon.src} alt={program.icon.alt} className='pointer-events-none mr-1 h-5 w-auto' />
           )}
           <h1 className='overflow-hidden overflow-ellipsis whitespace-nowrap text-white'>{program.name}</h1>
-          <button className='ml-auto flex aspect-square h-4 items-center justify-center bg-w95-grey text-black shadow-w95-thin active:shadow-w95-inverted-thin'>
+          <button
+            onClick={onClose}
+            className='ml-auto flex aspect-square h-4 items-center justify-center bg-w95-grey text-black shadow-w95-thin active:shadow-w95-inverted-thin'
+          >
             <span className='text-sm'>X</span>
           </button>
         </div>
