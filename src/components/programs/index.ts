@@ -11,7 +11,7 @@ import Experience from './Experience';
 export type Program = {
   id: string;
   name: string;
-  icon: {
+  icon?: {
     src: StaticImageData;
     alt: string;
   };
@@ -22,6 +22,7 @@ export type Program = {
   minWindowHeight?: number;
   maxWindowWidth?: number;
   maxWindowHeight?: number;
+  resizeable?: boolean;
 };
 
 // Ensure that all programs imported above are included in this array

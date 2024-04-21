@@ -30,5 +30,6 @@ export default {
     src: icon,
     alt: 'A pixelated image of a book with a purple cover',
   },
+  resizeable: false,
   Component: Education,
 } as Program;
