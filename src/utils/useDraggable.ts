@@ -7,8 +7,8 @@ export function useDraggable<HandleType extends HTMLElement, DraggedType extends
   const [isDragging, setIsDragging] = useState(false);
 
   useEffect(() => {
-    let startX = 0;
-    let startY = 0;
+    let offsetX = 0;
+    let offsetY = 0;
 
     const dragStart = (e: MouseEvent) => {
       if (!dragged.current) {
@@ -17,8 +17,8 @@ export function useDraggable<HandleType extends HTMLElement, DraggedType extends
 
       // Get where the user clicked within the dragged element to offset x and y.
       const rect = dragged.current.getBoundingClientRect();
-      startX = e.pageX - rect.x;
-      startY = e.pageY - rect.y;
+      offsetX = e.pageX - rect.x;
+      offsetY = e.pageY - rect.y;
 
       setIsDragging(true);
       document.addEventListener('mousemove', drag);
@@ -30,8 +30,8 @@ export function useDraggable<HandleType extends HTMLElement, DraggedType extends
         return;
       }
 
-      const x = e.pageX - startX;
-      const y = e.pageY - startY;
+      const x = e.pageX - offsetX;
+      const y = e.pageY - offsetY;
 
       dragged.current.style.setProperty('translate', `${x}px ${y}px`);
     };
