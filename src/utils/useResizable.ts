@@ -46,6 +46,7 @@ export function useResizable<ElementType extends HTMLElement>(
 
       const rect = resized.current.getBoundingClientRect();
       offsetX = e.pageX - rect.x;
+      offsetX = e.pageX - rect.x;
       offsetY = e.pageY - rect.y;
 
       startWidth = resized.current.clientWidth ?? 0;
@@ -64,8 +65,6 @@ export function useResizable<ElementType extends HTMLElement>(
       e.stopPropagation();
 
       const rect = resized.current.getBoundingClientRect();
-
-      console.log(startX - e.pageX);
 
       // North
       if (
