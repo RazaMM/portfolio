@@ -6,7 +6,7 @@ import Image from 'next/image';
 import logo from '@/img/logo.png';
 import classNames from 'classnames';
 import { useFocusWithin } from '@/utils/useFocusWithin';
-import programs, { type Program } from '@/components/programs';
+import programs from '@/components/programs';
 
 const StartButton: React.FC<{
   active?: boolean;
@@ -43,7 +43,7 @@ const StartMenu: React.FC<{
       {programs.map((program, i) => (
         <button
           className='flex h-10 w-full items-center gap-1 p-1 hover:bg-w95-blue hover:text-white focus:bg-w95-blue focus:text-white focus:outline-none'
-          key={program.id}
+          key={program.id + ' ' + i}
         >
           {program.icon && <Image src={program.icon.src} alt={program.icon.alt} className='h-8 w-auto' />}
           <span>{program.name}</span>

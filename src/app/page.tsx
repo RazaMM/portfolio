@@ -1,10 +1,10 @@
 'use client';
 
-import programs, { type Program } from '@/components/programs';
-import React, { useState } from 'react';
+import programs from '@/components/programs';
+import React from 'react';
 import DesktopIcon from '@/components/DesktopIcon';
 import Window from '@/components/Window';
-import ShutdownScreen from '@/components/ShutdownScreen';
+import defaultIcon from '@/img/logo.png';
 
 export default function Home() {
   const test = programs[0];
@@ -12,9 +12,18 @@ export default function Home() {
   return (
     <>
       <div className='relative flex h-full w-fit flex-col flex-wrap items-center gap-4'>
-        {programs?.map((program, i) => (
-          <DesktopIcon image={program.icon.src} alt={program.icon.alt} text={program.name} key={program.id} />
-        ))}
+        {programs?.map((program, i) =>
+          program.icon ? (
+            <DesktopIcon
+              image={program.icon.src}
+              alt={program.icon.alt}
+              text={program.name}
+              key={program.id + ' ' + i}
+            />
+          ) : (
+            <DesktopIcon image={defaultIcon} alt='W95 Portfolio Logo' text={program.name} key={program.id + ' ' + i} />
+          )
+        )}
       </div>
 
       <Window program={test} />

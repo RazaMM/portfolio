@@ -1,4 +1,4 @@
-import { useEffect, useMemo, useRef, useState } from 'react';
+import { useEffect, useRef, useState } from 'react';
 import { clamp } from '@/utils/clamp';
 
 export enum ResizeDirection {
@@ -140,7 +140,7 @@ export function useResizable<ElementType extends HTMLElement>(
           bottom: Number.parseFloat(style.paddingBottom),
         };
 
-        let newDirection = ResizeDirection.NONE;
+        let newDirection: ResizeDirection;
         const minX = -1 * padding.left;
         const minY = -1 * padding.top;
         const maxX = rect.width + padding.right;
@@ -189,7 +189,7 @@ export function useResizable<ElementType extends HTMLElement>(
       document.removeEventListener('mouseup', resizeStop);
       document.removeEventListener('mousemove', updateDirection);
     };
-  }, []);
+  }, [maxHeight, maxWidth, minHeight, minWidth]);
 
   return {
     resized,

@@ -1,6 +1,6 @@
 'use client';
 
-import React, { useEffect, useRef, useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import Image from 'next/image';
 import { Program } from '@/components/programs';
 import { defaultBounds, useDraggable } from '@/utils/useDraggable';
@@ -20,7 +20,7 @@ export default function Window({
   const [windowWidth, windowHeight] = useWindowDimensions();
   const [draggingBounds, setDraggingBounds] = useState(defaultBounds);
   const { handle, dragged, isDragging } = useDraggable<HTMLDivElement, HTMLDivElement>(draggingBounds);
-  const { resized, direction, isResizing } = useResizable<HTMLDivElement>(
+  const { resized, direction } = useResizable<HTMLDivElement>(
     program?.minWindowWidth,
     program?.minWindowHeight,
     program?.maxWindowWidth,

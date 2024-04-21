@@ -1,6 +1,6 @@
 'use client';
 
-import { useState, useEffect, useRef, type MutableRefObject, RefObject } from 'react';
+import { useState, useEffect, useRef, RefObject } from 'react';
 
 export function useFocusWithin<T extends HTMLElement>(): [RefObject<T>, boolean] {
   const ref = useRef<T>(null);
