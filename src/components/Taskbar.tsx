@@ -45,7 +45,7 @@ const StartMenu: React.FC<{
           className='flex h-10 w-full items-center gap-1 p-1 hover:bg-w95-blue hover:text-white focus:bg-w95-blue focus:text-white focus:outline-none'
           key={program.id}
         >
-          <Image src={program.icon.src} alt={program.icon.alt} className='h-8 w-auto' />
+          {program.icon && <Image src={program.icon.src} alt={program.icon.alt} className='h-8 w-auto' />}
           <span>{program.name}</span>
         </button>
       ))}
