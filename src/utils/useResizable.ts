@@ -29,8 +29,18 @@ export function useResizable<ElementType extends HTMLElement>(
     if (!resized.current) return;
 
     const style = window.getComputedStyle(resized.current);
+    let startX = 0;
+    let startY = 0;
+    let startWidth = 0;
+    let startHeight = 0;
 
     const resizeStart = (e: MouseEvent) => {
+      startX = e.pageX;
+      startY = e.pageY;
+
+      startWidth = resized?.current?.clientWidth ?? 0;
+      startHeight = resized?.current?.offsetHeight ?? 0;
+
       setIsResizing(true);
       isResizingRef.current = true;
 
@@ -44,8 +54,8 @@ export function useResizable<ElementType extends HTMLElement>(
       e.stopPropagation();
 
       const rect = resized.current.getBoundingClientRect();
-      const clampWidth = (val: number) => clamp(val, minWidth, maxWidth);
-      const clampHeight = (val: number) => clamp(val, minHeight, maxHeight);
+
+      console.log(startX - e.pageX);
 
       // North
       if (
@@ -53,6 +63,13 @@ export function useResizable<ElementType extends HTMLElement>(
         directionRef.current === ResizeDirection.NORTH_WEST ||
         directionRef.current === ResizeDirection.NORTH_EAST
       ) {
+        const rect = resized.current.getBoundingClientRect();
+
+        if (rect.height > minHeight && rect.height < maxHeight) {
+          resized.current.style.translate = `${rect.x}px ${e.pageY}px`;
+        }
+
+        resized.current.style.height = `${clamp(startY - e.pageY + startHeight, minHeight, maxHeight)}px`;
       }
 
       // South
@@ -61,7 +78,7 @@ export function useResizable<ElementType extends HTMLElement>(
         directionRef.current === ResizeDirection.SOUTH_WEST ||
         directionRef.current === ResizeDirection.SOUTH_EAST
       ) {
-        resized.current.style.height = `${clampHeight(e.clientY - (rect?.y ?? 0))}px`;
+        resized.current.style.height = `${clamp(e.pageY - rect.y, minHeight, maxHeight)}px`;
       }
 
       // West
@@ -70,6 +87,13 @@ export function useResizable<ElementType extends HTMLElement>(
         directionRef.current === ResizeDirection.NORTH_WEST ||
         directionRef.current === ResizeDirection.SOUTH_WEST
       ) {
+        const rect = resized.current.getBoundingClientRect();
+
+        if (rect.width > minWidth && rect.width < maxWidth) {
+          resized.current.style.translate = `${e.pageX}px ${rect.y}px`;
+        }
+
+        resized.current.style.width = `${clamp(startX - e.pageX + startWidth, minWidth, maxWidth)}px`;
       }
 
       // East
@@ -78,7 +102,7 @@ export function useResizable<ElementType extends HTMLElement>(
         directionRef.current === ResizeDirection.NORTH_EAST ||
         directionRef.current === ResizeDirection.SOUTH_EAST
       ) {
-        resized.current.style.width = `${clampWidth(e.clientX - (rect?.x ?? 0))}px`;
+        resized.current.style.width = `${clamp(e.pageX - rect.x, minWidth, maxWidth)}px`;
       }
     };
 
@@ -95,8 +119,8 @@ export function useResizable<ElementType extends HTMLElement>(
     const updateDirection = (e: MouseEvent) => {
       if (resized.current && !isResizingRef.current) {
         const rect = resized.current.getBoundingClientRect();
-        const x = e.clientX - (rect?.left ?? 0);
-        const y = e.clientY - (rect?.top ?? 0);
+        const x = e.pageX - (rect?.left ?? 0);
+        const y = e.pageY - (rect?.top ?? 0);
 
         const padding = {
           left: Number.parseFloat(style.paddingLeft),

@@ -10,9 +10,9 @@ export default function ProgramWindow({ program }: { program: Program }) {
   const { handle, dragged, isDragging } = useDraggable<HTMLDivElement, HTMLDivElement>();
   const { resized, direction } = useResizable<HTMLDivElement>(
     program?.minWindowWidth,
-    program.minWindowHeight,
+    program?.minWindowHeight,
     program?.maxWindowWidth,
-    program.maxWindowHeight
+    program?.maxWindowHeight
   );
 
   useEffect(() => {
@@ -47,6 +47,7 @@ export default function ProgramWindow({ program }: { program: Program }) {
           case ResizeDirection.NORTH_EAST:
           case ResizeDirection.SOUTH_WEST:
             document.body.classList.add('cursor-w95-nesw-resize');
+            break;
         }
       }
     }
