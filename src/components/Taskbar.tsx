@@ -63,7 +63,7 @@ const Clock: React.FC = () => {
   const time = useTime('minute');
 
   return (
-    <div className='ml-auto px-3 shadow-w95-inverted-thin'>
+    <div className='ml-auto px-3 shadow-w95-inverted-thin' suppressHydrationWarning={true}>
       {time.toLocaleTimeString(undefined, {
         hour: 'numeric',
         minute: '2-digit',
