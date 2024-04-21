@@ -52,6 +52,8 @@ export function useResizable<ElementType extends HTMLElement>(
       startWidth = resized.current.clientWidth ?? 0;
       startHeight = resized.current.offsetHeight ?? 0;
 
+      resized.current.style.translate = `${rect.x}px ${rect.y}px`;
+
       setIsResizing(true);
       isResizingRef.current = true;
 

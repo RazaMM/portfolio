@@ -71,8 +71,10 @@ export default function Window({ program }: { program: Program }) {
         //@ts-expect-error
         dragged.current = el;
 
-        //@ts-expect-error
-        resized.current = el;
+        if(program.resizeable) {
+          //@ts-expect-error
+          resized.current = el;
+        }
       }}
     >
       <div className='flex h-full w-full flex-col items-center justify-center gap-1.5 bg-w95-grey px-1 pb-4 pt-1 shadow-w95'>
