@@ -33,13 +33,23 @@ export function useResizable<ElementType extends HTMLElement>(
     let startY = 0;
     let startWidth = 0;
     let startHeight = 0;
+    let offsetX = 0;
+    let offsetY = 0;
 
     const resizeStart = (e: MouseEvent) => {
+      if (!resized.current) {
+        return;
+      }
+
       startX = e.pageX;
       startY = e.pageY;
 
-      startWidth = resized?.current?.clientWidth ?? 0;
-      startHeight = resized?.current?.offsetHeight ?? 0;
+      const rect = resized.current.getBoundingClientRect();
+      offsetX = e.pageX - rect.x;
+      offsetY = e.pageY - rect.y;
+
+      startWidth = resized.current.clientWidth ?? 0;
+      startHeight = resized.current.offsetHeight ?? 0;
 
       setIsResizing(true);
       isResizingRef.current = true;
@@ -66,7 +76,7 @@ export function useResizable<ElementType extends HTMLElement>(
         const rect = resized.current.getBoundingClientRect();
 
         if (rect.height > minHeight && rect.height < maxHeight) {
-          resized.current.style.translate = `${rect.x}px ${e.pageY}px`;
+          resized.current.style.translate = `${rect.x}px ${e.pageY - offsetY}px`;
         }
 
         resized.current.style.height = `${clamp(startY - e.pageY + startHeight, minHeight, maxHeight)}px`;
@@ -90,7 +100,7 @@ export function useResizable<ElementType extends HTMLElement>(
         const rect = resized.current.getBoundingClientRect();
 
         if (rect.width > minWidth && rect.width < maxWidth) {
-          resized.current.style.translate = `${e.pageX}px ${rect.y}px`;
+          resized.current.style.translate = `${e.pageX - offsetX}px ${rect.y}px`;
         }
 
         resized.current.style.width = `${clamp(startX - e.pageX + startWidth, minWidth, maxWidth)}px`;
