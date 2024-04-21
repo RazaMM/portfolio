@@ -7,7 +7,7 @@ import { defaultBounds, useDraggable } from '@/utils/useDraggable';
 import { ResizeDirection, useResizable } from '@/utils/useResizable';
 import { useWindowDimensions } from '@/utils/useWindowDimensions';
 
-export default function ProgramWindow({ program }: { program: Program }) {
+export default function Window({ program }: { program: Program }) {
   const [windowWidth, windowHeight] = useWindowDimensions();
   const [draggingBounds, setDraggingBounds] = useState(defaultBounds);
   const { handle, dragged, isDragging } = useDraggable<HTMLDivElement, HTMLDivElement>(draggingBounds);

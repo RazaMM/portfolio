@@ -3,7 +3,7 @@
 import programs, { type Program } from '@/components/programs';
 import React, { useState } from 'react';
 import DesktopIcon from '@/components/DesktopIcon';
-import ProgramWindow from '@/components/Window';
+import Window from '@/components/Window';
 import ShutdownScreen from '@/components/ShutdownScreen';
 
 export default function Home() {
@@ -17,7 +17,7 @@ export default function Home() {
         ))}
       </div>
 
-      <ProgramWindow program={test} />
+      <Window program={test} />
     </>
   );
 }

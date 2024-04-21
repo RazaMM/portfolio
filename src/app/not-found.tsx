@@ -1,6 +1,7 @@
 import React from 'react';
 import Image from 'next/image';
 import icon from '@/img/error.png';
+import Window from '@/components/Window';
 
 export default function NotFound() {
   return (
