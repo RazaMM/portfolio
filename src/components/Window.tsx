@@ -6,8 +6,9 @@ import { Program } from '@/components/programs';
 import { defaultBounds, useDraggable } from '@/utils/useDraggable';
 import { ResizeDirection, useResizable } from '@/utils/useResizable';
 import { useWindowDimensions } from '@/utils/useWindowDimensions';
+import classNames from 'classnames';
 
-export default function Window({ program }: { program: Program }) {
+export default function Window({ program, active }: { program: Program; active?: boolean }) {
   const [windowWidth, windowHeight] = useWindowDimensions();
   const [draggingBounds, setDraggingBounds] = useState(defaultBounds);
   const { handle, dragged, isDragging } = useDraggable<HTMLDivElement, HTMLDivElement>(draggingBounds);
@@ -71,14 +72,20 @@ export default function Window({ program }: { program: Program }) {
         //@ts-expect-error
         dragged.current = el;
 
-        if(program.resizeable) {
+        if (program.resizeable) {
           //@ts-expect-error
           resized.current = el;
         }
       }}
     >
       <div className='flex h-full w-full flex-col items-center justify-center gap-1.5 bg-w95-grey px-1 pb-4 pt-1 shadow-w95'>
-        <div className='flex h-6 w-full items-center bg-w95-blue px-2' ref={handle}>
+        <div
+          className={classNames('flex h-6 w-full items-center px-2', {
+            'bg-w95-blue': active,
+            'bg-w95-dark-grey': !active,
+          })}
+          ref={handle}
+        >
           {program.icon && (
             <Image src={program.icon.src} alt={program.icon.alt} className='pointer-events-none mr-1 h-5 w-auto' />
           )}
