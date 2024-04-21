@@ -5,8 +5,10 @@ import Image from 'next/image';
 import { Program } from '@/components/programs';
 import { defaultBounds, useDraggable } from '@/utils/useDraggable';
 import { ResizeDirection, useResizable } from '@/utils/useResizable';
+import { useWindowDimensions } from '@/utils/useWindowDimensions';
 
 export default function ProgramWindow({ program }: { program: Program }) {
+  const [windowWidth, windowHeight] = useWindowDimensions();
   const [draggingBounds, setDraggingBounds] = useState(defaultBounds);
   const { handle, dragged, isDragging } = useDraggable<HTMLDivElement, HTMLDivElement>(draggingBounds);
   const { resized, direction } = useResizable<HTMLDivElement>(
@@ -15,25 +17,14 @@ export default function ProgramWindow({ program }: { program: Program }) {
     program?.maxWindowWidth,
     program?.maxWindowHeight
   );
-  let debounceID: NodeJS.Timeout;
 
-  const updateBounds = () => {
-    console.log('resingin');
+  useEffect(() => {
     setDraggingBounds({
       top: -12,
       left: -12,
-      right: window.innerWidth - 50,
-      bottom: window.innerHeight - 80,
+      right: windowWidth - 50,
+      bottom: windowHeight - 80,
     });
-  };
-
-  useEffect(() => {
-    if (draggingBounds === defaultBounds) {
-      updateBounds();
-    }
-
-    window.removeEventListener('resize', updateBounds);
-    window.addEventListener('resize', updateBounds);
 
     document.body.classList.add('cursor-w95-auto');
     document.body.classList.remove('select-none');
@@ -70,11 +61,7 @@ export default function ProgramWindow({ program }: { program: Program }) {
         }
       }
     }
-
-    return () => {
-      window.removeEventListener('resize', updateBounds);
-    };
-  }, [direction, isDragging]);
+  }, [direction, isDragging, windowHeight, windowWidth]);
 
   return (
     <div

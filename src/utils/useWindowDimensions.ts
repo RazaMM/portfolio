@@ -10,6 +10,7 @@ export const useWindowDimensions = () => {
     };
 
     window.addEventListener('resize', updateDimensions);
+    updateDimensions();
 
     return () => {
       window.removeEventListener('resize', updateDimensions);
