@@ -2,8 +2,8 @@
 
 import programs from '@/components/programs';
 import React from 'react';
-import DesktopIcon from '@/components/DesktopIcon';
-import Window from '@/components/Window';
+import DesktopIcon from '@/components/desktop-icon';
+import Window from '@/components/window';
 import defaultIcon from '@/img/logo.png';
 
 export default function Home() {
@@ -26,7 +26,7 @@ export default function Home() {
         )}
       </div>
 
-      <Window program={test} />
+      <Window program={test} active={true} />
     </>
   );
 }

@@ -4,9 +4,9 @@ import React from 'react';
 import { StaticImageData } from 'next/image';
 
 // Import all programs here
-import Biography from './Biography';
-import Education from './Education';
-import Experience from './Experience';
+import Biography from './biography';
+import Education from './education';
+import Experience from './experience';
 
 export type Program = {
   id: string;

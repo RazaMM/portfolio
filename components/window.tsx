@@ -3,20 +3,18 @@
 import React, { useEffect, useState } from 'react';
 import Image from 'next/image';
 import { Program } from '@/components/programs';
-import { defaultBounds, useDraggable } from '@/utils/useDraggable';
-import { ResizeDirection, useResizable } from '@/utils/useResizable';
-import { useWindowDimensions } from '@/utils/useWindowDimensions';
+import { defaultBounds, useDraggable } from '@/utils/use-draggable';
+import { ResizeDirection, useResizable } from '@/utils/use-resizable';
+import { useWindowDimensions } from '@/utils/use-window-dimensions';
 import classNames from 'classnames';
 
-export default function Window({
-  program,
-  active,
-  onClose,
-}: {
+export type WindowProps = {
   program: Program;
   active?: boolean;
   onClose?: () => void;
-}) {
+};
+
+export default function Window({ program, active, onClose }: WindowProps) {
   const [windowWidth, windowHeight] = useWindowDimensions();
   const [draggingBounds, setDraggingBounds] = useState(defaultBounds);
   const { handle, dragged, isDragging } = useDraggable<HTMLDivElement, HTMLDivElement>(draggingBounds);

@@ -1,10 +1,10 @@
-"use client"
+'use client';
 
 import React from 'react';
 import Image from 'next/image';
 import icon from '@/img/error.png';
 import { type Program } from '@/components/programs';
-import Window from '@/components/Window';
+import Window from '@/components/window';
 
 const NotFoundContent: React.FC = () => {
   return (
@@ -16,7 +16,7 @@ const NotFoundContent: React.FC = () => {
           {"You've ventured too far into the unknown and I can't find what you're looking for :("}
         </span>
       </div>
-      <a className='flex w-fit mx-auto items-center gap-1 px-2 shadow-w95 active:shadow-w95-inverted' href='/'>
+      <a className='mx-auto flex w-fit items-center gap-1 px-2 shadow-w95 active:shadow-w95-inverted' href='/'>
         <span>Go back home</span>
       </a>
     </div>
