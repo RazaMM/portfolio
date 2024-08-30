@@ -5,8 +5,7 @@ const config: Config = {
     './components/**/*.{js,ts,jsx,tsx,mdx}',
     './app/**/*.{js,ts,jsx,tsx,mdx}',
     './public/**/*.{js,ts,jsx,tsx,mdx}',
-    './utils/**/*.{js,ts,jsx,tsx,mdx}'
-
+    './utils/**/*.{js,ts,jsx,tsx,mdx}',
   ],
   theme: {
     extend: {
@@ -15,6 +14,9 @@ const config: Config = {
         'w95-blue': '#000080',
         'w95-grey': '#C6C6C6',
         'w95-dark-grey': '#808080',
+        'degree-red': '#8E2C3B',
+        'degree-beige': '#FFFDE4',
+        'degree-gold': '#97845B',
       },
       cursor: {
         'w95-auto': 'url(/cursors/auto.cur), auto',
