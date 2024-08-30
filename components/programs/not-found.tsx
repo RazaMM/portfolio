@@ -25,10 +25,6 @@ NotFound.displayName = 'NotFound';
 export default {
   id: 'not-found',
   name: '404 Not Found',
-  icon: {
-    src: icon,
-    alt: 'A red circle with a white x in the center',
-  },
   resizeable: false,
   Component: NotFound,
 } as Program;
