@@ -1,12 +1,13 @@
 'use client';
 
-import React, { useEffect } from 'react';
+import React, { useContext, useEffect } from 'react';
 import { useTime } from '@/utils/use-time';
 import Image from 'next/image';
 import logo from '@/img/logo.png';
 import classNames from 'classnames';
 import { useFocusWithin } from '@/utils/use-focus-within';
 import programs from '@/components/programs';
+import ProgramContext from '@/utils/program-context';
 
 type StartButtonProps = {
   active?: boolean;
@@ -33,37 +34,50 @@ type StartMenuProps = {
   active?: boolean;
 };
 
-const StartMenu = ({ active }: StartMenuProps) => (
-  <div
-    className={classNames('absolute bottom-full left-0 mb-2 flex w-80 max-w-full gap-2 bg-w95-grey p-1.5 shadow-w95', {
-      visible: active,
-      invisible: !active,
-    })}
-  >
-    <span className='min-w-8 writing-sideways-rl flex rotate-180 items-center whitespace-nowrap bg-w95-dark-grey py-2 text-xl tracking-widest text-white'>
-      {"Raza's Portfolio"}
-    </span>
-    <div className='flex flex-1 flex-col justify-end'>
-      {programs
-        .filter((program) => program.includeInStartMenu)
-        .map((program, i) => (
-          <button
-            className='flex h-10 w-full items-center gap-1 p-1 hover:bg-w95-blue hover:text-white focus:bg-w95-blue focus:text-white focus:outline-none'
-            key={program.id + ' ' + i}
-          >
-            {program.icon && <Image src={program.icon.src} alt={program.icon.alt} className='h-8 w-auto' />}
-            <span>{program.name}</span>
-          </button>
-        ))}
+const StartMenu = ({ active }: StartMenuProps) => {
+  const context = useContext(ProgramContext);
 
-      <hr className='shadow-windows h-2 w-full' />
+  console.log(context);
 
-      <button className='flex h-10 w-full items-center gap-1 p-1 hover:bg-w95-blue hover:text-white focus:bg-w95-blue focus:text-white focus:outline-none'>
-        Shut down...
-      </button>
+  return (
+    <div
+      className={classNames(
+        'absolute bottom-full left-0 mb-2 flex w-80 max-w-full gap-2 bg-w95-grey p-1.5 shadow-w95',
+        {
+          visible: active,
+          invisible: !active,
+        }
+      )}
+    >
+      <span className='writing-sideways-rl flex min-w-8 rotate-180 items-center whitespace-nowrap bg-w95-dark-grey py-2 text-xl tracking-widest text-white'>
+        {"Raza's Portfolio"}
+      </span>
+      <div className='flex flex-1 flex-col justify-end'>
+        {programs
+          .filter((program) => program.includeInStartMenu)
+          .map((program, i) => (
+            <button
+              className='flex h-10 w-full items-center gap-1 p-1 hover:bg-w95-blue hover:text-white focus:bg-w95-blue focus:text-white focus:outline-none'
+              key={program.id + ' ' + i}
+              onClick={() => {
+                console.log(program, context.open);
+                context?.open(program);
+              }}
+            >
+              {program.icon && <Image src={program.icon.src} alt={program.icon.alt} className='h-8 w-auto' />}
+              <span>{program.name}</span>
+            </button>
+          ))}
+
+        <hr className='shadow-windows h-2 w-full' />
+
+        <button className='flex h-10 w-full items-center gap-1 p-1 hover:bg-w95-blue hover:text-white focus:bg-w95-blue focus:text-white focus:outline-none'>
+          Shut down...
+        </button>
+      </div>
     </div>
-  </div>
-);
+  );
+};
 
 const Clock = () => {
   const time = useTime('minute');

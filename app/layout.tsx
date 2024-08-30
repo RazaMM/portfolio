@@ -15,8 +15,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
   return (
     <html lang='en'>
       <body className={`${w95.className} flex h-screen w-screen cursor-w95-auto flex-col overflow-hidden bg-w95-cyan`}>
-        <main className='relative h-[calc(100%_-_theme(height.10))] flex-1 p-2'>{children}</main>
-        <Taskbar />
+        {children}
       </body>
     </html>
   );

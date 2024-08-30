@@ -1,34 +1,43 @@
-import React from 'react';
+import React, { useContext } from 'react';
 import Image, { StaticImageData } from 'next/image';
 import programs from '@/components/programs';
 import defaultIcon from '@/img/logo.png';
+import ProgramContext from '@/utils/program-context';
 
-export const DesktopIcon = ({ image, alt, text }: { image: StaticImageData; alt: string; text: string }) => {
+type DesktopIconProps = {
+  image: StaticImageData;
+  alt: string;
+  name: string;
+  onClick?: () => void;
+};
+
+export const DesktopIcon = ({ image, alt, name, onClick }: DesktopIconProps) => {
   return (
-    <button className='flex h-fit w-fit flex-col items-center gap-0.5 p-1'>
+    <button onDoubleClick={onClick} className='flex h-fit w-fit flex-col items-center gap-0.5 p-1'>
       <Image src={image} alt={alt} className='h-10 w-auto' />
-      <span className='text-center text-white'>{text}</span>
+      <span className='text-center text-white'>{name}</span>
     </button>
   );
 };
 
 export const Desktop = () => {
+  const context = useContext(ProgramContext);
+
   return (
     <div className='relative flex h-full w-fit flex-col flex-wrap items-center gap-4'>
       {programs
         .filter((program) => program.includeInDesktop)
-        .map((program, i) =>
-          program.icon ? (
-            <DesktopIcon
-              image={program.icon.src}
-              alt={program.icon.alt}
-              text={program.name}
-              key={program.id + ' ' + i}
-            />
-          ) : (
-            <DesktopIcon image={defaultIcon} alt='W95 Portfolio Logo' text={program.name} key={program.id + ' ' + i} />
-          )
-        )}
+        .map((program, i) => (
+          <DesktopIcon
+            onClick={() => {
+              context?.open(program);
+            }}
+            image={program?.icon?.src ?? defaultIcon}
+            alt={program?.icon?.alt ?? 'W95 Portfolio Logo'}
+            name={program.name}
+            key={program.id + ' ' + i}
+          />
+        ))}
     </div>
   );
 };
