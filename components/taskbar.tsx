@@ -2,33 +2,37 @@
 
 import React, { useContext, useEffect } from 'react';
 import { useTime } from '@/utils/use-time';
-import Image from 'next/image';
+import Image, { StaticImageData } from 'next/image';
 import logo from '@/img/logo.png';
 import classNames from 'classnames';
 import { useFocusWithin } from '@/utils/use-focus-within';
-import programs from '@/components/programs';
+import programs, { type Program } from '@/components/programs';
 import ProgramContext from '@/utils/program-context';
 
-type StartButtonProps = {
+type ButtonProps = {
+  icon?: Program['icon'];
+  text: string;
   active?: boolean;
   onClick?: () => void;
 };
 
-const StartButton = ({ active = false, onClick }: StartButtonProps) => (
-  <button
-    className={classNames(
-      'flex h-full cursor-w95-pointer items-center justify-center gap-1 px-2 shadow-w95 active:shadow-w95-inverted',
-      { 'shadow-w95-inverted': active }
-    )}
-    onClick={(e) => {
-      (e.target as HTMLButtonElement).focus();
-      onClick?.();
-    }}
-  >
-    <Image src={logo} alt='Portfolio logo' className='h-full w-auto' />
-    <span>Start</span>
-  </button>
-);
+const Button = ({ icon, text, active, onClick }: ButtonProps) => {
+  return (
+    <button
+      className={classNames(
+        'flex h-full cursor-w95-pointer items-center justify-center gap-1 px-2 shadow-w95 active:shadow-w95-inverted',
+        { 'shadow-w95-inverted': active }
+      )}
+      onClick={(e) => {
+        (e.target as HTMLButtonElement).focus();
+        onClick?.();
+      }}
+    >
+      <Image src={icon?.src ?? logo} alt={icon?.alt ?? 'W95 Portfolio Logo'} className='h-full w-auto' />
+      <span>{text}</span>
+    </button>
+  );
+};
 
 type StartMenuProps = {
   active?: boolean;
@@ -95,6 +99,9 @@ const Clock = () => {
 export const Taskbar = () => {
   const [ref, focused] = useFocusWithin<HTMLDivElement>();
   const [showStartMenu, setShowStartMenu] = React.useState(false);
+  const context = useContext(ProgramContext);
+  const openPrograms = context?.getOpen() ?? [];
+  const activeProgram = context?.getActive();
 
   useEffect(() => {
     if (!focused) setShowStartMenu(false);
@@ -103,8 +110,21 @@ export const Taskbar = () => {
   return (
     <div className='relative flex h-10 w-screen items-center bg-w95-grey p-2 shadow-w95'>
       <div className='h-full' tabIndex={-1} ref={ref}>
-        <StartButton active={showStartMenu} onClick={() => setShowStartMenu(!showStartMenu)} />
+        <Button text='Start' active={showStartMenu} onClick={() => setShowStartMenu(!showStartMenu)} />
+
         <StartMenu active={showStartMenu} />
+      </div>
+
+      <div className='ml-6 flex flex-1 gap-4'>
+        {openPrograms.map((program, i) => (
+          <Button
+            key={program.id}
+            text={program.name}
+            icon={program?.icon}
+            active={activeProgram?.id === program.id}
+            onClick={() => context?.setActive(program)}
+          ></Button>
+        ))}
       </div>
 
       <Clock />
