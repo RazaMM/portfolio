@@ -33,5 +33,5 @@ export default {
   resizeable: false,
   Component: Education,
   includeInStartMenu: true,
-  includeInDesktopMenu: true,
+  includeInDesktop: true,
 } as Program;
