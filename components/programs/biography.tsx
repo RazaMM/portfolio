@@ -69,6 +69,8 @@ export default {
   },
   Component: Biography,
   resizeable: true,
-  minWindowWidth: 320,
-  minWindowHeight: 554,
+  bounds: {
+    minWidth: 320,
+    minHeight: 554,
+  },
 } as Program;

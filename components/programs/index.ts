@@ -18,10 +18,12 @@ export type Program = {
   Component: React.FC;
   includeInDesktop?: boolean;
   includeInStartMenu?: boolean;
-  minWindowWidth?: number;
-  minWindowHeight?: number;
-  maxWindowWidth?: number;
-  maxWindowHeight?: number;
+  bounds?: {
+    minWidth?: number;
+    minHeight?: number;
+    maxWidth?: number;
+    maxHeight?: number;
+  };
   resizeable?: boolean;
 };
 
