@@ -2,7 +2,7 @@
 
 import programs from '@/components/programs';
 import React from 'react';
-import Desktop from '@/components/desktop-icon';
+import Desktop from '@/components/desktop';
 import Window from '@/components/window';
 
 export default function Home() {
