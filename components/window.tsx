@@ -14,15 +14,15 @@ export type WindowProps = {
   onClose?: () => void;
 };
 
-export default function Window({ program, active, onClose }: WindowProps) {
+export const Window = ({ program, active, onClose }: WindowProps) => {
   const [windowWidth, windowHeight] = useWindowDimensions();
   const [draggingBounds, setDraggingBounds] = useState(defaultBounds);
   const { handle, dragged, isDragging } = useDraggable<HTMLDivElement, HTMLDivElement>(draggingBounds);
   const { resized, direction } = useResizable<HTMLDivElement>(
-    program?.minWindowWidth,
-    program?.minWindowHeight,
-    program?.maxWindowWidth,
-    program?.maxWindowHeight
+    program?.bounds?.minWidth,
+    program?.bounds?.minHeight,
+    program?.bounds?.maxWidth,
+    program?.bounds?.maxHeight
   );
 
   useEffect(() => {
@@ -110,4 +110,6 @@ export default function Window({ program, active, onClose }: WindowProps) {
       </div>
     </div>
   );
-}
+};
+
+export default Window;

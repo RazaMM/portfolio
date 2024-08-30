@@ -2,7 +2,7 @@
 import React, { MouseEventHandler } from 'react';
 import classNames from 'classnames';
 
-export default function ShutdownScreen({ visible, onClick }: { visible: boolean; onClick: MouseEventHandler }) {
+export const ShutdownScreen = ({ visible, onClick }: { visible: boolean; onClick: MouseEventHandler }) => {
   return (
     <div
       onClick={onClick}
@@ -14,4 +14,6 @@ export default function ShutdownScreen({ visible, onClick }: { visible: boolean;
       <span className='max-w-xl text-center text-orange-400'>It&apos;s now safe to turn off your computer.</span>
     </div>
   );
-}
+};
+
+export default ShutdownScreen;

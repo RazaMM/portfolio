@@ -8,10 +8,12 @@ import classNames from 'classnames';
 import { useFocusWithin } from '@/utils/use-focus-within';
 import programs from '@/components/programs';
 
-const StartButton: React.FC<{
+type StartButtonProps = {
   active?: boolean;
   onClick?: () => void;
-}> = ({ active = false, onClick }) => (
+};
+
+const StartButton = ({ active = false, onClick }: StartButtonProps) => (
   <button
     className={classNames(
       'flex h-full cursor-w95-pointer items-center justify-center gap-1 px-2 shadow-w95 active:shadow-w95-inverted',
@@ -27,9 +29,11 @@ const StartButton: React.FC<{
   </button>
 );
 
-const StartMenu: React.FC<{
+type StartMenuProps = {
   active?: boolean;
-}> = ({ active = false }) => (
+};
+
+const StartMenu = ({ active }: StartMenuProps) => (
   <div
     className={classNames('absolute bottom-full left-0 mb-2 flex w-80 max-w-full gap-2 bg-w95-grey p-1.5 shadow-w95', {
       visible: active,
@@ -59,7 +63,7 @@ const StartMenu: React.FC<{
   </div>
 );
 
-const Clock: React.FC = () => {
+const Clock = () => {
   const time = useTime('minute');
 
   return (
@@ -72,7 +76,7 @@ const Clock: React.FC = () => {
   );
 };
 
-export default function Taskbar() {
+export const Taskbar = () => {
   const [startMenu, focusWithinStartMenu] = useFocusWithin<HTMLDivElement>();
   const [showStartMenu, setShowStartMenu] = React.useState(false);
 
@@ -90,4 +94,6 @@ export default function Taskbar() {
       <Clock />
     </div>
   );
-}
+};
+
+export default Taskbar;
