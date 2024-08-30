@@ -73,4 +73,6 @@ export default {
     minWidth: 320,
     minHeight: 554,
   },
+  includeInStartMenu: true,
+  includeInDesktopMenu: true,
 } as Program;

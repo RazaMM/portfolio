@@ -21,4 +21,6 @@ export default {
   },
   resizeable: true,
   Component: Experience,
+  includeInStartMenu: true,
+  includeInDesktopMenu: true,
 } as Program;

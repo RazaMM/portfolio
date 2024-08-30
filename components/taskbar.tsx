@@ -44,15 +44,17 @@ const StartMenu = ({ active }: StartMenuProps) => (
       {"Raza's Portfolio"}
     </span>
     <div className='flex flex-1 flex-col justify-end'>
-      {programs.map((program, i) => (
-        <button
-          className='flex h-10 w-full items-center gap-1 p-1 hover:bg-w95-blue hover:text-white focus:bg-w95-blue focus:text-white focus:outline-none'
-          key={program.id + ' ' + i}
-        >
-          {program.icon && <Image src={program.icon.src} alt={program.icon.alt} className='h-8 w-auto' />}
-          <span>{program.name}</span>
-        </button>
-      ))}
+      {programs
+        .filter((program) => program.includeInStartMenu)
+        .map((program, i) => (
+          <button
+            className='flex h-10 w-full items-center gap-1 p-1 hover:bg-w95-blue hover:text-white focus:bg-w95-blue focus:text-white focus:outline-none'
+            key={program.id + ' ' + i}
+          >
+            {program.icon && <Image src={program.icon.src} alt={program.icon.alt} className='h-8 w-auto' />}
+            <span>{program.name}</span>
+          </button>
+        ))}
 
       <hr className='shadow-windows h-2 w-full' />
 
@@ -77,16 +79,16 @@ const Clock = () => {
 };
 
 export const Taskbar = () => {
-  const [startMenu, focusWithinStartMenu] = useFocusWithin<HTMLDivElement>();
+  const [ref, focused] = useFocusWithin<HTMLDivElement>();
   const [showStartMenu, setShowStartMenu] = React.useState(false);
 
   useEffect(() => {
-    if (!focusWithinStartMenu) setShowStartMenu(false);
-  }, [focusWithinStartMenu]);
+    if (!focused) setShowStartMenu(false);
+  }, [focused]);
 
   return (
     <div className='relative flex h-10 w-screen items-center bg-w95-grey p-2 shadow-w95'>
-      <div className='h-full' tabIndex={-1} ref={startMenu}>
+      <div className='h-full' tabIndex={-1} ref={ref}>
         <StartButton active={showStartMenu} onClick={() => setShowStartMenu(!showStartMenu)} />
         <StartMenu active={showStartMenu} />
       </div>
