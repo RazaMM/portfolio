@@ -91,9 +91,9 @@ export const Window = ({ program, active }: WindowProps) => {
         }
       }}
     >
-      <div className='flex h-full w-full select-none flex-col items-center justify-center gap-1.5 bg-w95-grey px-1 pb-4 pt-1 shadow-w95'>
+      <div className='flex h-full w-full flex-col items-center justify-center gap-1.5 bg-w95-grey px-1 pb-4 pt-1 shadow-w95'>
         <div
-          className={classNames('flex h-6 w-full items-center px-2', {
+          className={classNames('flex h-6 w-full select-none items-center px-2', {
             'bg-w95-blue': isActive,
             'bg-w95-dark-grey': !isActive,
           })}
