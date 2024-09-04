@@ -108,7 +108,7 @@ export const Taskbar = () => {
   }, [focused]);
 
   return (
-    <div className='relative flex h-10 w-screen items-center bg-w95-grey p-2 shadow-w95'>
+    <div className='relative flex h-10 w-screen select-none items-center bg-w95-grey p-2 shadow-w95'>
       <div className='h-full' tabIndex={-1} ref={ref}>
         <Button text='Start' active={showStartMenu} onClick={() => setShowStartMenu(!showStartMenu)} />
 
