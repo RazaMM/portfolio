@@ -1,4 +1,4 @@
-# W95-Portfolio
+# My Portfolio
 
 A Windows 95 inspired portfolio
 
