@@ -94,12 +94,12 @@ const Experience: React.FC = () => {
 
         <ul className='flex list-inside list-disc flex-col items-start gap-2'>
           {experiences[idx].description.map((description) => (
-            <li>{description}</li>
+            <li key={description}>{description}</li>
           ))}
         </ul>
       </div>
 
-      <div class='flex w-full justify-between'>
+      <div className='flex w-full justify-between'>
         {idx !== 0 && (
           <button className='cursor-pointer select-none text-2xl' onClick={() => setIdx(idx - 1)}>
             &lt;-
