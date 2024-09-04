@@ -2,4 +2,4 @@
 
 A Windows 95 inspired portfolio
 
-View it live at [razamahmood.com](razamahmood.com)
+View it live at [razamahmood.com](https://razamahmood.com)
