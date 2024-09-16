@@ -6,8 +6,8 @@ import { Program } from '@/components/programs';
 import { defaultBounds, useDraggable } from '@/utils/use-draggable';
 import { ResizeDirection, useResizable } from '@/utils/use-resizable';
 import { useWindowDimensions } from '@/utils/use-window-dimensions';
-import classNames from 'classnames';
 import ProgramContext from '@/utils/program-context';
+import { twJoin } from 'tailwind-merge';
 
 export type WindowProps = {
   program: Program;
@@ -79,7 +79,7 @@ export const Window = ({ program, active }: WindowProps) => {
       onMouseDown={() => {
         context?.setActive(program);
       }}
-      className='absolute left-0 top-0 flex items-center justify-center p-3'
+      className={twJoin('absolute left-0 top-0 flex items-center justify-center p-3', !isActive && 'select-none')}
       style={{ translate: 'calc(50vw - 50%) calc(50vh - 50% - 40px)' }}
       ref={(el) => {
         //@ts-expect-error
@@ -93,10 +93,10 @@ export const Window = ({ program, active }: WindowProps) => {
     >
       <div className='flex h-full w-full flex-col items-center justify-center gap-1.5 bg-w95-grey px-1 pb-4 pt-1 shadow-w95'>
         <div
-          className={classNames('flex h-6 w-full select-none items-center px-2', {
-            'bg-w95-blue': isActive,
-            'bg-w95-dark-grey': !isActive,
-          })}
+          className={twJoin(
+            'flex h-6 w-full select-none items-center px-2',
+            isActive ? 'bg-w95-blue' : 'bg-w95-dark-grey'
+          )}
           ref={handle}
         >
           {program.icon && (

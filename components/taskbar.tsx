@@ -4,10 +4,10 @@ import React, { useContext, useEffect } from 'react';
 import { useTime } from '@/utils/use-time';
 import Image, { StaticImageData } from 'next/image';
 import logo from '@/img/logo.png';
-import classNames from 'classnames';
 import { useFocusWithin } from '@/utils/use-focus-within';
 import programs, { type Program } from '@/components/programs';
 import ProgramContext from '@/utils/program-context';
+import { twJoin } from 'tailwind-merge';
 
 type ButtonProps = {
   icon?: Program['icon'];
@@ -19,9 +19,9 @@ type ButtonProps = {
 const Button = ({ icon, text, active, onClick }: ButtonProps) => {
   return (
     <button
-      className={classNames(
+      className={twJoin(
         'flex h-full cursor-w95-pointer items-center justify-center gap-1 px-2 shadow-w95 active:shadow-w95-inverted',
-        { 'shadow-w95-inverted': active }
+        active && 'shadow-w95-inverted'
       )}
       onClick={(e) => {
         (e.target as HTMLButtonElement).focus();
@@ -41,16 +41,11 @@ type StartMenuProps = {
 const StartMenu = ({ active }: StartMenuProps) => {
   const context = useContext(ProgramContext);
 
-  console.log(context);
-
   return (
     <div
-      className={classNames(
+      className={twJoin(
         'absolute bottom-full left-0 mb-2 flex w-80 max-w-full gap-2 bg-w95-grey p-1.5 shadow-w95',
-        {
-          visible: active,
-          invisible: !active,
-        }
+        active ? 'visible' : 'invisible'
       )}
     >
       <span className='writing-sideways-rl flex min-w-8 rotate-180 items-center whitespace-nowrap bg-w95-dark-grey py-2 text-xl tracking-widest text-white'>
