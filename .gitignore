@@ -37,3 +37,8 @@ next-env.d.ts
 # vscode
 .vscode
 .idea
+
+.env*
+.flaskenv*
+!.env.project
+!.env.vault
