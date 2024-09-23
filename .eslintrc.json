@@ -1,13 +1,6 @@
 {
   "extends": "next/core-web-vitals",
   "rules": {
-    "react/no-unknown-property": ["error", { "ignore": ["inert"] }],
-    "graphql/template-strings": [
-      "error",
-      {
-        "env": "apollo"
-      }
-    ]
-  },
-  "plugins": ["graphql"]
+    "react/no-unknown-property": ["error", { "ignore": ["inert"] }]
+  }
 }

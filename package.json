@@ -12,8 +12,8 @@
     "dotenv:push": "bunx dotenv-vault@latest push"
   },
   "dependencies": {
-    "@apollo/client": "^3.11.8",
     "graphql": "^16.9.0",
+    "graphql-request": "^7.1.0",
     "graphql-tag": "^2.12.6",
     "graphql-webpack-loader": "^0.1.0",
     "next": "13.5.6",
