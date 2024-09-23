@@ -8,7 +8,7 @@ import { GetStaticProps } from 'next';
 import { getExperiences } from '@/lib/get-experiences';
 
 export const getStaticProps: GetStaticProps = async ({ params }) => {
-  return { props: { experiences: getExperiences() } };
+  return { props: { experiences: await getExperiences() } };
 };
 
 export default function Home(props) {

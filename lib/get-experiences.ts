@@ -7,5 +7,5 @@ export const getExperiences = async (preview: boolean = false) => {
     content_type: 'experience',
   });
 
-  return { props: { experiences: data.items.map((item) => ({ ...item.fields })) } };
+  return data.items.map((item) => ({ ...item.fields }));
 };
