@@ -7,9 +7,9 @@ const nextConfig = {
         loader: 'webpack-graphql-loader',
         options: {
           removeUnusedFragments: true,
-          output: 'document',
+          output: 'string',
           validate: false,
-          minify: true,
+          minify: false,
         },
       },
     });

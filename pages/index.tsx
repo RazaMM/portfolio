@@ -1,16 +1,39 @@
-'use client';
-
 import { type Program } from '@/components/programs';
 import React, { useState } from 'react';
 import Desktop from '@/components/desktop';
 import Window from '@/components/window';
 import ProgramContext from '@/lib/program-context';
 import Layout from '@/components/layout';
+import { GetStaticProps } from 'next';
+import { graphql } from '@/lib/contentful';
 
-export default function Home() {
+export const getStaticProps: GetStaticProps = async ({ params }) => {
+  const data = await graphql(`
+    query {
+      experiences: experienceCollection {
+        items {
+          title
+          startDate
+          endDate
+          location
+          organizationName
+          description {
+            json
+          }
+        }
+      }
+    }
+  `);
+
+  return { props: data };
+};
+
+export default function Home({ data }) {
   const [open, setOpen] = useState<Program[]>([]);
   const [active, setActive] = useState<Program | null>(null);
   const [stackingOrder, setStackingOrder] = useState<Program[]>([]);
+
+  console.log(data);
 
   const context = {
     open: (program: Program) => {
