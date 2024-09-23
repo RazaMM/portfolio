@@ -6,6 +6,7 @@ import ProgramContext from '@/lib/program-context';
 import Layout from '@/components/layout';
 import { GetStaticProps } from 'next';
 import { getClient } from '@/lib/contentful';
+import DataContext, { type DataContextValue } from '@/lib/data-context';
 
 export const getStaticProps: GetStaticProps = async (context) => {
   const client = getClient(context.draftMode);
@@ -23,8 +24,6 @@ export default function Home(props: any) {
   const [open, setOpen] = useState<Program[]>([]);
   const [active, setActive] = useState<Program | null>(null);
   const [stackingOrder, setStackingOrder] = useState<Program[]>([]);
-
-  console.log(props);
 
   const context = {
     open: (program: Program) => {
@@ -57,9 +56,11 @@ export default function Home(props: any) {
       <Layout>
         <Desktop />
 
-        {stackingOrder.map((program) => (
-          <Window program={program} key={program.id} />
-        ))}
+        <DataContext.Provider value={props as DataContextValue}>
+          {stackingOrder.map((program) => (
+            <Window program={program} key={program.id} />
+          ))}
+        </DataContext.Provider>
       </Layout>
     </ProgramContext.Provider>
   );
