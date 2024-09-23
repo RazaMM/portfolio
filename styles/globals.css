@@ -3,6 +3,10 @@
 @tailwind utilities;
 
 @layer base {
+  #__next {
+    @apply w-full h-full;
+  }
+
   img {
     image-rendering: pixelated;
   }

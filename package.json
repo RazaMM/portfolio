@@ -7,10 +7,12 @@
     "build": "next build",
     "start": "next start",
     "lint": "next lint",
-    "format": "prettier --write ."
+    "format": "prettier --write .",
+    "dotenv:pull": "bunx dotenv-vault@latest pull",
+    "dotenv:push": "bunx dotenv-vault@latest push"
   },
   "dependencies": {
-    "apollo-client": "^2.6.10",
+    "@apollo/client": "^3.11.8",
     "graphql": "^16.9.0",
     "graphql-tag": "^2.12.6",
     "graphql-webpack-loader": "^0.1.0",

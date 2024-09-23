@@ -1,5 +1,3 @@
-'use client';
-
 import React from 'react';
 import Window from '@/components/window';
 import notFound from '@/components/programs/not-found';
@@ -8,7 +6,7 @@ import Layout from '@/components/layout';
 
 export default function NotFound() {
   return (
-    <Layout>
+    <Layout title="Not Found | Raza Mahmood's Portfolio">
       <Desktop />
       <Window program={notFound} active />
     </Layout>
