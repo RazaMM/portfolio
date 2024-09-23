@@ -7,6 +7,7 @@ import Layout from '@/components/layout';
 import { GetStaticProps } from 'next';
 import { getClient } from '@/lib/contentful';
 import DataContext, { type DataContextValue } from '@/lib/data-context';
+import moment from 'moment';
 
 export const getStaticProps: GetStaticProps = async (context) => {
   const client = getClient(context.draftMode);
@@ -15,7 +16,13 @@ export const getStaticProps: GetStaticProps = async (context) => {
     content_type: 'experience',
   });
 
-  const experiences = data.items.map((item) => ({ ...item.fields }));
+  const experiences = data.items.map((item) => {
+    return {
+      ...item.fields,
+      startDate: moment(item.fields.startDate).format('MMMM YYYY'),
+      endDate: item.fields.endDate ? moment(item.fields.endDate).format('MMMM YYYY') : 'Current',
+    };
+  });
 
   return { props: { experiences: experiences } };
 };

@@ -14,6 +14,13 @@ type Experience = {
   description: string[];
 };
 
+const getDateString = (str: string) => {
+  const date = new Date(str);
+  const formatter = new Intl.DateTimeFormat('en-US');
+
+  return formatter.format(date);
+};
+
 const Experience: React.FC = () => {
   const { experiences } = useContext(DataContext);
 
