@@ -1,12 +1,12 @@
 'use client';
 
 import React, { useContext, useEffect } from 'react';
-import { useTime } from '@/utils/use-time';
+import { useTime } from '@/lib/use-time';
 import Image, { StaticImageData } from 'next/image';
 import logo from '@/img/logo.png';
-import { useFocusWithin } from '@/utils/use-focus-within';
+import { useFocusWithin } from '@/lib/use-focus-within';
 import programs, { type Program } from '@/components/programs';
-import ProgramContext from '@/utils/program-context';
+import ProgramContext from '@/lib/program-context';
 import { twJoin } from 'tailwind-merge';
 
 type ButtonProps = {

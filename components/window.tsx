@@ -3,10 +3,10 @@
 import React, { useContext, useEffect, useState } from 'react';
 import Image from 'next/image';
 import { Program } from '@/components/programs';
-import { defaultBounds, useDraggable } from '@/utils/use-draggable';
-import { ResizeDirection, useResizable } from '@/utils/use-resizable';
-import { useWindowDimensions } from '@/utils/use-window-dimensions';
-import ProgramContext from '@/utils/program-context';
+import { defaultBounds, useDraggable } from '@/lib/use-draggable';
+import { ResizeDirection, useResizable } from '@/lib/use-resizable';
+import { useWindowDimensions } from '@/lib/use-window-dimensions';
+import ProgramContext from '@/lib/program-context';
 import { twJoin } from 'tailwind-merge';
 
 export type WindowProps = {

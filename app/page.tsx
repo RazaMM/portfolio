@@ -4,7 +4,7 @@ import { type Program } from '@/components/programs';
 import React, { useState } from 'react';
 import Desktop from '@/components/desktop';
 import Window from '@/components/window';
-import ProgramContext from '@/utils/program-context';
+import ProgramContext from '@/lib/program-context';
 import Layout from '@/components/layout';
 
 export default function Home() {

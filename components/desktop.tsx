@@ -2,7 +2,7 @@ import React, { useContext } from 'react';
 import Image, { StaticImageData } from 'next/image';
 import programs from '@/components/programs';
 import defaultIcon from '@/img/logo.png';
-import ProgramContext from '@/utils/program-context';
+import ProgramContext from '@/lib/program-context';
 
 type DesktopIconProps = {
   image: StaticImageData;

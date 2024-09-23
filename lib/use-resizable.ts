@@ -1,5 +1,5 @@
 import { useEffect, useRef, useState } from 'react';
-import { clamp } from '@/utils/clamp';
+import { clamp } from '@/lib/clamp';
 
 export enum ResizeDirection {
   NONE,
