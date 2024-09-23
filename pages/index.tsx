@@ -5,13 +5,21 @@ import Window from '@/components/window';
 import ProgramContext from '@/lib/program-context';
 import Layout from '@/components/layout';
 import { GetStaticProps } from 'next';
-import { getExperiences } from '@/lib/get-experiences';
+import { getClient } from '@/lib/contentful';
 
-export const getStaticProps: GetStaticProps = async ({ params }) => {
-  return { props: { experiences: await getExperiences() } };
+export const getStaticProps: GetStaticProps = async (context) => {
+  const client = getClient(context.draftMode);
+
+  const data = await client.getEntries({
+    content_type: 'experience',
+  });
+
+  const experiences = data.items.map((item) => ({ ...item.fields }));
+
+  return { props: { experiences: experiences } };
 };
 
-export default function Home(props) {
+export default function Home(props: any) {
   const [open, setOpen] = useState<Program[]>([]);
   const [active, setActive] = useState<Program | null>(null);
   const [stackingOrder, setStackingOrder] = useState<Program[]>([]);
