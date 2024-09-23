@@ -5,35 +5,18 @@ import Window from '@/components/window';
 import ProgramContext from '@/lib/program-context';
 import Layout from '@/components/layout';
 import { GetStaticProps } from 'next';
-import { graphql } from '@/lib/contentful';
+import { getExperiences } from '@/lib/get-experiences';
 
 export const getStaticProps: GetStaticProps = async ({ params }) => {
-  const data = await graphql(`
-    query {
-      experiences: experienceCollection {
-        items {
-          title
-          startDate
-          endDate
-          location
-          organizationName
-          description {
-            json
-          }
-        }
-      }
-    }
-  `);
-
-  return { props: data };
+  return { props: { experiences: getExperiences() } };
 };
 
-export default function Home({ data }) {
+export default function Home(props) {
   const [open, setOpen] = useState<Program[]>([]);
   const [active, setActive] = useState<Program | null>(null);
   const [stackingOrder, setStackingOrder] = useState<Program[]>([]);
 
-  console.log(data);
+  console.log(props);
 
   const context = {
     open: (program: Program) => {
