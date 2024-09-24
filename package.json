@@ -9,7 +9,8 @@
     "lint": "next lint",
     "format": "prettier --write .",
     "dotenv:pull": "bunx dotenv-vault@latest pull",
-    "dotenv:push": "bunx dotenv-vault@latest push"
+    "dotenv:push": "bunx dotenv-vault@latest push",
+    "generate-types": "bun run generate-types.ts"
   },
   "dependencies": {
     "contentful": "^11.0.2",
@@ -25,6 +26,8 @@
     "@types/react": "^18.3.4",
     "@types/react-dom": "^18.3.0",
     "autoprefixer": "^10.4.20",
+    "cf-content-types-generator": "^2.15.5",
+    "dotenv": "^16.4.5",
     "eslint": "^8.57.0",
     "eslint-config-next": "13.5.6",
     "eslint-plugin-graphql": "^4.0.0",
