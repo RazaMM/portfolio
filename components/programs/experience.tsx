@@ -5,22 +5,6 @@ import icon from '@/img/notepad.png';
 import { type Program } from '@/components/programs';
 import DataContext from '@/lib/data-context';
 
-type Experience = {
-  title: string;
-  start: string;
-  end: string;
-  company: string;
-  location: string;
-  description: string[];
-};
-
-const getDateString = (str: string) => {
-  const date = new Date(str);
-  const formatter = new Intl.DateTimeFormat('en-US');
-
-  return formatter.format(date);
-};
-
 const Experience: React.FC = () => {
   const { experiences } = useContext(DataContext);
 
