@@ -8,6 +8,7 @@ import { GetStaticProps } from 'next';
 import { getClient } from '@/lib/contentful';
 import DataContext, { type DataContextValue } from '@/lib/data-context';
 import moment from 'moment';
+import { type TypeExperience } from '@/types';
 
 export const getStaticProps: GetStaticProps = async (context) => {
   const client = getClient(context.draftMode);
@@ -16,7 +17,7 @@ export const getStaticProps: GetStaticProps = async (context) => {
     content_type: 'experience',
   });
 
-  const experiences = data.items.map((item) => {
+  const experiences = data.items.map((item: TypeExperience) => {
     return {
       ...item.fields,
       startDate: moment(item.fields.startDate).format('MMMM YYYY'),

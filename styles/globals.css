@@ -4,7 +4,7 @@
 
 @layer base {
   #__next {
-    @apply w-full h-full;
+    @apply h-full w-full;
   }
 
   img {
