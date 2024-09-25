@@ -2,6 +2,7 @@ import React from 'react';
 import Image from 'next/image';
 import icon from '@/img/error.png';
 import type { Program } from '@/components/programs/index';
+import Link from 'next/link';
 
 const NotFound: React.FC = () => {
   return (
@@ -13,9 +14,9 @@ const NotFound: React.FC = () => {
           {"You've ventured too far into the unknown and I can't find what you're looking for :("}
         </span>
       </div>
-      <a className='mx-auto flex w-fit items-center gap-1 px-2 shadow-w95 active:shadow-w95-inverted' href='/'>
+      <Link className='mx-auto flex w-fit items-center gap-1 px-2 shadow-w95 active:shadow-w95-inverted' href='/'>
         <span>Go back home</span>
-      </a>
+      </Link>
     </div>
   );
 };
