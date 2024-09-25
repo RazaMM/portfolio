@@ -1,14 +1,31 @@
 'use client';
 
-import React, { useContext, useState } from 'react';
+import React, { useContext, useMemo, useState } from 'react';
 import icon from '@/img/notepad.png';
 import { type Program } from '@/components/programs';
 import DataContext from '@/lib/data-context';
+import { BLOCKS, MARKS } from '@contentful/rich-text-types';
+import { documentToReactComponents, type Options } from '@contentful/rich-text-react-renderer';
+
+const options: Options = {
+  renderNode: {
+    [BLOCKS.UL_LIST]: (node, children) => (
+      <ul className='flex list-inside list-disc flex-col items-start gap-2'>{children}</ul>
+    ),
+    [BLOCKS.LIST_ITEM]: (node, children) => <li className='[&>p]:inline'>{children}</li>,
+  },
+};
 
 const Experience: React.FC = () => {
   const { experiences } = useContext(DataContext);
-
   const [idx, setIdx] = useState(0);
+
+  const description = useMemo(() => {
+    // @ts-ignore
+    return documentToReactComponents(experiences[idx].description, options);
+  }, [experiences, idx]);
+
+  console.log(experiences[idx].description);
 
   return (
     <div className='flex min-h-full w-96 min-w-full max-w-full flex-col justify-between bg-white p-2'>
@@ -22,7 +39,7 @@ const Experience: React.FC = () => {
 
         <span className='my-2 w-full' />
 
-        <ul className='flex list-inside list-disc flex-col items-start gap-2'></ul>
+        {description}
       </div>
 
       <div className='flex w-full justify-between'>

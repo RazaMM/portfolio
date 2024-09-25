@@ -26,7 +26,7 @@ export const getStaticProps: GetStaticProps = async (context) => {
     };
   });
 
-  return { props: { experiences: experiences } };
+  return { props: { experiences } };
 };
 
 export default function Home(props: any) {
