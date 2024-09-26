@@ -4,7 +4,7 @@ import React, { useContext, useMemo, useState } from 'react';
 import icon from '@/img/notepad.png';
 import { type Program } from '@/components/programs';
 import DataContext from '@/lib/data-context';
-import { BLOCKS, MARKS } from '@contentful/rich-text-types';
+import { BLOCKS } from '@contentful/rich-text-types';
 import { documentToReactComponents, type Options } from '@contentful/rich-text-react-renderer';
 
 const options: Options = {
