@@ -25,7 +25,11 @@ const Attributions: React.FC = () => {
       <span className='text-xl'>Attributions:</span>
 
       {attributions.map((attribution) => (
-        <a className='text-blue-800 underline decoration-transparent hover:decoration-current' href={attribution.href}>
+        <a
+          key={attribution.text + attribution.href}
+          className='text-blue-800 underline decoration-transparent hover:decoration-current'
+          href={attribution.href}
+        >
           {attribution.text}
         </a>
       ))}
