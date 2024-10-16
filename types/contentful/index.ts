@@ -1,20 +1,3 @@
-export type {
-  TypeBlogPost,
-  TypeBlogPostFields,
-  TypeBlogPostSkeleton,
-  TypeBlogPostWithAllLocalesAndWithoutLinkResolutionResponse,
-  TypeBlogPostWithAllLocalesAndWithoutUnresolvableLinksResponse,
-  TypeBlogPostWithAllLocalesResponse,
-  TypeBlogPostWithoutLinkResolutionResponse,
-  TypeBlogPostWithoutUnresolvableLinksResponse,
-} from './TypeBlogPost';
-export type {
-  TypeExperience,
-  TypeExperienceFields,
-  TypeExperienceSkeleton,
-  TypeExperienceWithAllLocalesAndWithoutLinkResolutionResponse,
-  TypeExperienceWithAllLocalesAndWithoutUnresolvableLinksResponse,
-  TypeExperienceWithAllLocalesResponse,
-  TypeExperienceWithoutLinkResolutionResponse,
-  TypeExperienceWithoutUnresolvableLinksResponse,
-} from './TypeExperience';
+export type { TypeBlogPost, TypeBlogPostFields, TypeBlogPostSkeleton, TypeBlogPostWithAllLocalesAndWithoutLinkResolutionResponse, TypeBlogPostWithAllLocalesAndWithoutUnresolvableLinksResponse, TypeBlogPostWithAllLocalesResponse, TypeBlogPostWithoutLinkResolutionResponse, TypeBlogPostWithoutUnresolvableLinksResponse } from "./TypeBlogPost";
+export type { TypeExperience, TypeExperienceFields, TypeExperienceSkeleton, TypeExperienceWithAllLocalesAndWithoutLinkResolutionResponse, TypeExperienceWithAllLocalesAndWithoutUnresolvableLinksResponse, TypeExperienceWithAllLocalesResponse, TypeExperienceWithoutLinkResolutionResponse, TypeExperienceWithoutUnresolvableLinksResponse } from "./TypeExperience";
+export type { TypeMath, TypeMathFields, TypeMathSkeleton, TypeMathWithAllLocalesAndWithoutLinkResolutionResponse, TypeMathWithAllLocalesAndWithoutUnresolvableLinksResponse, TypeMathWithAllLocalesResponse, TypeMathWithoutLinkResolutionResponse, TypeMathWithoutUnresolvableLinksResponse } from "./TypeMath";

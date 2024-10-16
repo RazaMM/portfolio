@@ -6,3 +6,4 @@
 dist
 .next
 bun.lockb
+types/contentful
