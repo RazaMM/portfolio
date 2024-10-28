@@ -1,6 +1,6 @@
 'use client';
 
-import React, { useEffect } from 'react';
+import React, { useEffect, useMemo } from 'react';
 import Image, { StaticImageData } from 'next/image';
 import { useDraggable } from '@/lib/use-draggable';
 import { useWindowDimensions } from '@/lib/use-window-dimensions';
@@ -21,12 +21,17 @@ export type WindowProps = {
 export const Window = ({ name, icon, children, active, onClose, onMouseDown }: WindowProps) => {
   const [windowWidth, windowHeight] = useWindowDimensions();
 
-  const { handle, dragged, isDragging } = useDraggable<HTMLDivElement, HTMLDivElement>({
-    top: -12,
-    left: -12,
-    right: windowWidth - 50,
-    bottom: windowHeight,
-  });
+  const bounds = useMemo(
+    () => ({
+      top: 0,
+      left: 0,
+      right: windowWidth <= 0 ? Infinity : windowWidth - 50,
+      bottom: windowHeight <= 0 ? Infinity : windowHeight - 60,
+    }),
+    [windowWidth, windowHeight]
+  );
+
+  const { handle, dragged, isDragging } = useDraggable<HTMLDivElement, HTMLDivElement>(bounds);
 
   useEffect(() => {
     if (isDragging) {
@@ -38,7 +43,7 @@ export const Window = ({ name, icon, children, active, onClose, onMouseDown }: W
       document.body.classList.remove('select-none');
       document.body.classList.remove('cursor-w95-move');
     }
-  }, [isDragging]);
+  }, [isDragging, bounds]);
 
   return (
     <div
@@ -46,7 +51,7 @@ export const Window = ({ name, icon, children, active, onClose, onMouseDown }: W
         onMouseDown?.();
       }}
       className={twJoin(
-        'absolute left-0 top-0 flex w-full max-w-fit items-center justify-center p-3',
+        'absolute left-0 top-0 flex w-full max-w-fit items-center justify-center',
         !active && 'select-none'
       )}
       style={{ translate: 'calc(50vw - 50%) calc(50vh - 50% - 40px)' }}
