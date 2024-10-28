@@ -97,12 +97,17 @@ export const Window = ({
       onMouseDown={() => {
         onMouseDown?.();
       }}
-      className={twJoin('absolute left-0 top-0 flex items-center justify-center p-3', !active && 'select-none')}
+      className={twJoin(
+        'absolute left-0 top-0 flex w-full max-w-fit items-center justify-center p-3',
+        !active && 'select-none'
+      )}
       style={{
         translate: 'calc(50vw - 50%) calc(50vh - 50% - 40px)',
-        width: `${bounds?.minWidth}px`,
-        height: `${bounds?.minHeight}px`,
+        width: `min(${bounds?.minWidth}px, 100vw)`,
+        height: `min(${bounds?.minHeight}px, 100vh)`,
+        maxWidth: resizeable ? 'unset' : '',
       }}
+      data-test={`min(${bounds?.minWidth}px, 100vw)`}
       ref={(el) => {
         //@ts-expect-error
         dragged.current = el;
