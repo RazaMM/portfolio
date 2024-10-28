@@ -80,7 +80,11 @@ export const Window = ({ program, active }: WindowProps) => {
         context?.setActive(program);
       }}
       className={twJoin('absolute left-0 top-0 flex items-center justify-center p-3', !isActive && 'select-none')}
-      style={{ translate: 'calc(50vw - 50%) calc(50vh - 50% - 40px)' }}
+      style={{
+        translate: 'calc(50vw - 50%) calc(50vh - 50% - 40px)',
+        width: `${program?.bounds?.minWidth}px`,
+        height: `${program?.bounds?.minHeight}px`,
+      }}
       ref={(el) => {
         //@ts-expect-error
         dragged.current = el;

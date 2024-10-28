@@ -1,5 +1,3 @@
-'use client';
-
 import React from 'react';
 import { StaticImageData } from 'next/image';
 
@@ -7,6 +5,7 @@ import { StaticImageData } from 'next/image';
 import Biography from './biography';
 import Education from './education';
 import Experience from './experience';
+import Attributions from './attributions';
 
 export type Program = {
   id: string;
@@ -28,4 +27,4 @@ export type Program = {
 };
 
 // Ensure that all programs imported above are included in this array
-export default [Biography, Education, Experience] as Program[];
+export default [Biography, Education, Experience, Attributions] as Program[];

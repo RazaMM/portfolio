@@ -5,7 +5,6 @@ import React, { useState } from 'react';
 import Desktop from '@/components/desktop';
 import Window from '@/components/window';
 import ProgramContext from '@/lib/program-context';
-import Layout from '@/components/layout';
 
 export default function Home() {
   const [open, setOpen] = useState<Program[]>([]);
@@ -40,13 +39,11 @@ export default function Home() {
 
   return (
     <ProgramContext.Provider value={context}>
-      <Layout>
-        <Desktop />
+      <Desktop />
 
-        {stackingOrder.map((program) => (
-          <Window program={program} key={program.id} />
-        ))}
-      </Layout>
+      {stackingOrder.map((program) => (
+        <Window program={program} key={program.id} />
+      ))}
     </ProgramContext.Provider>
   );
 }

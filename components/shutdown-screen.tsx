@@ -1,4 +1,3 @@
-'use client';
 import React, { MouseEventHandler } from 'react';
 import { twJoin } from 'tailwind-merge';
 

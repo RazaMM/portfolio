@@ -1,5 +1,3 @@
-'use client';
-
 import React from 'react';
 import icon from '@/img/bio.png';
 import { type Program } from '@/components/programs';
