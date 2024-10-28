@@ -42,6 +42,3 @@ next-env.d.ts
 .flaskenv*
 !.env.project
 !.env.vault
-
-/contentful/*
-!/contentful/export-config.json
