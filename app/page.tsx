@@ -5,6 +5,7 @@ import React, { useState } from 'react';
 import Desktop from '@/components/desktop';
 import Window from '@/components/window';
 import ProgramContext from '@/lib/program-context';
+import Taskbar from '@/components/taskbar';
 
 export default function Home() {
   const [open, setOpen] = useState<Program[]>([]);
@@ -44,6 +45,8 @@ export default function Home() {
       {stackingOrder.map((program) => (
         <Window program={program} key={program.id} />
       ))}
+
+      <Taskbar />
     </ProgramContext.Provider>
   );
 }
