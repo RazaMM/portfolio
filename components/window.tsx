@@ -1,33 +1,51 @@
 'use client';
 
-import React, { useContext, useEffect, useState } from 'react';
-import Image from 'next/image';
+import React, { useEffect, useState } from 'react';
+import Image, { StaticImageData } from 'next/image';
 import { Program } from '@/components/programs';
 import { defaultBounds, useDraggable } from '@/lib/use-draggable';
 import { ResizeDirection, useResizable } from '@/lib/use-resizable';
 import { useWindowDimensions } from '@/lib/use-window-dimensions';
-import ProgramContext from '@/lib/program-context';
 import { twJoin } from 'tailwind-merge';
 
 export type WindowProps = {
-  program: Program;
+  name: string;
+  icon?: {
+    src: StaticImageData;
+    alt: string;
+  };
+  bounds?: {
+    minWidth?: number;
+    minHeight?: number;
+    maxWidth?: number;
+    maxHeight?: number;
+  };
+  children?: React.ReactNode;
+  resizeable?: boolean;
   active?: boolean;
   onClose?: () => void;
+  onMouseDown?: () => void;
 };
 
-export const Window = ({ program, active }: WindowProps) => {
+export const Window = ({
+  name,
+  icon,
+  bounds,
+  children,
+  resizeable = false,
+  active,
+  onClose,
+  onMouseDown,
+}: WindowProps) => {
   const [windowWidth, windowHeight] = useWindowDimensions();
   const [draggingBounds, setDraggingBounds] = useState(defaultBounds);
   const { handle, dragged, isDragging } = useDraggable<HTMLDivElement, HTMLDivElement>(draggingBounds);
   const { resized, direction } = useResizable<HTMLDivElement>(
-    program?.bounds?.minWidth,
-    program?.bounds?.minHeight,
-    program?.bounds?.maxWidth,
-    program?.bounds?.maxHeight
+    bounds?.minWidth,
+    bounds?.minHeight,
+    bounds?.maxWidth,
+    bounds?.maxHeight
   );
-
-  const context = useContext(ProgramContext);
-  const isActive = active ?? context?.getActive()?.id === program.id;
 
   useEffect(() => {
     setDraggingBounds({
@@ -77,19 +95,19 @@ export const Window = ({ program, active }: WindowProps) => {
   return (
     <div
       onMouseDown={() => {
-        context?.setActive(program);
+        onMouseDown?.();
       }}
-      className={twJoin('absolute left-0 top-0 flex items-center justify-center p-3', !isActive && 'select-none')}
+      className={twJoin('absolute left-0 top-0 flex items-center justify-center p-3', !active && 'select-none')}
       style={{
         translate: 'calc(50vw - 50%) calc(50vh - 50% - 40px)',
-        width: `${program?.bounds?.minWidth}px`,
-        height: `${program?.bounds?.minHeight}px`,
+        width: `${bounds?.minWidth}px`,
+        height: `${bounds?.minHeight}px`,
       }}
       ref={(el) => {
         //@ts-expect-error
         dragged.current = el;
 
-        if (program.resizeable) {
+        if (resizeable) {
           //@ts-expect-error
           resized.current = el;
         }
@@ -99,17 +117,15 @@ export const Window = ({ program, active }: WindowProps) => {
         <div
           className={twJoin(
             'flex h-6 w-full select-none items-center px-2',
-            isActive ? 'bg-w95-blue' : 'bg-w95-dark-grey'
+            active ? 'bg-w95-blue' : 'bg-w95-dark-grey'
           )}
           ref={handle}
         >
-          {program.icon && (
-            <Image src={program.icon.src} alt={program.icon.alt} className='pointer-events-none mr-1 h-5 w-auto' />
-          )}
-          <h1 className='overflow-hidden overflow-ellipsis whitespace-nowrap text-white'>{program.name}</h1>
+          {icon && <Image src={icon.src} alt={icon.alt} className='pointer-events-none mr-1 h-5 w-auto' />}
+          <h1 className='overflow-hidden overflow-ellipsis whitespace-nowrap text-white'>{name}</h1>
           <button
             onClick={() => {
-              context?.close(program);
+              onClose?.();
             }}
             className='ml-auto flex aspect-square h-4 items-center justify-center bg-w95-grey text-black shadow-w95-thin active:shadow-w95-inverted-thin'
           >
@@ -117,9 +133,7 @@ export const Window = ({ program, active }: WindowProps) => {
           </button>
         </div>
 
-        <div className='h-full w-full overflow-auto'>
-          <program.Component />
-        </div>
+        <div className='h-full w-full overflow-auto'>{children}</div>
       </div>
     </div>
   );

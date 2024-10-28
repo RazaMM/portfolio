@@ -43,7 +43,18 @@ export default function Home() {
       <Desktop />
 
       {stackingOrder.map((program) => (
-        <Window program={program} key={program.id} />
+        <Window
+          key={program.id}
+          name={program.name}
+          icon={program.icon}
+          active={context.getActive()?.id === program.id}
+          bounds={program.bounds}
+          resizeable={program.resizeable}
+          onClose={() => context.close(program)}
+          onMouseDown={() => context.setActive(program)}
+        >
+          <program.Component />
+        </Window>
       ))}
 
       <Taskbar />
