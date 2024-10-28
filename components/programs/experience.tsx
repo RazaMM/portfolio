@@ -1,8 +1,9 @@
 'use client';
 
-import React, { useState } from 'react';
+import React, { useEffect, useRef, useState } from 'react';
 import icon from '@/img/notepad.png';
 import { type Program } from '@/components/programs';
+import { twJoin } from 'tailwind-merge';
 
 type Experience = {
   title: string;
@@ -77,29 +78,41 @@ const experiences: Experience[] = [
 ];
 
 const Experience: React.FC = () => {
+  const ref = useRef<HTMLDivElement>(null);
   const [idx, setIdx] = useState(0);
 
+  useEffect(() => {
+    if (!ref.current) return;
+    ref.current.children[idx].scrollIntoView({ behavior: 'instant' });
+  }, [idx]);
+
   return (
-    <div className='flex min-h-full w-96 min-w-full max-w-full flex-col justify-between bg-white p-2'>
-      <div className='flex flex-col'>
-        <span className='text-2xl'>{experiences[idx].title}</span>
-        <span>
-          {experiences[idx].start} - {experiences[idx].end}
-        </span>
-        <span>
-          {experiences[idx].company} - {experiences[idx].location}
-        </span>
+    <div className='relative flex h-fit w-96 flex-col bg-white'>
+      <div ref={ref} className='flex w-full flex-1 overflow-hidden'>
+        {experiences.map(({ title, start, end, company, location, description }, index) => (
+          <div
+            key={title + start + end + company + location}
+            className={twJoin('flex w-96 shrink-0 flex-col bg-white p-4')}
+          >
+            <span className='text-2xl'>{title}</span>
+            <span>
+              {start} - {end}
+            </span>
+            <span>
+              {company} - {location}
+            </span>
 
-        <span className='my-2 w-full' />
+            <span className='my-2 w-full' />
 
-        <ul className='flex list-inside list-disc flex-col items-start gap-2'>
-          {experiences[idx].description.map((description) => (
-            <li key={description}>{description}</li>
-          ))}
-        </ul>
+            <ul className='flex list-inside list-disc flex-col items-start gap-2'>
+              {description.map((description) => (
+                <li key={description}>{description}</li>
+              ))}
+            </ul>
+          </div>
+        ))}
       </div>
-
-      <div className='flex w-full justify-between'>
+      <div className='flex w-full justify-between p-4'>
         {idx !== 0 && (
           <button className='cursor-pointer select-none text-2xl' onClick={() => setIdx(idx - 1)}>
             &lt;-

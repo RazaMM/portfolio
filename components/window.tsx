@@ -77,7 +77,9 @@ export const Window = ({ name, icon, children, active, onClose, onMouseDown }: W
           </button>
         </div>
 
-        <div className='h-full w-full overflow-auto'>{children}</div>
+        <div className='h-full max-h-[calc(100vh-theme(height.6)-theme(height.10)-theme(spacing.2)-theme(spacing.4)-theme(spacing.2))] w-full overflow-auto'>
+          {children}
+        </div>
       </div>
     </div>
   );

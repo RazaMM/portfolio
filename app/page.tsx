@@ -49,8 +49,6 @@ export default function Home() {
           name={program.name}
           icon={program.icon}
           active={context.getActive()?.id === program.id}
-          bounds={program.bounds}
-          resizeable={program.resizeable}
           onClose={() => context.close(program)}
           onMouseDown={() => context.setActive(program)}
         >
