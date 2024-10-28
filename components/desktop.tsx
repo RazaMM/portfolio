@@ -15,7 +15,7 @@ type DesktopIconProps = {
 
 export const DesktopIcon = ({ image, alt, name, onClick }: DesktopIconProps) => {
   return (
-    <button onDoubleClick={onClick} className='flex h-fit w-fit flex-col items-center gap-0.5 p-1'>
+    <button onClick={onClick} className='flex h-fit w-fit flex-col items-center gap-0.5 p-1'>
       <Image src={image} alt={alt} className='h-10 w-auto' />
       <span className='max-w-[20ch] text-center text-white'>{name}</span>
     </button>
