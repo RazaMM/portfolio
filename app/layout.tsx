@@ -2,7 +2,6 @@ import type { Metadata } from 'next';
 import localFont from 'next/font/local';
 import './globals.css';
 import React from 'react';
-import Taskbar from '@/components/taskbar';
 
 const w95 = localFont({ src: './w95fa.woff2', display: 'swap' });
 
