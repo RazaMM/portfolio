@@ -119,7 +119,7 @@ Experience.displayName = 'Experience';
 
 export default {
   id: 'experience',
-  name: 'My Experience',
+  name: 'My Job Experience',
   icon: {
     src: icon,
     alt: 'A pixelated image of a book with a purple cover',
