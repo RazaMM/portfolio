@@ -68,11 +68,6 @@ export default {
     alt: 'A pixelated image of a man wearing a blue shirt',
   },
   Component: Biography,
-  resizeable: true,
-  bounds: {
-    minWidth: 320,
-    minHeight: 554,
-  },
   includeInStartMenu: true,
   includeInDesktop: true,
 } as Program;

@@ -46,7 +46,6 @@ export default {
     src: icon,
     alt: 'A pixelated image of a book with a purple cover',
   },
-  resizeable: false,
   Component: Attributions,
   includeInStartMenu: true,
   includeInDesktop: true,

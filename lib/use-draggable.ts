@@ -8,14 +8,12 @@ export type DraggingBounds = {
   bottom: number;
 };
 
-export const defaultBounds: DraggingBounds = {
-  top: 0,
-  left: 0,
-  right: Infinity,
-  bottom: Infinity,
-};
-
-export function useDraggable<HandleType extends HTMLElement, DraggedType extends HTMLElement>(bounds = defaultBounds) {
+export function useDraggable<HandleType extends HTMLElement, DraggedType extends HTMLElement>({
+  top = 0,
+  left = 0,
+  right = Infinity,
+  bottom = Infinity,
+}: DraggingBounds) {
   const handle = useRef<HandleType>(null);
   const dragged = useRef<DraggedType>(null);
   const [isDragging, setIsDragging] = useState(false);
@@ -44,8 +42,8 @@ export function useDraggable<HandleType extends HTMLElement, DraggedType extends
         return;
       }
 
-      const x = clamp(e.pageX - offsetX, bounds.left, bounds.right);
-      const y = clamp(e.pageY - offsetY, bounds.top, bounds.bottom);
+      const x = clamp(e.pageX - offsetX, left, right);
+      const y = clamp(e.pageY - offsetY, top, bottom);
 
       dragged.current.style.setProperty('translate', `${x}px ${y}px`);
     };
@@ -63,7 +61,7 @@ export function useDraggable<HandleType extends HTMLElement, DraggedType extends
     return () => {
       dragStop();
     };
-  }, [bounds.bottom, bounds.left, bounds.right, bounds.top]);
+  }, [bottom, left, right, top]);
 
   return {
     handle,

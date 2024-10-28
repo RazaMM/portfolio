@@ -124,11 +124,6 @@ export default {
     src: icon,
     alt: 'A pixelated image of a book with a purple cover',
   },
-  bounds: {
-    minWidth: 450,
-    minHeight: 480,
-  },
-  resizeable: true,
   Component: Experience,
   includeInStartMenu: true,
   includeInDesktop: true,
