@@ -1,3 +1,5 @@
+'use client';
+
 import React, { useContext } from 'react';
 import Image, { StaticImageData } from 'next/image';
 import programs from '@/components/programs';
