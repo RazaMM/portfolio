@@ -6,11 +6,12 @@ import Desktop from '@/components/desktop';
 import Window from '@/components/window';
 import ProgramContext from '@/lib/program-context';
 import Taskbar from '@/components/taskbar';
+import Biography from '@/components/programs/biography';
 
 export default function Home() {
-  const [open, setOpen] = useState<Program[]>([]);
-  const [active, setActive] = useState<Program | null>(null);
-  const [stackingOrder, setStackingOrder] = useState<Program[]>([]);
+  const [open, setOpen] = useState<Program[]>([Biography]);
+  const [active, setActive] = useState<Program | null>(Biography);
+  const [stackingOrder, setStackingOrder] = useState<Program[]>([Biography]);
 
   const context = {
     open: (program: Program) => {
