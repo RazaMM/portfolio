@@ -10,7 +10,7 @@ export default function NotFound() {
   return (
     <>
       <Desktop />
-      <Window name='404 Not Found' resizeable={false} active>
+      <Window name='404 Not Found' active>
         <div className='flex flex-col gap-4 p-4'>
           <div className='flex items-center gap-2'>
             <Image src={icon} alt='d' className='h-8 w-auto' />
