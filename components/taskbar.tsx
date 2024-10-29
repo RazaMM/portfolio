@@ -82,7 +82,7 @@ const Clock = () => {
   const time = useTime('minute');
 
   return (
-    <div className='ml-auto hidden px-3 shadow-w95-inverted-thin md:block' suppressHydrationWarning={true}>
+    <div className='ml-auto hidden px-3 shadow-w95-inverted-thin sm:block' suppressHydrationWarning={true}>
       {time.toLocaleTimeString(undefined, {
         hour: 'numeric',
         minute: '2-digit',
@@ -110,7 +110,7 @@ export const Taskbar = () => {
         <StartMenu active={showStartMenu} />
       </div>
 
-      <div className='ml-6 hidden h-full flex-1 gap-4 md:flex'>
+      <div className='ml-6 hidden h-full flex-1 gap-4 sm:flex'>
         {openPrograms.map((program, i) => (
           <Button
             key={program.id}

@@ -6,7 +6,7 @@ import { type Program } from '@/components/programs';
 
 const Education: React.FC = () => {
   return (
-    <div className='flex min-h-full w-[35rem] min-w-full max-w-full flex-col items-center gap-4 border-[2rem] border-degree-red bg-degree-beige p-2 text-center md:border-[3rem]'>
+    <div className='flex h-full w-full flex-col items-center gap-4 border-[2rem] border-degree-red bg-degree-beige p-2 text-center sm:max-h-fit sm:max-w-[35rem] md:border-[3rem]'>
       <div className='my-auto flex flex-col gap-1'>
         <span className='text-4xl'>University of Guelph</span> <span className='text-2xl'>Bachelor of Computing</span>
         <span className='text-2xl'>Computer Science (Co-op) Major</span>

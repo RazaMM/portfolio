@@ -87,12 +87,12 @@ const Experience: React.FC = () => {
   }, [idx]);
 
   return (
-    <div className='relative flex h-fit w-96 flex-col bg-white'>
+    <div className='relative flex h-full w-full flex-col bg-white sm:max-w-96'>
       <div ref={ref} className='flex w-full flex-1 overflow-hidden'>
         {experiences.map(({ title, start, end, company, location, description }, index) => (
           <div
             key={title + start + end + company + location}
-            className={twJoin('flex w-96 shrink-0 flex-col bg-white p-4')}
+            className={twJoin('flex w-full shrink-0 flex-col bg-white p-4')}
           >
             <span className='text-2xl'>{title}</span>
             <span>

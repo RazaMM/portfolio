@@ -54,7 +54,7 @@ export const Window = ({ name, icon, children, active, onClose, onMouseDown }: W
         'absolute left-0 top-0 flex w-full max-w-fit items-center justify-center',
         !active && 'select-none'
       )}
-      style={{ translate: 'calc(50vw - 50%) calc(50vh - 50% - 40px)' }}
+      style={{ translate: 'calc(50vw - 50%) calc(50vh - 50% - 20px)' }}
       ref={dragged}
     >
       <div className='flex h-full w-full flex-col items-center justify-center gap-1.5 bg-w95-grey px-1 pb-4 pt-1 shadow-w95'>
@@ -77,7 +77,7 @@ export const Window = ({ name, icon, children, active, onClose, onMouseDown }: W
           </button>
         </div>
 
-        <div className='h-full max-h-[calc(100vh-theme(height.6)-theme(height.10)-theme(spacing.2)-theme(spacing.4)-theme(spacing.2))] w-full overflow-auto'>
+        <div className='h-screen max-h-[calc(100vh-theme(height.6)-theme(height.10)-theme(spacing.2)-theme(spacing.4)-theme(spacing.2))] w-screen max-w-[calc(100vw-theme(spacing.2))] overflow-auto sm:h-auto sm:w-auto'>
           {children}
         </div>
       </div>
