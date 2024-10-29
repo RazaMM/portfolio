@@ -110,7 +110,7 @@ export const Taskbar = () => {
         <StartMenu active={showStartMenu} />
       </div>
 
-      <div className='ml-6 flex h-full flex-1 gap-4'>
+      <div className='ml-6 hidden h-full flex-1 gap-4 md:flex'>
         {openPrograms.map((program, i) => (
           <Button
             key={program.id}
