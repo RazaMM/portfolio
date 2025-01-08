@@ -22,9 +22,8 @@ const experiences: Experience[] = [
     company: 'University of Guelph - Communications & Public Affairs',
     location: 'Guelph, Ontario, Canada',
     description: [
-      'Led a self-managed project to revamp the University campus map using the Google Maps JavaScript API, resulting in an improved user experience.',
-      "Assisted with regular web maintenance and bug fixing, ensuring smooth and error-free operation of the University's web properties.",
-      'Developed and implemented several responsive Web Components (using JavaScript), streamlining the development process across several university departments.',
+      'Self-managed the revamp of the University campus map using the Google Maps JavaScript API, delivering a more intuitive and user-friendly experience for visitors.',
+      'Maintained and optimized PHP-based web pages (Apache and WordPress), and designed server-side scripts to improve page functionality, performance, and overall user experience.',
     ],
   },
   {
@@ -58,9 +57,8 @@ const experiences: Experience[] = [
     company: 'University of Guelph - Communications & Marketing',
     location: 'Guelph, Ontario, Canada',
     description: [
-      "Led the development of a web component library using Svelte, allowing for the creation of reusable components across the University's web properties.",
-      'Assisted with the development of a handful of new web pages including a revamped homepage, using GatsbyJS and React.',
-      'Performed regular web maintenance and bug fixing, ensuring a smooth, accessible and error-free experience for users.',
+      'Contributed to the redesign and development of the University’s homepage using GatsbyJS and Drupal, enhancing performance and visual appeal',
+      'Developed and maintained a reusable web components library with Svelte, streamlining development workflows and improving consistency across the University’s web properties.',
     ],
   },
   {
@@ -70,9 +68,9 @@ const experiences: Experience[] = [
     company: 'University of Guelph - Communications & Marketing',
     location: 'Guelph, Ontario, Canada',
     description: [
-      "Led the development of a web component library using Svelte, allowing for the creation of reusable components across the University's web properties.",
-      'Assisted with the development of a handful of new web pages including a revamped homepage, using GatsbyJS and React.',
-      'Performed regular web maintenance and bug fixing, ensuring a smooth, accessible and error-free experience for users.',
+      'Led the development of new program search and admission requirements pages, streamlining the application process and enhancing the user experience for prospective students.',
+      'Initiated the migration of front-end infrastructure to modern technologies (Next.js and TailwindCSS), improving performance, scalability, and maintainability.',
+      'Designed and implemented front-end interactions with a CMS built on Drupal and GraphQL, ensuring seamless data integration and dynamic content delivery.',
     ],
   },
 ];
