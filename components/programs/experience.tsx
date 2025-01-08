@@ -22,7 +22,7 @@ const experiences: Experience[] = [
     company: 'University of Guelph - Communications & Public Affairs',
     location: 'Guelph, Ontario, Canada',
     description: [
-      'Self-managed the revamp of the University campus map using the Google Maps JavaScript API, delivering a more intuitive and user-friendly experience for visitors.',
+      "Spearheaded the revamp of the University's campus map using the Google Maps JavaScript API, delivering a more intuitive and user-friendly experience for visitors.",
       'Maintained and optimized PHP-based web pages (Apache and WordPress), and designed server-side scripts to improve page functionality, performance, and overall user experience.',
     ],
   },
@@ -57,7 +57,7 @@ const experiences: Experience[] = [
     company: 'University of Guelph - Communications & Marketing',
     location: 'Guelph, Ontario, Canada',
     description: [
-      'Contributed to the redesign and development of the University’s homepage using GatsbyJS and Drupal, enhancing performance and visual appeal',
+      'Contributed to the redesign and development of the University’s homepage using GatsbyJS and Drupal, enhancing performance and visual appeal.',
       'Developed and maintained a reusable web components library with Svelte, streamlining development workflows and improving consistency across the University’s web properties.',
     ],
   },
@@ -68,9 +68,11 @@ const experiences: Experience[] = [
     company: 'University of Guelph - Communications & Marketing',
     location: 'Guelph, Ontario, Canada',
     description: [
-      'Led the development of new program search and admission requirements pages, streamlining the application process and enhancing the user experience for prospective students.',
       'Initiated the migration of front-end infrastructure to modern technologies (Next.js and TailwindCSS), improving performance, scalability, and maintainability.',
       'Designed and implemented front-end interactions with a CMS built on Drupal and GraphQL, ensuring seamless data integration and dynamic content delivery.',
+      'Developed a UI component library with React and TailwindCSS, enabling consistent and efficient design implementation across projects.',
+      'Leveraged Storybook and Chromatic to implement visual regression testing for UI components, ensuring consistency and preventing UI discrepancies across updates.',
+      'Led the development of new program search and admission requirements pages, streamlining the application process and enhancing the user experience for prospective students.',
     ],
   },
 ];
