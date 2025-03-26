@@ -21,10 +21,10 @@ const experiences: Project[] = [
     ],
   },
   {
-    title: 'PulseTrac',
+    title: 'Tab Singularity',
     description: [
-      'A workout scheduling and tracking application for personal fitness.',
-      'Built using Flutter and Google Firebase',
+      'A tab management extension for Chromium-based browsers/Firefox that allows users to manage their tabs more efficiently.',
+      'Built using Svelte and WXT',
       'In development.',
     ],
   },
