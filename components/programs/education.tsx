@@ -10,7 +10,7 @@ const Education: React.FC = () => {
       <div className='my-auto flex flex-col gap-1'>
         <span className='text-4xl'>University of Guelph</span> <span className='text-2xl'>Bachelor of Computing</span>
         <span className='text-2xl'>Computer Science (Co-op) Major</span>
-        <span className='text-2xl'>2017 - 2023</span>
+        <span className='text-2xl'>Class of 2023</span>
       </div>
       <div className='mt-auto flex w-full items-center justify-center gap-4'>
         <span className='h-1 w-1/3 border-b-2 border-black'></span>
