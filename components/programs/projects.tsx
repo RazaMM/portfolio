@@ -77,7 +77,7 @@ export default {
   name: 'My Projects',
   icon: {
     src: icon,
-    alt: 'A pixelated image of a book with a purple cover',
+    alt: 'A pixelated image of a notepad',
   },
   Component: Projects,
   includeInStartMenu: true,

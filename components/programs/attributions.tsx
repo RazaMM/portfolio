@@ -44,7 +44,7 @@ export default {
   name: 'Attributions',
   icon: {
     src: icon,
-    alt: 'A pixelated image of a book with a purple cover',
+    alt: 'A speech bubble with an information icon inside',
   },
   Component: Attributions,
   includeInStartMenu: true,
