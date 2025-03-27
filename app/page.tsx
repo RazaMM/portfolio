@@ -1,12 +1,15 @@
 'use client';
 
-import { type Program } from '@/components/programs';
+import programs, { type Program } from '@/components/programs';
 import React, { useState } from 'react';
 import Desktop from '@/components/desktop';
 import Window from '@/components/window';
 import ProgramContext from '@/lib/program-context';
-import Taskbar from '@/components/taskbar';
+import Taskbar from '@/components/taskbar/taskbar';
 import Biography from '@/components/programs/biography';
+import { TaskbarClock } from '@/components/taskbar/taskbar-clock';
+import { TaskbarMenu } from '@/components/taskbar/taskbar-menu';
+import { TaskbarMenuItem } from '@/components/taskbar/taskbar-menu-item';
 
 export default function Home() {
   const [open, setOpen] = useState<Program[]>([Biography]);
@@ -56,7 +59,26 @@ export default function Home() {
         </Window>
       ))}
 
-      <Taskbar />
+      <Taskbar>
+        <TaskbarMenu>
+          {programs
+            .sort((a, b) => a.name.localeCompare(b.name))
+            .filter((program) => program.includeInStartMenu)
+            .map((program, i) => (
+              <TaskbarMenuItem
+                key={program.id + ' ' + i}
+                onClick={() => {
+                  context?.open(program);
+                }}
+                icon={program.icon}
+                as='button'
+              >
+                {program.name}
+              </TaskbarMenuItem>
+            ))}
+        </TaskbarMenu>
+        <TaskbarClock />
+      </Taskbar>
     </ProgramContext.Provider>
   );
 }
