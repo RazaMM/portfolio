@@ -1,0 +1,39 @@
+import { ComponentPropsWithoutRef, ElementType, EventHandler, MouseEventHandler, PropsWithChildren } from 'react';
+import Image, { StaticImageData } from 'next/image';
+import { tv } from 'tailwind-variants';
+
+export type TaskbarMenuItemElementType = ElementType<
+  { href?: string } | { onClick: MouseEventHandler<HTMLButtonElement> },
+  'a' | 'button'
+>;
+export type TaskbarMenuItemProps<T extends TaskbarMenuItemElementType = 'a'> = PropsWithChildren<
+  {
+    as?: T;
+    icon?: {
+      src: StaticImageData;
+      alt: string;
+    };
+  } & ComponentPropsWithoutRef<T>
+>;
+
+export function TaskbarMenuItem<T extends TaskbarMenuItemElementType = 'a'>({
+  as,
+  icon,
+  children,
+  ...rest
+}: TaskbarMenuItemProps<T>) {
+  const Component = as ?? 'a';
+  const classes = tv({
+    slots: {
+      base: 'flex h-10 w-full items-center gap-1 p-1 hover:bg-w95-blue hover:text-white focus:bg-w95-blue focus:text-white focus:outline-hidden',
+      icon: 'h-8 w-auto',
+    },
+  })();
+
+  return (
+    <Component {...rest} className={classes.base()}>
+      {icon && <Image src={icon.src} alt={icon.alt} className={classes.icon()} />}
+      {children}
+    </Component>
+  );
+}
