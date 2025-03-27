@@ -56,13 +56,13 @@ const Projects: React.FC = () => {
       </div>
       <div className='flex w-full justify-between p-4'>
         {idx !== 0 && (
-          <button className='cursor-pointer select-none text-2xl' onClick={() => setIdx(idx - 1)}>
+          <button className='cursor-pointer text-2xl select-none' onClick={() => setIdx(idx - 1)}>
             &lt;-
           </button>
         )}
 
         {idx !== experiences.length - 1 && (
-          <button className='ml-auto cursor-pointer select-none text-2xl' onClick={() => setIdx(idx + 1)}>
+          <button className='ml-auto cursor-pointer text-2xl select-none' onClick={() => setIdx(idx + 1)}>
             -&gt;
           </button>
         )}

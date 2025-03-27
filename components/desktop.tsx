@@ -26,7 +26,7 @@ export const Desktop = () => {
   const context = useContext(ProgramContext);
 
   return (
-    <div className='relative flex h-full w-fit select-none flex-col flex-wrap items-center gap-4 p-2'>
+    <div className='relative flex h-full w-fit flex-col flex-wrap items-center gap-4 p-2 select-none'>
       {programs
         .filter((program) => program.includeInDesktop)
         .map((program, i) => (

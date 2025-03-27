@@ -29,11 +29,11 @@ const Biography: React.FC = () => {
   }
 
   return (
-    <div className='max-w-screen flex h-[30rem] max-h-screen min-h-full w-72 min-w-full flex-col items-center justify-center gap-4 bg-white p-2 text-center'>
+    <div className='flex h-[30rem] max-h-screen min-h-full w-72 max-w-screen min-w-full flex-col items-center justify-center gap-4 bg-white p-2 text-center'>
       <Image
         src={me}
         alt={'Raza Mahmood wearing a black shirt and sunglasses'}
-        className='w-56 select-none rounded-xs'
+        className='w-56 rounded-xs select-none'
       />
 
       <h1 className='text-xl'>Raza Mahmood</h1>

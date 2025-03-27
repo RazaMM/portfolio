@@ -21,7 +21,7 @@ const Attributions: React.FC = () => {
   ];
 
   return (
-    <div className='flex min-h-full w-fit min-w-full max-w-full flex-col items-center gap-4 bg-white p-2 text-center'>
+    <div className='flex min-h-full w-fit max-w-full min-w-full flex-col items-center gap-4 bg-white p-2 text-center'>
       <span className='text-xl'>Attributions:</span>
 
       {attributions.map((attribution) => (

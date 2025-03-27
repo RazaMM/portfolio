@@ -51,16 +51,16 @@ export const Window = ({ name, icon, children, active, onClose, onMouseDown }: W
         onMouseDown?.();
       }}
       className={twJoin(
-        'absolute left-0 top-0 flex w-full max-w-fit items-center justify-center',
+        'absolute top-0 left-0 flex w-full max-w-fit items-center justify-center',
         !active && 'select-none'
       )}
       style={{ translate: 'calc(50vw - 50%) calc(50vh - 50% - 20px)' }}
       ref={dragged}
     >
-      <div className='flex h-full w-full flex-col items-center justify-center gap-1.5 bg-w95-grey px-1 pb-4 pt-1 shadow-w95'>
+      <div className='flex h-full w-full flex-col items-center justify-center gap-1.5 bg-w95-grey px-1 pt-1 pb-4 shadow-w95'>
         <div
           className={twJoin(
-            'flex h-6 w-full select-none items-center px-2',
+            'flex h-6 w-full items-center px-2 select-none',
             active ? 'bg-w95-blue' : 'bg-w95-dark-grey'
           )}
           ref={handle}
