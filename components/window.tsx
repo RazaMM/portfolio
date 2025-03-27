@@ -66,7 +66,7 @@ export const Window = ({ name, icon, children, active, onClose, onMouseDown }: W
           ref={handle}
         >
           {icon && <Image src={icon.src} alt={icon.alt} className='pointer-events-none mr-1 h-5 w-auto' />}
-          <h1 className='overflow-hidden overflow-ellipsis whitespace-nowrap text-white'>{name}</h1>
+          <h1 className='overflow-hidden text-ellipsis whitespace-nowrap text-white'>{name}</h1>
           <button
             onClick={() => {
               onClose?.();
@@ -77,7 +77,7 @@ export const Window = ({ name, icon, children, active, onClose, onMouseDown }: W
           </button>
         </div>
 
-        <div className='h-screen max-h-[calc(100vh-theme(height.6)-theme(height.10)-theme(spacing.2)-theme(spacing.4)-theme(spacing.2))] w-screen max-w-[calc(100vw-theme(spacing.2))] overflow-auto sm:h-auto sm:w-auto'>
+        <div className='h-screen max-h-[calc(100vh-theme(height.6)-theme(height.10)-(--spacing(2))-(--spacing(4))-(--spacing(2)))] w-screen max-w-[calc(100vw-(--spacing(2)))] overflow-auto sm:h-auto sm:w-auto'>
           {children}
         </div>
       </div>

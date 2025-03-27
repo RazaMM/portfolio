@@ -56,7 +56,7 @@ const StartMenu = ({ active }: StartMenuProps) => {
           .filter((program) => program.includeInStartMenu)
           .map((program, i) => (
             <button
-              className='flex h-10 w-full items-center gap-1 p-1 hover:bg-w95-blue hover:text-white focus:bg-w95-blue focus:text-white focus:outline-none'
+              className='flex h-10 w-full items-center gap-1 p-1 hover:bg-w95-blue hover:text-white focus:bg-w95-blue focus:text-white focus:outline-hidden'
               key={program.id + ' ' + i}
               onClick={() => {
                 console.log(program, context.open);
@@ -70,7 +70,7 @@ const StartMenu = ({ active }: StartMenuProps) => {
 
         <hr className='shadow-windows h-2 w-full' />
 
-        <button className='flex h-10 w-full items-center gap-1 p-1 hover:bg-w95-blue hover:text-white focus:bg-w95-blue focus:text-white focus:outline-none'>
+        <button className='flex h-10 w-full items-center gap-1 p-1 hover:bg-w95-blue hover:text-white focus:bg-w95-blue focus:text-white focus:outline-hidden'>
           Shut down...
         </button>
       </div>

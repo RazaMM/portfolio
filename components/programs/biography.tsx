@@ -33,7 +33,7 @@ const Biography: React.FC = () => {
       <Image
         src={me}
         alt={'Raza Mahmood wearing a black shirt and sunglasses'}
-        className='w-56 select-none rounded-sm'
+        className='w-56 select-none rounded-xs'
       />
 
       <h1 className='text-xl'>Raza Mahmood</h1>
