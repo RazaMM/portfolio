@@ -1,3 +1,5 @@
+'use client';
+
 import { useTime } from '@/lib/use-time';
 import React from 'react';
 

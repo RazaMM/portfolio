@@ -1,3 +1,5 @@
+'use client';
+
 import React, { PropsWithChildren, useEffect } from 'react';
 import { useFocusWithin } from '@/lib/use-focus-within';
 import { TaskbarButton } from '@/components/taskbar/taskbar-button';
@@ -64,21 +66,3 @@ export const TaskbarMenu = ({ children }: TaskbarStartMenuProps) => {
     </div>
   );
 };
-
-/**
- {programs
-           .filter((program) => program.includeInStartMenu)
-           .map((program, i) => (
- <button
-             className='flex h-10 w-full items-center gap-1 p-1 hover:bg-w95-blue hover:text-white focus:bg-w95-blue focus:text-white focus:outline-hidden'
- key={program.id + ' ' + i}
-               onClick={() => {
-                 console.log(program, context.open);
-                context?.open(program);
-              }}
-            >
-              {program.icon && <Image src={program.icon.src} alt={program.icon.alt} className='h-8 w-auto' />}
-              <span>{program.name}</span>
-           </button>
-          ))}
- */
