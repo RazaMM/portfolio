@@ -52,7 +52,6 @@ export default async function BlogPage({ params }: BlogPageProps) {
           <div className='flex flex-col gap-2'>
             <h1 className='text-2xl font-black'>{metadata.title}</h1>
             <span>Posted on {formatter.format(metadata.date)}</span>
-            <span>{JSON.stringify(metadata)}</span>
           </div>
           <hr className='my-2' />
           <div className='mx-auto prose max-w-none'>

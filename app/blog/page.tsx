@@ -11,7 +11,7 @@ import Window from '@/components/window';
 import Notepad from '@/img/notepad.png';
 import { TaskbarContent } from '@/components/taskbar/taskbar-content';
 import { TaskbarButton } from '@/components/taskbar/taskbar-button';
-import { getAllPosts } from '@/lib/blog-posts';
+import { getAllPosts, getAllSlugs, getPost } from '@/lib/blog-posts';
 import type { Metadata } from 'next';
 
 const formatter = new Intl.DateTimeFormat();
@@ -22,7 +22,13 @@ export const metadata: Metadata = {
 };
 
 export default async function BlogHome() {
-  const posts = await getAllPosts();
+  const slugs = await getAllSlugs();
+  const posts = await Promise.all(
+    slugs.map(async (slug) => {
+      const { metadata } = await getPost(slug.slug);
+      return { ...metadata, path: `/blog/${slug.slug}` };
+    })
+  );
 
   return (
     <>
