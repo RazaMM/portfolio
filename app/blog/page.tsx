@@ -11,23 +11,12 @@ import Window from '@/components/window';
 import Notepad from '@/img/notepad.png';
 import { TaskbarContent } from '@/components/taskbar/taskbar-content';
 import { TaskbarButton } from '@/components/taskbar/taskbar-button';
-
-type BlogPost = {
-  title: string;
-  date: Date;
-  path: string;
-};
+import { getAllPosts } from '@/lib/blog-posts';
 
 const formatter = new Intl.DateTimeFormat();
 
-export default function BlogHome() {
-  const posts: BlogPost[] = [
-    {
-      title: 'Implementing Cubic Bezier Easing in JavaScript',
-      date: new Date('2022-02-24'),
-      path: '/blog/2025-03-28-implementing-cubic-bezier-easing-in-javascript',
-    },
-  ];
+export default async function BlogHome() {
+  const posts = await getAllPosts();
 
   return (
     <>
