@@ -7,8 +7,9 @@ import icon from '@/img/error.png';
 import Link from 'next/link';
 import { tv } from 'tailwind-variants';
 import { TaskbarClock } from '@/components/taskbar/taskbar-clock';
-import { TaskbarMenuItem } from '@/components/taskbar/taskbar-menu-item';
+import { TaskbarMenuItem, TaskbarMenuItemElementType } from '@/components/taskbar/taskbar-menu-item';
 import { TaskbarMenu } from '@/components/taskbar/taskbar-menu';
+import HomePage from '@/img/homepage.png';
 
 export default function NotFound() {
   const classes = tv({
@@ -40,8 +41,8 @@ export default function NotFound() {
       </Window>
       <Taskbar>
         <TaskbarMenu>
-          <TaskbarMenuItem as='a' href='/'>
-            Go back home
+          <TaskbarMenuItem as={Link} href='/' icon={{ src: HomePage, alt: '' }}>
+            Home
           </TaskbarMenuItem>
         </TaskbarMenu>
         <TaskbarClock />

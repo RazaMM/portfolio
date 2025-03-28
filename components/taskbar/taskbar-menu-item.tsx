@@ -2,10 +2,7 @@ import { ComponentPropsWithoutRef, ElementType, EventHandler, MouseEventHandler,
 import Image, { StaticImageData } from 'next/image';
 import { tv } from 'tailwind-variants';
 
-export type TaskbarMenuItemElementType = ElementType<
-  { href?: string } | { onClick: MouseEventHandler<HTMLButtonElement> },
-  'a' | 'button'
->;
+export type TaskbarMenuItemElementType = ElementType;
 export type TaskbarMenuItemProps<T extends TaskbarMenuItemElementType = 'a'> = PropsWithChildren<
   {
     as?: T;
