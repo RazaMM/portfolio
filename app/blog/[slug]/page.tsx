@@ -39,7 +39,7 @@ export default async function BlogLayout({ params }: { params: Promise<{ slug: s
       <Window name={title} active icon={{ src: Notepad, alt: '' }}>
         <div className='w-dvw max-w-2xl bg-white p-2'>
           <div className='flex flex-col gap-2'>
-            <h1 className='text-3xl'>{title}</h1>
+            <h1 className='text-2xl font-black'>{title}</h1>
             <span>Posted on {formatter.format(date)}</span>
           </div>
           <hr className='my-2' />
