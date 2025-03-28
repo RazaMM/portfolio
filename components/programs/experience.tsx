@@ -1,9 +1,10 @@
 'use client';
 
-import React, { useEffect, useRef, useState } from 'react';
+import React from 'react';
 import icon from '@/img/notepad.png';
 import { type Program } from '@/components/programs';
 import { twJoin } from 'tailwind-merge';
+import { Carousel } from '@/components/carousel';
 
 type Experience = {
   title: string;
@@ -78,21 +79,16 @@ const experiences: Experience[] = [
 ];
 
 const Experience: React.FC = () => {
-  const ref = useRef<HTMLDivElement>(null);
-  const [idx, setIdx] = useState(0);
-
-  useEffect(() => {
-    if (!ref.current) return;
-    ref.current.children[idx].scrollIntoView({ behavior: 'instant' });
-  }, [idx]);
-
   return (
-    <div className='relative flex h-full w-full flex-col bg-white sm:max-w-96'>
-      <div ref={ref} className='flex w-full flex-1 overflow-hidden'>
-        {experiences.map(({ title, start, end, company, location, description }, index) => (
+    <Carousel
+      count={experiences.length}
+      builder={(index) => {
+        const { title, start, end, company, location, description } = experiences[index];
+
+        return (
           <div
             key={title + start + end + company + location}
-            className={twJoin('flex w-full shrink-0 flex-col bg-white p-4')}
+            className={twJoin('flex w-full shrink-0 flex-col bg-white p-4 sm:w-96')}
           >
             <span className='text-2xl'>{title}</span>
             <span>
@@ -110,22 +106,9 @@ const Experience: React.FC = () => {
               ))}
             </ul>
           </div>
-        ))}
-      </div>
-      <div className='flex w-full justify-between p-4'>
-        {idx !== 0 && (
-          <button className='cursor-pointer text-2xl select-none' onClick={() => setIdx(idx - 1)}>
-            &lt;-
-          </button>
-        )}
-
-        {idx !== experiences.length - 1 && (
-          <button className='ml-auto cursor-pointer text-2xl select-none' onClick={() => setIdx(idx + 1)}>
-            -&gt;
-          </button>
-        )}
-      </div>
-    </div>
+        );
+      }}
+    />
   );
 };
 Experience.displayName = 'Experience';

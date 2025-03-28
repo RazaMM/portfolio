@@ -4,13 +4,14 @@ import React, { useEffect, useRef, useState } from 'react';
 import icon from '@/img/notepad.png';
 import { type Program } from '@/components/programs';
 import { twJoin } from 'tailwind-merge';
+import { Carousel } from '@/components/carousel';
 
 type Project = {
   title: string;
   description: string[];
 };
 
-const experiences: Project[] = [
+const projects: Project[] = [
   {
     title: 'Plant Time',
     description: [
@@ -31,19 +32,14 @@ const experiences: Project[] = [
 ];
 
 const Projects: React.FC = () => {
-  const ref = useRef<HTMLDivElement>(null);
-  const [idx, setIdx] = useState(0);
-
-  useEffect(() => {
-    if (!ref.current) return;
-    ref.current.children[idx].scrollIntoView({ behavior: 'instant' });
-  }, [idx]);
-
   return (
-    <div className='relative flex h-full w-full flex-col bg-white sm:max-w-96'>
-      <div ref={ref} className='flex w-full flex-1 overflow-hidden'>
-        {experiences.map(({ title, description }, index) => (
-          <div key={title} className={twJoin('flex w-full shrink-0 flex-col bg-white p-4')}>
+    <Carousel
+      count={projects.length}
+      builder={(index) => {
+        const { title, description } = projects[index];
+
+        return (
+          <div key={title} className={twJoin('flex w-full shrink-0 flex-col bg-white p-4 sm:w-96')}>
             <span className='mb-2 text-2xl'>{title}</span>
 
             <ul className='mt-2 flex list-inside list-disc flex-col items-start gap-2'>
@@ -52,22 +48,9 @@ const Projects: React.FC = () => {
               ))}
             </ul>
           </div>
-        ))}
-      </div>
-      <div className='flex w-full justify-between p-4'>
-        {idx !== 0 && (
-          <button className='cursor-pointer text-2xl select-none' onClick={() => setIdx(idx - 1)}>
-            &lt;-
-          </button>
-        )}
-
-        {idx !== experiences.length - 1 && (
-          <button className='ml-auto cursor-pointer text-2xl select-none' onClick={() => setIdx(idx + 1)}>
-            -&gt;
-          </button>
-        )}
-      </div>
-    </div>
+        );
+      }}
+    />
   );
 };
 Projects.displayName = 'Projects';
