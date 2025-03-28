@@ -2,7 +2,7 @@
 
 import programs, { type Program } from '@/components/programs';
 import React, { useState } from 'react';
-import Desktop from '@/components/desktop';
+import Desktop from '@/components/desktop/desktop';
 import Window from '@/components/window';
 import ProgramContext from '@/lib/program-context';
 import Taskbar from '@/components/taskbar/taskbar';

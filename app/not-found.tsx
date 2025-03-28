@@ -1,11 +1,14 @@
 import React from 'react';
 import Window from '@/components/window';
-import Desktop from '@/components/desktop';
+import Desktop from '@/components/desktop/desktop';
 import Taskbar from '@/components/taskbar/taskbar';
 import Image from 'next/image';
 import icon from '@/img/error.png';
 import Link from 'next/link';
 import { tv } from 'tailwind-variants';
+import { TaskbarClock } from '@/components/taskbar/taskbar-clock';
+import { TaskbarMenuItem } from '@/components/taskbar/taskbar-menu-item';
+import { TaskbarMenu } from '@/components/taskbar/taskbar-menu';
 
 export default function NotFound() {
   const classes = tv({
@@ -24,7 +27,7 @@ export default function NotFound() {
       <Window name='404 Not Found' active>
         <div className={classes.outer()}>
           <div className={classes.inner()}>
-            <Image src={icon} alt='d' className={classes.icon()} />
+            <Image src={icon} alt='' className={classes.icon()} />
 
             <span className={classes.text()}>
               {"You've ventured too far into the unknown and I can't find what you're looking for :("}
@@ -35,7 +38,14 @@ export default function NotFound() {
           </Link>
         </div>
       </Window>
-      <Taskbar />
+      <Taskbar>
+        <TaskbarMenu>
+          <TaskbarMenuItem as='a' href='/'>
+            Go back home
+          </TaskbarMenuItem>
+        </TaskbarMenu>
+        <TaskbarClock />
+      </Taskbar>
     </>
   );
 }
