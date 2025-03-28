@@ -7,14 +7,13 @@ import HomePage from '@/img/homepage.png';
 import Notepad from '@/img/notepad.png';
 import { TaskbarClock } from '@/components/taskbar/taskbar-clock';
 import React from 'react';
-import * as fg from 'fast-glob';
-import path from 'node:path';
 import { DesktopShortcut } from '@/components/desktop/desktop-shortcut';
 import { TaskbarContent } from '@/components/taskbar/taskbar-content';
 import { TaskbarButton } from '@/components/taskbar/taskbar-button';
 import Window from '@/components/window';
 import { toTitleCase } from '@/lib/to-title-case';
 import { getAllSlugs } from '@/lib/blog-posts';
+import Head from 'next/head';
 
 const formatter = new Intl.DateTimeFormat();
 
@@ -28,6 +27,9 @@ export default async function BlogLayout({ params }: { params: Promise<{ slug: s
 
   return (
     <>
+      <Head>
+        <title>{title} | Raza Mahmood&#39;s Portfolio</title>
+      </Head>
       <Desktop>
         <DesktopShortcut as={Link} href='/blog' icon={{ src: Notepad, alt: '' }}>
           Back to Blog Home

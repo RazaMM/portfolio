@@ -12,8 +12,14 @@ import Notepad from '@/img/notepad.png';
 import { TaskbarContent } from '@/components/taskbar/taskbar-content';
 import { TaskbarButton } from '@/components/taskbar/taskbar-button';
 import { getAllPosts } from '@/lib/blog-posts';
+import type { Metadata } from 'next';
 
 const formatter = new Intl.DateTimeFormat();
+
+export const metadata: Metadata = {
+  title: "Blog Posts | Raza Mahmood's Portfolio",
+  description: 'Various blog posts about programming, technology, and more.',
+};
 
 export default async function BlogHome() {
   const posts = await getAllPosts();
