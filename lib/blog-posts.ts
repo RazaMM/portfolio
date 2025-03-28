@@ -1,6 +1,5 @@
 import path from 'node:path';
 import * as fg from 'fast-glob';
-import { toTitleCase } from '@/lib/to-title-case';
 
 export const getAllSlugs = async () => {
   const dir = path.join(process.cwd(), 'posts');
@@ -11,30 +10,38 @@ export const getAllSlugs = async () => {
   }));
 };
 
+type PostMetadata = {
+  title: string;
+  date: Date;
+  description?: string;
+  [key: string]: any;
+};
+
 export const getPost = async (slug: string) => {
   const { default: Post, frontmatter } = await import(`@/posts/${slug}.mdx`);
-  const tokens = slug.split('-');
-  const title = toTitleCase(tokens.slice(3).join(' '));
-  const date = new Date();
+
+  if (!frontmatter.title) {
+    throw new Error(`In Post ${slug}: title is missing from frontmatter.`);
+  }
+
+  if (!frontmatter.date) {
+    throw new Error(`In Post ${slug}: date is missing from frontmatter.`);
+  }
+
+  const title = frontmatter.title;
+  const date = new Date(Date.parse(frontmatter.date));
+
+  if (isNaN(date.getTime())) {
+    throw new Error(`In Post ${slug}: date is not valid.`);
+  }
 
   return {
     Post,
     metadata: {
+      ...frontmatter,
       title,
       date,
-      ...frontmatter,
-    },
-  };
-};
-
-export const getPostMetadata = async (slug: string) => {
-  const tokens = slug.split('-');
-  const title = toTitleCase(tokens.slice(3).join(' '));
-  const date = new Date();
-
-  return {
-    title,
-    date,
+    } as PostMetadata,
   };
 };
 

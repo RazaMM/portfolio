@@ -41,16 +41,18 @@ export default async function BlogHome() {
       <Window name='My Blog Posts' active icon={{ src: Notepad, alt: '' }}>
         <div className='w-dvw max-w-2xl bg-white p-2'>
           <div className='flex flex-col gap-2'>
-            {posts.map((post) => (
-              <Link
-                key={post.path}
-                href={post.path}
-                className='flex flex-col gap-2 border-b-2 border-w95-dark-grey p-2 hover:bg-w95-grey focus:bg-w95-grey'
-              >
-                <span className='text-xl'>{post.title}</span>
-                <span className='text-sm'>{formatter.format(post.date)}</span>
-              </Link>
-            ))}
+            {posts
+              .sort((a, b) => b.date.getTime() - a.date.getTime())
+              .map((post) => (
+                <Link
+                  key={post.path}
+                  href={post.path}
+                  className='flex flex-col gap-2 border-b-2 border-w95-dark-grey p-2 hover:bg-w95-grey focus:bg-w95-grey'
+                >
+                  <span className='text-xl'>{post.title}</span>
+                  <span className='text-sm'>{formatter.format(post.date)}</span>
+                </Link>
+              ))}
           </div>
         </div>
       </Window>
