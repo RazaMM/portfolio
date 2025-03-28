@@ -21,12 +21,12 @@ export function DesktopShortcut<T extends DesktopShortcutElementType = 'a'>({
   children,
   as,
   ...rest
-}: DesktopShortcutProps) {
+}: DesktopShortcutProps<T>) {
   const Component = as ?? 'a';
   const classes = tv({
     slots: {
-      base: 'flex h-fit w-fit flex-col items-center gap-1 p-1',
-      icon: 'h-10 w-auto',
+      base: 'flex h-fit w-fit flex-col items-center gap-2 p-1',
+      icon: 'h-auto w-10',
       text: 'max-w-[20ch] text-center text-white',
     },
   })();

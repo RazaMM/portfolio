@@ -4,56 +4,72 @@ import programs, { type Program } from '@/components/programs';
 import React, { useState } from 'react';
 import Desktop from '@/components/desktop/desktop';
 import Window from '@/components/window';
-import ProgramContext from '@/lib/program-context';
 import Taskbar from '@/components/taskbar/taskbar';
 import Biography from '@/components/programs/biography';
 import { TaskbarClock } from '@/components/taskbar/taskbar-clock';
 import { TaskbarMenu } from '@/components/taskbar/taskbar-menu';
 import { TaskbarMenuItem } from '@/components/taskbar/taskbar-menu-item';
+import { DesktopShortcut } from '@/components/desktop/desktop-shortcut';
+import { TaskbarContent } from '@/components/taskbar/taskbar-content';
+import { TaskbarButton } from '@/components/taskbar/taskbar-button';
+import Logo from '@/img/logo.png';
 
 export default function Home() {
   const [open, setOpen] = useState<Program[]>([Biography]);
   const [active, setActive] = useState<Program | null>(Biography);
   const [stackingOrder, setStackingOrder] = useState<Program[]>([Biography]);
 
-  const context = {
-    open: (program: Program) => {
-      if (!open.some((p) => p.id === program.id)) {
-        setOpen([...open, program]);
-      }
+  const openProgram = (program: Program) => {
+    if (!open.some((p) => p.id === program.id)) {
+      setOpen([...open, program]);
+    }
 
-      setStackingOrder([...stackingOrder.filter((p) => p.id !== program.id), program]);
-      setActive(program);
-    },
-    close: (program: Program) => {
-      if (active?.id === program.id) {
-        setActive(null);
-      }
+    setStackingOrder([...stackingOrder.filter((p) => p.id !== program.id), program]);
+    setActive(program);
+  };
 
-      setOpen(open.filter((p) => p.id !== program.id));
-      setStackingOrder(stackingOrder.filter((p) => p.id !== program.id));
-    },
-    getOpen: () => [...open],
-    getActive: () => active,
-    setActive: (program: Program) => {
-      setActive(program);
-      setStackingOrder([...stackingOrder.filter((p) => p.id !== program.id), program]);
-    },
-    getStackingOrder: () => [...stackingOrder],
+  const closeProgram = (program: Program) => {
+    if (active?.id === program.id) {
+      setActive(null);
+    }
+
+    setOpen(open.filter((p) => p.id !== program.id));
+    setStackingOrder(stackingOrder.filter((p) => p.id !== program.id));
+  };
+
+  const updateActive = (program: Program) => {
+    setActive(program);
+    setStackingOrder([...stackingOrder.filter((p) => p.id !== program.id), program]);
   };
 
   return (
-    <ProgramContext.Provider value={context}>
-      <Desktop />
+    <>
+      <Desktop>
+        {programs
+          .sort((a, b) => a.name.localeCompare(b.name))
+          .filter((program) => program.includeInDesktop)
+          .map((program, i) => (
+            <DesktopShortcut
+              key={program.id + ' ' + i}
+              onClick={() => {
+                openProgram(program);
+              }}
+              icon={program.icon ?? { src: Logo, alt: '' }}
+              as='button'
+            >
+              {program.name}
+            </DesktopShortcut>
+          ))}
+      </Desktop>
 
       {stackingOrder.map((program) => (
         <Window
           key={program.id}
           name={program.name}
           icon={program.icon}
-          active={context.getActive()?.id === program.id}
-          onClose={() => context.close(program)}
-          onMouseDown={() => context.setActive(program)}
+          active={active?.id === program.id}
+          onClose={() => closeProgram(program)}
+          onMouseDown={() => updateActive(program)}
         >
           <program.Component />
         </Window>
@@ -68,7 +84,7 @@ export default function Home() {
               <TaskbarMenuItem
                 key={program.id + ' ' + i}
                 onClick={() => {
-                  context?.open(program);
+                  openProgram(program);
                 }}
                 icon={program.icon}
                 as='button'
@@ -77,8 +93,23 @@ export default function Home() {
               </TaskbarMenuItem>
             ))}
         </TaskbarMenu>
+
+        <TaskbarContent>
+          {open.map((program, i) => (
+            <TaskbarButton
+              key={program.id + ' ' + i}
+              onClick={() => {
+                updateActive(program);
+              }}
+              icon={program.icon}
+              active={active?.id === program.id}
+            >
+              {program.name}
+            </TaskbarButton>
+          ))}
+        </TaskbarContent>
         <TaskbarClock />
       </Taskbar>
-    </ProgramContext.Provider>
+    </>
   );
 }
