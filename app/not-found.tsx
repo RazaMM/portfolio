@@ -7,7 +7,7 @@ import icon from '@/img/error.png';
 import Link from 'next/link';
 import { tv } from 'tailwind-variants';
 import { TaskbarClock } from '@/components/taskbar/taskbar-clock';
-import { TaskbarMenuItem, TaskbarMenuItemElementType } from '@/components/taskbar/taskbar-menu-item';
+import { TaskbarMenuItem } from '@/components/taskbar/taskbar-menu-item';
 import { TaskbarMenu } from '@/components/taskbar/taskbar-menu';
 import HomePage from '@/img/homepage.png';
 

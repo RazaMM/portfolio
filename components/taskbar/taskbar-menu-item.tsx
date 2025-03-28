@@ -2,8 +2,7 @@ import { ComponentPropsWithoutRef, ElementType, EventHandler, MouseEventHandler,
 import Image, { StaticImageData } from 'next/image';
 import { tv } from 'tailwind-variants';
 
-export type TaskbarMenuItemElementType = ElementType;
-export type TaskbarMenuItemProps<T extends TaskbarMenuItemElementType = 'a'> = PropsWithChildren<
+export type TaskbarMenuItemProps<T extends ElementType = 'a'> = PropsWithChildren<
   {
     as?: T;
     icon?: {
@@ -13,12 +12,7 @@ export type TaskbarMenuItemProps<T extends TaskbarMenuItemElementType = 'a'> = P
   } & ComponentPropsWithoutRef<T>
 >;
 
-export function TaskbarMenuItem<T extends TaskbarMenuItemElementType = 'a'>({
-  as,
-  icon,
-  children,
-  ...rest
-}: TaskbarMenuItemProps<T>) {
+export function TaskbarMenuItem<T extends ElementType = 'a'>({ as, icon, children, ...rest }: TaskbarMenuItemProps<T>) {
   const Component = as ?? 'a';
   const classes = tv({
     slots: {

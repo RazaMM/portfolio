@@ -62,6 +62,16 @@ export default function Home() {
               {program.name}
             </DesktopShortcut>
           ))}
+        <DesktopShortcut
+          as={Link}
+          href='/blog'
+          icon={{
+            src: Notepad,
+            alt: '',
+          }}
+        >
+          My Blog
+        </DesktopShortcut>
       </Desktop>
 
       {stackingOrder.map((program) => (

@@ -2,11 +2,7 @@ import Image, { StaticImageData } from 'next/image';
 import React, { ComponentPropsWithoutRef, ElementType, MouseEventHandler, PropsWithChildren } from 'react';
 import { tv } from 'tailwind-variants';
 
-export type DesktopShortcutElementType = ElementType<
-  { href?: string } | { onClick: MouseEventHandler<HTMLButtonElement> },
-  'a' | 'button'
->;
-export type DesktopShortcutProps<T extends DesktopShortcutElementType = 'a'> = PropsWithChildren<
+export type DesktopShortcutProps<T extends ElementType = 'a'> = PropsWithChildren<
   {
     as?: T;
     icon: {
@@ -16,12 +12,7 @@ export type DesktopShortcutProps<T extends DesktopShortcutElementType = 'a'> = P
   } & ComponentPropsWithoutRef<T>
 >;
 
-export function DesktopShortcut<T extends DesktopShortcutElementType = 'a'>({
-  icon,
-  children,
-  as,
-  ...rest
-}: DesktopShortcutProps<T>) {
+export function DesktopShortcut<T extends ElementType = 'a'>({ icon, children, as, ...rest }: DesktopShortcutProps<T>) {
   const Component = as ?? 'a';
   const classes = tv({
     slots: {
