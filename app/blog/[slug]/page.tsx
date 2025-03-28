@@ -15,10 +15,15 @@ import { TaskbarButton } from '@/components/taskbar/taskbar-button';
 import Window from '@/components/window';
 import { toTitleCase } from '@/lib/to-title-case';
 
+const formatter = new Intl.DateTimeFormat();
+
 export default async function BlogLayout({ params }: { params: Promise<{ slug: string }> }) {
-  const slug = (await params).slug;
+  const { slug } = await params;
   const tokens = slug.split('-');
   const title = toTitleCase(tokens.slice(3).join(' '));
+  const date = new Date();
+
+  const { default: Post } = await import(`@/posts/${slug}.mdx`);
 
   return (
     <>
@@ -32,7 +37,16 @@ export default async function BlogLayout({ params }: { params: Promise<{ slug: s
       </Desktop>
 
       <Window name={title} active icon={{ src: Notepad, alt: '' }}>
-        <div className='w-dvw max-w-3xl bg-white'>tes</div>
+        <div className='w-dvw max-w-3xl bg-white p-2'>
+          <div className='flex flex-col gap-2'>
+            <h1 className='text-3xl'>{title}</h1>
+            <span>Posted on {formatter.format(date)}</span>
+          </div>
+          <hr className='my-2' />
+          <div className='mx-auto prose'>
+            <Post />
+          </div>
+        </div>
       </Window>
 
       <Taskbar>
@@ -59,10 +73,10 @@ export default async function BlogLayout({ params }: { params: Promise<{ slug: s
 
 export async function generateStaticParams() {
   const dir = path.join(process.cwd(), 'posts');
-  const paths = await fg.glob(path.join(dir, '**', '*.mdx'));
+  const paths = await fg.glob(path.join(dir, '*.mdx'));
 
   return paths.map((path: string) => ({
-    slug: path.replace(dir, '').substring(1).replaceAll('/', '-').replace('.mdx', ''),
+    slug: path.replace(dir, '').substring(1).replace('.mdx', ''),
   }));
 }
 

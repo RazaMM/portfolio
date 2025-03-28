@@ -1,5 +1,7 @@
 @import 'tailwindcss';
 
+@plugin "@tailwindcss/typography";
+
 @theme {
   --color-w95-cyan: #008080;
   --color-w95-blue: #000080;
