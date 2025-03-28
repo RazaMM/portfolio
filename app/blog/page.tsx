@@ -11,7 +11,7 @@ import Window from '@/components/window';
 import Notepad from '@/img/notepad.png';
 import { TaskbarContent } from '@/components/taskbar/taskbar-content';
 import { TaskbarButton } from '@/components/taskbar/taskbar-button';
-import { getAllPosts, getAllSlugs, getPost } from '@/lib/blog-posts';
+import { getAllSlugs, getPost } from '@/lib/blog-posts';
 import type { Metadata } from 'next';
 
 const formatter = new Intl.DateTimeFormat();
