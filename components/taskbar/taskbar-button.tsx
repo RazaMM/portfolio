@@ -1,3 +1,5 @@
+'use client';
+
 import Image, { StaticImageData } from 'next/image';
 import logo from '@/img/logo.png';
 import React, { MouseEventHandler, PropsWithChildren } from 'react';
@@ -16,7 +18,7 @@ export const TaskbarButton = ({ icon, children, active, onClick }: TaskbarButton
   const classes = tv({
     slots: {
       button:
-        'flex h-full cursor-w95-pointer items-center justify-center gap-1 px-2 shadow-w95 active:shadow-w95-inverted',
+        'flex h-full max-w-[30ch] cursor-w95-pointer items-center justify-center gap-1 overflow-hidden px-2 text-ellipsis whitespace-nowrap shadow-w95 active:shadow-w95-inverted',
       icon: 'h-full w-auto',
       text: 'overflow-hidden text-nowrap text-ellipsis',
     },

@@ -6,15 +6,20 @@ import { TaskbarMenuItem } from '@/components/taskbar/taskbar-menu-item';
 import HomePage from '@/img/homepage.png';
 import { TaskbarClock } from '@/components/taskbar/taskbar-clock';
 import Link from 'next/link';
+import { DesktopShortcut } from '@/components/desktop/desktop-shortcut';
 
 export default function BlogHome() {
   return (
     <>
-      <Desktop />
+      <Desktop>
+        <DesktopShortcut as={Link} href='/' icon={{ src: HomePage, alt: '' }}>
+          Back to Homepage
+        </DesktopShortcut>
+      </Desktop>
       <Taskbar>
         <TaskbarMenu title="Raza's Blog">
           <TaskbarMenuItem as={Link} href='/' icon={{ src: HomePage, alt: '' }}>
-            Home
+            Back to Homepage
           </TaskbarMenuItem>
         </TaskbarMenu>
         <TaskbarClock />

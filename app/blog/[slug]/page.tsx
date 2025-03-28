@@ -9,6 +9,9 @@ import { TaskbarClock } from '@/components/taskbar/taskbar-clock';
 import React from 'react';
 import * as fg from 'fast-glob';
 import path from 'node:path';
+import { DesktopShortcut } from '@/components/desktop/desktop-shortcut';
+import { TaskbarContent } from '@/components/taskbar/taskbar-content';
+import { TaskbarButton } from '@/components/taskbar/taskbar-button';
 
 export default async function BlogLayout({ params }: { params: Promise<{ slug: string }> }) {
   const slug = (await params).slug;
@@ -16,17 +19,29 @@ export default async function BlogLayout({ params }: { params: Promise<{ slug: s
   return (
     <>
       <Desktop>
-        <span>{slug}</span>
+        <DesktopShortcut as={Link} href='/blog' icon={{ src: Notepad, alt: '' }}>
+          Back to Blog Home
+        </DesktopShortcut>
+        <DesktopShortcut as={Link} href='/' icon={{ src: HomePage, alt: '' }}>
+          Back to Homepage
+        </DesktopShortcut>
       </Desktop>
       <Taskbar>
-        <TaskbarMenu title="Raza's Blog Posts">
+        <TaskbarMenu title="Raza's Blog">
           <TaskbarMenuItem as={Link} href='/blog' icon={{ src: Notepad, alt: '' }}>
-            Blog Home
+            Back to Blog Home
           </TaskbarMenuItem>
           <TaskbarMenuItem as={Link} href='/' icon={{ src: HomePage, alt: '' }}>
-            Home
+            Back to Homepage
           </TaskbarMenuItem>
         </TaskbarMenu>
+
+        <TaskbarContent>
+          <TaskbarButton onClick={undefined} active={true}>
+            {slug}
+          </TaskbarButton>
+        </TaskbarContent>
+
         <TaskbarClock />
       </Taskbar>
     </>
