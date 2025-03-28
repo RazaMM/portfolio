@@ -12,9 +12,13 @@ import path from 'node:path';
 import { DesktopShortcut } from '@/components/desktop/desktop-shortcut';
 import { TaskbarContent } from '@/components/taskbar/taskbar-content';
 import { TaskbarButton } from '@/components/taskbar/taskbar-button';
+import Window from '@/components/window';
+import { toTitleCase } from '@/lib/to-title-case';
 
 export default async function BlogLayout({ params }: { params: Promise<{ slug: string }> }) {
   const slug = (await params).slug;
+  const tokens = slug.split('-');
+  const title = toTitleCase(tokens.slice(3).join(' '));
 
   return (
     <>
@@ -26,6 +30,11 @@ export default async function BlogLayout({ params }: { params: Promise<{ slug: s
           Back to Homepage
         </DesktopShortcut>
       </Desktop>
+
+      <Window name={title} active icon={{ src: Notepad, alt: '' }}>
+        <div className='w-dvw max-w-3xl bg-white'>tes</div>
+      </Window>
+
       <Taskbar>
         <TaskbarMenu title="Raza's Blog">
           <TaskbarMenuItem as={Link} href='/blog' icon={{ src: Notepad, alt: '' }}>
@@ -37,8 +46,8 @@ export default async function BlogLayout({ params }: { params: Promise<{ slug: s
         </TaskbarMenu>
 
         <TaskbarContent>
-          <TaskbarButton onClick={undefined} active={true}>
-            {slug}
+          <TaskbarButton onClick={undefined} active={true} icon={{ src: Notepad, alt: '' }}>
+            {title}
           </TaskbarButton>
         </TaskbarContent>
 
