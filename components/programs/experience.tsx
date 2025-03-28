@@ -1,7 +1,7 @@
 'use client';
 
 import React from 'react';
-import icon from '@/img/notepad.png';
+import icon from '@/img/file-guy.png';
 import { type Program } from '@/components/programs';
 import { twJoin } from 'tailwind-merge';
 import { Carousel } from '@/components/carousel';
@@ -118,7 +118,7 @@ export default {
   name: 'My Job Experience',
   icon: {
     src: icon,
-    alt: 'A pixelated image of a notepad',
+    alt: '',
   },
   Component: Experience,
   includeInStartMenu: true,

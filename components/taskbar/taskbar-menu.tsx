@@ -7,9 +7,11 @@ import { tv } from 'tailwind-variants';
 import { TaskbarMenuItem } from '@/components/taskbar/taskbar-menu-item';
 import ShutdownIcon from '@/img/shutdown.png';
 
-type TaskbarStartMenuProps = PropsWithChildren;
+type TaskbarStartMenuProps = PropsWithChildren<{
+  title?: string;
+}>;
 
-export const TaskbarMenu = ({ children }: TaskbarStartMenuProps) => {
+export const TaskbarMenu = ({ children, title = "Raza's Portfolio" }: TaskbarStartMenuProps) => {
   const [ref, focused] = useFocusWithin<HTMLDivElement>();
   const [showStartMenu, setShowStartMenu] = React.useState(false);
 
@@ -44,7 +46,7 @@ export const TaskbarMenu = ({ children }: TaskbarStartMenuProps) => {
       </TaskbarButton>
 
       <div className={classes.menu({ active: showStartMenu })}>
-        <span className={classes.sidewaysText()}>{"Raza's Portfolio"}</span>
+        <span className={classes.sidewaysText()}>{title}</span>
 
         <div className={classes.container()}>
           {children}

@@ -1,7 +1,7 @@
 'use client';
 
 import React, { useEffect, useRef, useState } from 'react';
-import icon from '@/img/notepad.png';
+import icon from '@/img/monitor.png';
 import { type Program } from '@/components/programs';
 import { twJoin } from 'tailwind-merge';
 import { Carousel } from '@/components/carousel';

@@ -13,6 +13,8 @@ import { DesktopShortcut } from '@/components/desktop/desktop-shortcut';
 import { TaskbarContent } from '@/components/taskbar/taskbar-content';
 import { TaskbarButton } from '@/components/taskbar/taskbar-button';
 import Logo from '@/img/logo.png';
+import Notepad from '@/img/notepad.png';
+import Link from 'next/link';
 
 export default function Home() {
   const [open, setOpen] = useState<Program[]>([Biography]);
@@ -92,6 +94,16 @@ export default function Home() {
                 {program.name}
               </TaskbarMenuItem>
             ))}
+          <TaskbarMenuItem
+            as={Link}
+            href='/blog'
+            icon={{
+              src: Notepad,
+              alt: '',
+            }}
+          >
+            My Blog
+          </TaskbarMenuItem>
         </TaskbarMenu>
 
         <TaskbarContent>

@@ -12,7 +12,7 @@ export default function BlogHome() {
     <>
       <Desktop />
       <Taskbar>
-        <TaskbarMenu>
+        <TaskbarMenu title="Raza's Blog">
           <TaskbarMenuItem as={Link} href='/' icon={{ src: HomePage, alt: '' }}>
             Home
           </TaskbarMenuItem>
