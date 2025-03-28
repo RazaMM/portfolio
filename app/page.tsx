@@ -62,7 +62,7 @@ export default function Home() {
               {program.name}
             </DesktopShortcut>
           ))}
-        <DesktopShortcut
+        {/*<DesktopShortcut
           as={Link}
           href='/blog'
           icon={{
@@ -71,7 +71,7 @@ export default function Home() {
           }}
         >
           My Blog
-        </DesktopShortcut>
+        </DesktopShortcut>*/}
       </Desktop>
 
       {stackingOrder.map((program) => (
@@ -104,7 +104,7 @@ export default function Home() {
                 {program.name}
               </TaskbarMenuItem>
             ))}
-          <TaskbarMenuItem
+          {/*<TaskbarMenuItem
             as={Link}
             href='/blog'
             icon={{
@@ -113,7 +113,7 @@ export default function Home() {
             }}
           >
             My Blog
-          </TaskbarMenuItem>
+          </TaskbarMenuItem>*/}
         </TaskbarMenu>
 
         <TaskbarContent>
