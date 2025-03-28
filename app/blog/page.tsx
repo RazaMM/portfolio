@@ -38,7 +38,7 @@ export default function BlogHome() {
       </Desktop>
 
       <Window name='My Blog Posts' active icon={{ src: Notepad, alt: '' }}>
-        <div className='w-dvw max-w-xl bg-white p-2'>
+        <div className='w-dvw max-w-2xl bg-white p-2'>
           <div className='flex flex-col gap-2'>
             {posts.map((post) => (
               <Link
@@ -62,7 +62,7 @@ export default function BlogHome() {
         </TaskbarMenu>
 
         <TaskbarContent>
-          <TaskbarButton onClick={undefined} active={true} icon={{ src: Notepad, alt: '' }}>
+          <TaskbarButton active={true} icon={{ src: Notepad, alt: '' }}>
             My Blog Posts
           </TaskbarButton>
         </TaskbarContent>

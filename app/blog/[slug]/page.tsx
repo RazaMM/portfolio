@@ -14,6 +14,7 @@ import { TaskbarContent } from '@/components/taskbar/taskbar-content';
 import { TaskbarButton } from '@/components/taskbar/taskbar-button';
 import Window from '@/components/window';
 import { toTitleCase } from '@/lib/to-title-case';
+import { getAllSlugs } from '@/lib/blog-posts';
 
 const formatter = new Intl.DateTimeFormat();
 
@@ -60,7 +61,7 @@ export default async function BlogLayout({ params }: { params: Promise<{ slug: s
         </TaskbarMenu>
 
         <TaskbarContent>
-          <TaskbarButton onClick={undefined} active={true} icon={{ src: Notepad, alt: '' }}>
+          <TaskbarButton active={true} icon={{ src: Notepad, alt: '' }}>
             {title}
           </TaskbarButton>
         </TaskbarContent>
@@ -72,12 +73,7 @@ export default async function BlogLayout({ params }: { params: Promise<{ slug: s
 }
 
 export async function generateStaticParams() {
-  const dir = path.join(process.cwd(), 'posts');
-  const paths = await fg.glob(path.join(dir, '*.mdx'));
-
-  return paths.map((path: string) => ({
-    slug: path.replace(dir, '').substring(1).replace('.mdx', ''),
-  }));
+  return await getAllSlugs();
 }
 
 export const dynamicParams = false;
