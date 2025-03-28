@@ -77,7 +77,7 @@ export const Window = ({ name, icon, children, active, onClose, onMouseDown }: W
           </button>
         </div>
 
-        <div className='h-screen max-h-[calc(100vh-theme(height.6)-theme(height.10)-(--spacing(2))-(--spacing(4))-(--spacing(2)))] w-screen max-w-[calc(100vw-(--spacing(2)))] overflow-auto sm:h-auto sm:w-auto'>
+        <div className='h-screen max-h-[calc(100dvh-theme(height.6)-theme(height.10)-(--spacing(2))-(--spacing(4))-(--spacing(2)))] w-screen max-w-[calc(100vw-(--spacing(2)))] overflow-auto sm:h-auto sm:w-auto'>
           {children}
         </div>
       </div>
