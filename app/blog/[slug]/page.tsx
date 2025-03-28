@@ -11,24 +11,32 @@ import { DesktopShortcut } from '@/components/desktop/desktop-shortcut';
 import { TaskbarContent } from '@/components/taskbar/taskbar-content';
 import { TaskbarButton } from '@/components/taskbar/taskbar-button';
 import Window from '@/components/window';
-import { toTitleCase } from '@/lib/to-title-case';
-import { getAllSlugs } from '@/lib/blog-posts';
+import { getAllSlugs, getPost } from '@/lib/blog-posts';
 import Head from 'next/head';
+import { Metadata, ResolvingMetadata } from 'next';
 
 const formatter = new Intl.DateTimeFormat();
 
-export default async function BlogLayout({ params }: { params: Promise<{ slug: string }> }) {
-  const { slug } = await params;
-  const tokens = slug.split('-');
-  const title = toTitleCase(tokens.slice(3).join(' '));
-  const date = new Date();
+type BlogPageProps = { params: Promise<{ slug: string }> };
 
-  const { default: Post } = await import(`@/posts/${slug}.mdx`);
+export async function generateMetadata({ params }: BlogPageProps, parent: ResolvingMetadata): Promise<Metadata> {
+  const { slug } = await params;
+  const { metadata } = await getPost(slug);
+
+  return {
+    title: `${metadata.title} | Raza Mahmood's Portfolio`,
+    description: metadata.description ?? '',
+  };
+}
+
+export default async function BlogPage({ params }: BlogPageProps) {
+  const { slug } = await params;
+  const { Post, metadata } = await getPost(slug);
 
   return (
     <>
       <Head>
-        <title>{title} | Raza Mahmood&#39;s Portfolio</title>
+        <title>{metadata.title} | Raza Mahmood&#39;s Portfolio</title>
       </Head>
       <Desktop>
         <DesktopShortcut as={Link} href='/blog' icon={{ src: Notepad, alt: '' }}>
@@ -39,11 +47,12 @@ export default async function BlogLayout({ params }: { params: Promise<{ slug: s
         </DesktopShortcut>
       </Desktop>
 
-      <Window name={title} active icon={{ src: Notepad, alt: '' }}>
+      <Window name={metadata.title} active icon={{ src: Notepad, alt: '' }}>
         <div className='w-dvw max-w-2xl bg-white p-2'>
           <div className='flex flex-col gap-2'>
-            <h1 className='text-2xl font-black'>{title}</h1>
-            <span>Posted on {formatter.format(date)}</span>
+            <h1 className='text-2xl font-black'>{metadata.title}</h1>
+            <span>Posted on {formatter.format(metadata.date)}</span>
+            <span>{JSON.stringify(metadata)}</span>
           </div>
           <hr className='my-2' />
           <div className='mx-auto prose max-w-none'>
@@ -64,7 +73,7 @@ export default async function BlogLayout({ params }: { params: Promise<{ slug: s
 
         <TaskbarContent>
           <TaskbarButton active={true} icon={{ src: Notepad, alt: '' }}>
-            {title}
+            {metadata.title}
           </TaskbarButton>
         </TaskbarContent>
 
