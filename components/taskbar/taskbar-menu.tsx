@@ -1,11 +1,12 @@
 'use client';
 
-import React, { PropsWithChildren, useEffect } from 'react';
+import React, { PropsWithChildren, useEffect, useState } from 'react';
 import { useFocusWithin } from '@/lib/use-focus-within';
 import { TaskbarButton } from '@/components/taskbar/taskbar-button';
 import { tv } from 'tailwind-variants';
 import { TaskbarMenuItem } from '@/components/taskbar/taskbar-menu-item';
 import ShutdownIcon from '@/img/shutdown.png';
+import ShutdownScreen from '@/components/taskbar/shutdown-screen';
 
 type TaskbarStartMenuProps = PropsWithChildren<{
   title?: string;
@@ -13,10 +14,14 @@ type TaskbarStartMenuProps = PropsWithChildren<{
 
 export const TaskbarMenu = ({ children, title = "Raza's Portfolio" }: TaskbarStartMenuProps) => {
   const [ref, focused] = useFocusWithin<HTMLDivElement>();
-  const [showStartMenu, setShowStartMenu] = React.useState(false);
+  const [showStartMenu, setShowStartMenu] = useState(false);
+  const [showShutdownScreen, setShowShutdownScreen] = useState(false);
 
   useEffect(() => {
-    if (!focused) setShowStartMenu(false);
+    if (!focused) {
+      setShowStartMenu(false);
+      setShowShutdownScreen(false);
+    }
   }, [focused]);
 
   const classes = tv({
@@ -60,11 +65,14 @@ export const TaskbarMenu = ({ children, title = "Raza's Portfolio" }: TaskbarSta
               alt: '',
             }}
             className='flex h-10 w-full items-center gap-1 p-1 hover:bg-w95-blue hover:text-white focus:bg-w95-blue focus:text-white focus:outline-hidden'
+            onClick={() => setShowShutdownScreen(true)}
           >
             Shut down...
           </TaskbarMenuItem>
         </div>
       </div>
+
+      <ShutdownScreen visible={showShutdownScreen && focused} onClick={() => setShowShutdownScreen(false)} />
     </div>
   );
 };

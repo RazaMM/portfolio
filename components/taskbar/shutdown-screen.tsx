@@ -6,7 +6,7 @@ export const ShutdownScreen = ({ visible, onClick }: { visible: boolean; onClick
     <div
       onClick={onClick}
       className={twJoin(
-        'absolute top-0 left-0 z-50 flex h-screen w-screen items-center justify-center bg-black text-6xl',
+        'fixed top-0 left-0 z-50 flex h-screen w-screen items-center justify-center bg-black text-6xl',
         !visible && 'hidden'
       )}
     >
