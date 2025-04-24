@@ -1,15 +1,28 @@
 ---
-title: Implementing Cubic Bezier Easing in JavaScript
+title: Implementing Cubic Bezier Easing in Typescript/Javascript
 date: 2025-03-28
 ---
+# Introduction
 
-Test asdf asdf asd
+Bezier curves are smooth, continuous curves that can be easily defined by a set of discrete "control points".
+They are used extensively in computer graphics as well as to provide easing in animations.
 
-```js
-const test = 5;
-console.log(test);
-```
+As you may know,
+CSS provides the ability to use cubic bezier curves (bezier curves defined by 4 control points)
+as a means of easing web animations and transitions.
 
-```math
-\left( \sum_{k=1}^n a_k b_k \right)^2 \leq \left( \sum_{k=1}^n a_k^2 \right) \left( \sum_{k=1}^n b_k^2 \right)
-```
+But sometimes you may be using Javascript/Typescript
+to perform animations i.e. through some third party animation library,
+which may not always offer a way of using cubic bezier easing.
+In this post, I am going to explore how to implement this method of easing in Javascript/Typescript.
+
+## Using Cubic Bezier in Animation
+
+In web animations, cubic Bezier curves are used to define easing functions - mathematical formulas that control how values change over time. The curve's shape determines how the animation accelerates or decelerates.
+
+For example:
+- A linear curve (P1 = 0.0, 0.0 and P2 = 1.0, 1.0) creates constant-speed motion
+- A curve with points above the linear line creates acceleration
+- A curve with points below the linear line creates deceleration
+
+Common easing patterns like "ease-in", "ease-out", and "ease-in-out" are all implemented using cubic Bezier curves with carefully chosen control points.
