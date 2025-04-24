@@ -54,7 +54,7 @@ export default async function BlogPage({ params }: BlogPageProps) {
             <span>Posted on {formatter.format(metadata.date)}</span>
           </div>
           <hr className='my-2' />
-          <div className='mx-auto prose max-w-none'>
+          <div className='mx-auto prose max-w-none prose-code:font-[inherit] prose-pre:font-[inherit]'>
             <Post />
           </div>
         </div>
