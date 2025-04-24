@@ -14,6 +14,7 @@ import Window from '@/components/window';
 import { getAllSlugs, getPost } from '@/lib/blog-posts';
 import Head from 'next/head';
 import { Metadata, ResolvingMetadata } from 'next';
+import 'katex/dist/katex.css';
 
 const formatter = new Intl.DateTimeFormat();
 
@@ -54,7 +55,7 @@ export default async function BlogPage({ params }: BlogPageProps) {
             <span>Posted on {formatter.format(metadata.date)}</span>
           </div>
           <hr className='my-2' />
-          <div className='mx-auto prose max-w-none prose-code:font-[inherit] prose-pre:font-[inherit]'>
+          <div className='mx-auto prose max-w-none prose-code:font-[inherit] prose-pre:font-[inherit] prose-pre:has-[>.math]:bg-white prose-pre:has-[>.math]:p-0 prose-pre:has-[>.math]:text-black'>
             <Post />
           </div>
         </div>

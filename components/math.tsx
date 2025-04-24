@@ -19,7 +19,7 @@ export default function Math({ source, inline = false }: MathProps) {
 
   return (
     <Tag
-      className={twJoin('font-math [&_*]:font-math', !inline && 'w-full p-4')}
+      className={twJoin('math font-math [&_*]:font-math', !inline && 'w-full')}
       dangerouslySetInnerHTML={{ __html: processed }}
     ></Tag>
   );
