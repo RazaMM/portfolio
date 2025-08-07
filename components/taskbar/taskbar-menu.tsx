@@ -1,12 +1,12 @@
 'use client';
 
-import React, { PropsWithChildren, useEffect, useState } from 'react';
-import { useFocusWithin } from '@/lib/use-focus-within';
+import ShutdownScreen from '@/components/taskbar/shutdown-screen';
 import { TaskbarButton } from '@/components/taskbar/taskbar-button';
-import { tv } from 'tailwind-variants';
 import { TaskbarMenuItem } from '@/components/taskbar/taskbar-menu-item';
 import ShutdownIcon from '@/img/shutdown.png';
-import ShutdownScreen from '@/components/taskbar/shutdown-screen';
+import { useFocusWithin } from '@/lib/use-focus-within';
+import { PropsWithChildren, useEffect, useState } from 'react';
+import { tv } from 'tailwind-variants';
 
 type TaskbarStartMenuProps = PropsWithChildren<{
   title?: string;

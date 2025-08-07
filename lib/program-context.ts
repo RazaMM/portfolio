@@ -1,7 +1,7 @@
 'use client';
 
-import { createContext } from 'react';
 import { type Program } from '@/components/programs';
+import { createContext } from 'react';
 
 export type ProgramContextValue = {
   open: (program: Program) => void;

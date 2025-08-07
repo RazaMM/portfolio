@@ -1,8 +1,8 @@
 'use client';
 
-import React from 'react';
-import icon from '@/img/message-bubble-info.png';
 import { type Program } from '@/components/programs';
+import icon from '@/img/message-bubble-info.png';
+import React from 'react';
 
 const Attributions: React.FC = () => {
   const attributions = [

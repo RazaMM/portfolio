@@ -1,20 +1,18 @@
 'use client';
 
-import programs, { type Program } from '@/components/programs';
-import React, { useState } from 'react';
 import Desktop from '@/components/desktop/desktop';
-import Window from '@/components/window';
-import Taskbar from '@/components/taskbar/taskbar';
+import { DesktopShortcut } from '@/components/desktop/desktop-shortcut';
+import programs, { type Program } from '@/components/programs';
 import Biography from '@/components/programs/biography';
+import Taskbar from '@/components/taskbar/taskbar';
+import { TaskbarButton } from '@/components/taskbar/taskbar-button';
 import { TaskbarClock } from '@/components/taskbar/taskbar-clock';
+import { TaskbarContent } from '@/components/taskbar/taskbar-content';
 import { TaskbarMenu } from '@/components/taskbar/taskbar-menu';
 import { TaskbarMenuItem } from '@/components/taskbar/taskbar-menu-item';
-import { DesktopShortcut } from '@/components/desktop/desktop-shortcut';
-import { TaskbarContent } from '@/components/taskbar/taskbar-content';
-import { TaskbarButton } from '@/components/taskbar/taskbar-button';
+import Window from '@/components/window';
 import Logo from '@/img/logo.png';
-import Notepad from '@/img/notepad.png';
-import Link from 'next/link';
+import { useState } from 'react';
 
 export default function Home() {
   const [open, setOpen] = useState<Program[]>([Biography]);

@@ -1,5 +1,5 @@
 import Image, { StaticImageData } from 'next/image';
-import React, { ComponentPropsWithoutRef, ElementType, MouseEventHandler, PropsWithChildren } from 'react';
+import { ComponentPropsWithoutRef, ElementType, PropsWithChildren } from 'react';
 import { tv } from 'tailwind-variants';
 
 export type DesktopShortcutProps<T extends ElementType = 'a'> = PropsWithChildren<

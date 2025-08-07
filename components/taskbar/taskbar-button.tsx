@@ -1,8 +1,8 @@
 'use client';
 
-import Image, { StaticImageData } from 'next/image';
 import logo from '@/img/logo.png';
-import React, { MouseEventHandler, PropsWithChildren } from 'react';
+import Image, { StaticImageData } from 'next/image';
+import { MouseEventHandler, PropsWithChildren } from 'react';
 import { tv } from 'tailwind-variants';
 
 type TaskbarButtonProps = PropsWithChildren<{

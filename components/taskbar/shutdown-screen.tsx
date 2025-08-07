@@ -1,5 +1,4 @@
-import React, { MouseEventHandler } from 'react';
-import { twJoin } from 'tailwind-merge';
+import { MouseEventHandler } from 'react';
 import { tv } from 'tailwind-variants';
 
 export const ShutdownScreen = ({ visible, onClick }: { visible: boolean; onClick: MouseEventHandler }) => {

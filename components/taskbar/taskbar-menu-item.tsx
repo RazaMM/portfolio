@@ -1,5 +1,5 @@
-import { ComponentPropsWithoutRef, ElementType, EventHandler, MouseEventHandler, PropsWithChildren } from 'react';
 import Image, { StaticImageData } from 'next/image';
+import { ComponentPropsWithoutRef, ElementType, PropsWithChildren } from 'react';
 import { tv } from 'tailwind-variants';
 
 export type TaskbarMenuItemProps<T extends ElementType = 'a'> = PropsWithChildren<

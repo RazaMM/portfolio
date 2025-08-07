@@ -1,11 +1,11 @@
-import React from 'react';
 import { StaticImageData } from 'next/image';
+import React from 'react';
 
 // Import all programs here
+import Attributions from './attributions';
 import Biography from './biography';
 import Education from './education';
 import Experience from './experience';
-import Attributions from './attributions';
 import Projects from './projects';
 
 export type Program = {

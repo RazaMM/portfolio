@@ -1,8 +1,8 @@
 'use client';
 
-import React from 'react';
-import icon from '@/img/book.png';
 import { type Program } from '@/components/programs';
+import icon from '@/img/book.png';
+import React from 'react';
 
 const Education: React.FC = () => {
   return (

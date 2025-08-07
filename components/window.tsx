@@ -1,9 +1,9 @@
 'use client';
 
-import React, { useEffect, useMemo } from 'react';
-import Image, { StaticImageData } from 'next/image';
 import { useDraggable } from '@/lib/use-draggable';
 import { useWindowDimensions } from '@/lib/use-window-dimensions';
+import Image, { StaticImageData } from 'next/image';
+import React, { useEffect, useMemo } from 'react';
 import { twJoin } from 'tailwind-merge';
 
 export type WindowProps = {

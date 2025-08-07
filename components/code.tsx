@@ -4,13 +4,13 @@ import hljs from 'highlight.js/lib/core';
 import 'highlight.js/styles/atom-one-dark.css';
 
 // highlight.js languages
-import javascript from 'highlight.js/lib/languages/javascript';
-import typescript from 'highlight.js/lib/languages/typescript';
-import sql from 'highlight.js/lib/languages/sql';
-import yaml from 'highlight.js/lib/languages/yaml';
-import json from 'highlight.js/lib/languages/json';
 import bash from 'highlight.js/lib/languages/bash';
+import javascript from 'highlight.js/lib/languages/javascript';
+import json from 'highlight.js/lib/languages/json';
+import sql from 'highlight.js/lib/languages/sql';
+import typescript from 'highlight.js/lib/languages/typescript';
 import xml from 'highlight.js/lib/languages/xml';
+import yaml from 'highlight.js/lib/languages/yaml';
 
 import { useMemo } from 'react';
 

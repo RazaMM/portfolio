@@ -1,6 +1,6 @@
-import type { MDXComponents } from 'mdx/types';
 import Code, { CodeProps } from '@/components/code';
 import Math from '@/components/math';
+import type { MDXComponents } from 'mdx/types';
 
 export function useMDXComponents(components: MDXComponents): MDXComponents {
   return {

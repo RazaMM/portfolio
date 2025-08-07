@@ -1,5 +1,5 @@
-import path from 'node:path';
 import * as fg from 'fast-glob';
+import path from 'node:path';
 
 export const getAllSlugs = async () => {
   const dir = path.join(process.cwd(), 'posts');

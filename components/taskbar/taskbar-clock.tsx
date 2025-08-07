@@ -1,7 +1,6 @@
 'use client';
 
 import { useTime } from '@/lib/use-time';
-import React from 'react';
 
 export const TaskbarClock = () => {
   const time = useTime('minute');

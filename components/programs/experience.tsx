@@ -1,10 +1,10 @@
 'use client';
 
-import React from 'react';
-import icon from '@/img/file-guy.png';
-import { type Program } from '@/components/programs';
-import { twJoin } from 'tailwind-merge';
 import { Carousel } from '@/components/carousel';
+import { type Program } from '@/components/programs';
+import icon from '@/img/file-guy.png';
+import React from 'react';
+import { twJoin } from 'tailwind-merge';
 
 type Experience = {
   title: string;

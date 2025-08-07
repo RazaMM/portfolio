@@ -1,8 +1,8 @@
+import { Analytics } from '@vercel/analytics/react';
 import type { Metadata } from 'next';
 import localFont from 'next/font/local';
-import './globals.css';
 import React from 'react';
-import { Analytics } from '@vercel/analytics/react';
+import './globals.css';
 
 const w95 = localFont({ src: './w95fa.woff2', display: 'swap' });
 

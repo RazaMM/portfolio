@@ -1,14 +1,13 @@
-import React from 'react';
 import Desktop from '@/components/desktop/desktop';
+import { DesktopShortcut } from '@/components/desktop/desktop-shortcut';
 import Taskbar from '@/components/taskbar/taskbar';
+import { TaskbarClock } from '@/components/taskbar/taskbar-clock';
 import { TaskbarMenu } from '@/components/taskbar/taskbar-menu';
 import { TaskbarMenuItem } from '@/components/taskbar/taskbar-menu-item';
-import { TaskbarClock } from '@/components/taskbar/taskbar-clock';
-import { DesktopShortcut } from '@/components/desktop/desktop-shortcut';
-import Link from 'next/link';
-import HomePage from '@/img/homepage.png';
 import FileWrite from '@/img/file-write.png';
+import HomePage from '@/img/homepage.png';
 import type { Metadata } from 'next';
+import Link from 'next/link';
 
 export const metadata: Metadata = {
   title: "Job Application Tracker | Raza Mahmood's Portfolio",

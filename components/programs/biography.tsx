@@ -1,10 +1,10 @@
 'use client';
 
-import React from 'react';
-import icon from '@/img/bio.png';
 import { type Program } from '@/components/programs';
-import Image from 'next/image';
+import icon from '@/img/bio.png';
 import me from '@/img/me.png';
+import Image from 'next/image';
+import React from 'react';
 
 const Biography: React.FC = () => {
   const date = new Date();

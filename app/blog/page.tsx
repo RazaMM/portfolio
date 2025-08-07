@@ -1,18 +1,17 @@
-import React from 'react';
 import Desktop from '@/components/desktop/desktop';
+import { DesktopShortcut } from '@/components/desktop/desktop-shortcut';
 import Taskbar from '@/components/taskbar/taskbar';
+import { TaskbarButton } from '@/components/taskbar/taskbar-button';
+import { TaskbarClock } from '@/components/taskbar/taskbar-clock';
+import { TaskbarContent } from '@/components/taskbar/taskbar-content';
 import { TaskbarMenu } from '@/components/taskbar/taskbar-menu';
 import { TaskbarMenuItem } from '@/components/taskbar/taskbar-menu-item';
-import HomePage from '@/img/homepage.png';
-import { TaskbarClock } from '@/components/taskbar/taskbar-clock';
-import Link from 'next/link';
-import { DesktopShortcut } from '@/components/desktop/desktop-shortcut';
 import Window from '@/components/window';
+import HomePage from '@/img/homepage.png';
 import Notepad from '@/img/notepad.png';
-import { TaskbarContent } from '@/components/taskbar/taskbar-content';
-import { TaskbarButton } from '@/components/taskbar/taskbar-button';
 import { getAllSlugs, getPost } from '@/lib/blog-posts';
 import type { Metadata } from 'next';
+import Link from 'next/link';
 
 const formatter = new Intl.DateTimeFormat();
 

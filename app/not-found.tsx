@@ -1,15 +1,14 @@
-import React from 'react';
-import Window from '@/components/window';
 import Desktop from '@/components/desktop/desktop';
 import Taskbar from '@/components/taskbar/taskbar';
-import Image from 'next/image';
+import { TaskbarClock } from '@/components/taskbar/taskbar-clock';
+import { TaskbarMenu } from '@/components/taskbar/taskbar-menu';
+import { TaskbarMenuItem } from '@/components/taskbar/taskbar-menu-item';
+import Window from '@/components/window';
 import icon from '@/img/error.png';
+import HomePage from '@/img/homepage.png';
+import Image from 'next/image';
 import Link from 'next/link';
 import { tv } from 'tailwind-variants';
-import { TaskbarClock } from '@/components/taskbar/taskbar-clock';
-import { TaskbarMenuItem } from '@/components/taskbar/taskbar-menu-item';
-import { TaskbarMenu } from '@/components/taskbar/taskbar-menu';
-import HomePage from '@/img/homepage.png';
 
 export default function NotFound() {
   const classes = tv({

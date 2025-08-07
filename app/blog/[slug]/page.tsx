@@ -1,20 +1,19 @@
 import Desktop from '@/components/desktop/desktop';
-import Link from 'next/link';
+import { DesktopShortcut } from '@/components/desktop/desktop-shortcut';
 import Taskbar from '@/components/taskbar/taskbar';
+import { TaskbarButton } from '@/components/taskbar/taskbar-button';
+import { TaskbarClock } from '@/components/taskbar/taskbar-clock';
+import { TaskbarContent } from '@/components/taskbar/taskbar-content';
 import { TaskbarMenu } from '@/components/taskbar/taskbar-menu';
 import { TaskbarMenuItem } from '@/components/taskbar/taskbar-menu-item';
+import Window from '@/components/window';
 import HomePage from '@/img/homepage.png';
 import Notepad from '@/img/notepad.png';
-import { TaskbarClock } from '@/components/taskbar/taskbar-clock';
-import React from 'react';
-import { DesktopShortcut } from '@/components/desktop/desktop-shortcut';
-import { TaskbarContent } from '@/components/taskbar/taskbar-content';
-import { TaskbarButton } from '@/components/taskbar/taskbar-button';
-import Window from '@/components/window';
 import { getAllSlugs, getPost } from '@/lib/blog-posts';
-import Head from 'next/head';
-import { Metadata, ResolvingMetadata } from 'next';
 import 'katex/dist/katex.css';
+import { Metadata, ResolvingMetadata } from 'next';
+import Head from 'next/head';
+import Link from 'next/link';
 
 const formatter = new Intl.DateTimeFormat();
 
