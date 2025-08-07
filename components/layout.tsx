@@ -27,13 +27,13 @@ type Shortcut = {
 export function Layout({
   shortcuts,
   programs,
-  defaultOpen,
+  defaultOpenPrograms,
 }: {
   shortcuts?: Shortcut[];
   programs: Program[];
-  defaultOpen?: Program['id'][];
+  defaultOpenPrograms?: Program['id'][];
 }) {
-  const defaultPrograms = programs.filter((p) => defaultOpen?.includes(p.id));
+  const defaultPrograms = programs.filter((p) => defaultOpenPrograms?.includes(p.id));
 
   const [open, setOpen] = useState<Program[]>(defaultPrograms);
   const [active, setActive] = useState<Program | null>(defaultPrograms[0] ?? null);
