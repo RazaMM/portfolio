@@ -24,10 +24,20 @@ type Shortcut = {
   href: string;
 };
 
-export function Layout({ shortcuts, programs }: { shortcuts?: Shortcut[]; programs: Program[] }) {
-  const [open, setOpen] = useState<Program[]>([]);
-  const [active, setActive] = useState<Program | null>(null);
-  const [stackingOrder, setStackingOrder] = useState<Program[]>([]);
+export function Layout({
+  shortcuts,
+  programs,
+  defaultOpen,
+}: {
+  shortcuts?: Shortcut[];
+  programs: Program[];
+  defaultOpen?: Program['id'][];
+}) {
+  const defaultPrograms = programs.filter((p) => defaultOpen?.includes(p.id));
+
+  const [open, setOpen] = useState<Program[]>(defaultPrograms);
+  const [active, setActive] = useState<Program | null>(defaultPrograms[0] ?? null);
+  const [stackingOrder, setStackingOrder] = useState<Program[]>(defaultPrograms);
 
   const openProgram = (program: Program) => {
     if (!open.some((p) => p.id === program.id)) {
