@@ -31,11 +31,7 @@ export default async function FunHome() {
           </TaskbarMenuItem>
         </TaskbarMenu>
 
-        <TaskbarContent>
-          {/*<TaskbarButton active={true} icon={{ src: Notepad, alt: '' }}>
-            My Blog Posts
-          </TaskbarButton>*/}
-        </TaskbarContent>
+        <TaskbarContent></TaskbarContent>
 
         <TaskbarClock />
       </Taskbar>

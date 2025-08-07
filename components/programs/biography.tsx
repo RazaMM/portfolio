@@ -68,6 +68,4 @@ export default {
     alt: 'A pixelated image of a man wearing a blue shirt',
   },
   Component: Biography,
-  includeInStartMenu: true,
-  includeInDesktop: true,
 } as Program;

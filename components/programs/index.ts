@@ -16,8 +16,6 @@ export type Program = {
     alt: string;
   };
   Component: React.FC;
-  includeInDesktop?: boolean;
-  includeInStartMenu?: boolean;
 };
 
 // Ensure that all programs imported above are included in this array

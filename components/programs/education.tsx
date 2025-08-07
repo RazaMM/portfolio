@@ -31,6 +31,4 @@ export default {
     alt: 'A pixelated image of a book with a purple cover',
   },
   Component: Education,
-  includeInStartMenu: true,
-  includeInDesktop: true,
 } as Program;

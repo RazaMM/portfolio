@@ -47,6 +47,4 @@ export default {
     alt: 'A speech bubble with an information icon inside',
   },
   Component: Attributions,
-  includeInStartMenu: true,
-  includeInDesktop: true,
 } as Program;

@@ -63,6 +63,4 @@ export default {
     alt: 'A pixelated image of a notepad',
   },
   Component: Projects,
-  includeInStartMenu: true,
-  includeInDesktop: true,
 } as Program;

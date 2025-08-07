@@ -121,6 +121,4 @@ export default {
     alt: '',
   },
   Component: Experience,
-  includeInStartMenu: true,
-  includeInDesktop: true,
 } as Program;
