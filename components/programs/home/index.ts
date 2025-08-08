@@ -5,4 +5,4 @@ import Education from './education';
 import Experience from './experience';
 import Projects from './projects';
 
-export default [Biography, Education, Experience, Attributions, Projects] as Program[];
+export const programs: Program[] = [Biography, Education, Experience, Attributions, Projects];

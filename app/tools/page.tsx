@@ -1,12 +1,12 @@
 import { Layout } from '@/components/layout';
-import programs from '@/components/programs';
+import { programs } from '@/components/programs/tools';
 import type { Metadata } from 'next';
 
 export const metadata: Metadata = {
-  title: "Job Application Tracker | Raza Mahmood's Portfolio",
-  description: 'Keep track of your job application progress with this simple tool.',
+  title: "Tools | Raza Mahmood's Portfolio",
+  description: 'Tools and utilities for various tasks.',
 };
 
 export default function ToolsPage() {
-  return <Layout programs={programs} defaultOpenPrograms={['biography']} />;
+  return <Layout programs={programs} />;
 }
