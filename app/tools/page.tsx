@@ -1,5 +1,5 @@
 import { Layout } from '@/components/layout';
-import { programs } from '@/components/programs/tools';
+import { programs, shortcuts } from '@/components/programs/tools';
 import type { Metadata } from 'next';
 
 export const metadata: Metadata = {
@@ -8,5 +8,5 @@ export const metadata: Metadata = {
 };
 
 export default function ToolsPage() {
-  return <Layout programs={programs} />;
+  return <Layout programs={programs} shortcuts={shortcuts} />;
 }

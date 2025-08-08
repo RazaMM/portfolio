@@ -15,7 +15,7 @@ import { StaticImageData } from 'next/image';
 import Link from 'next/link';
 import { useState } from 'react';
 
-type Shortcut = {
+export type Shortcut = {
   name: string;
   icon: {
     src: StaticImageData;
