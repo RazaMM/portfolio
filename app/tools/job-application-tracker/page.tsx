@@ -1,20 +1,17 @@
 import Desktop from '@/components/desktop/desktop';
 import { DesktopShortcut } from '@/components/desktop/desktop-shortcut';
 import Taskbar from '@/components/taskbar/taskbar';
+import { TaskbarButton } from '@/components/taskbar/taskbar-button';
 import { TaskbarClock } from '@/components/taskbar/taskbar-clock';
+import { TaskbarContent } from '@/components/taskbar/taskbar-content';
 import { TaskbarMenu } from '@/components/taskbar/taskbar-menu';
 import { TaskbarMenuItem } from '@/components/taskbar/taskbar-menu-item';
 import Window from '@/components/window';
 import FileWrite from '@/img/file-write.png';
 import HomePage from '@/img/homepage.png';
 import Tools from '@/img/tools.png';
-import Link from 'next/link';
-
-import { TaskbarButton } from '@/components/taskbar/taskbar-button';
-import { TaskbarContent } from '@/components/taskbar/taskbar-content';
 import type { Metadata } from 'next';
-
-const formatter = new Intl.DateTimeFormat();
+import Link from 'next/link';
 
 export const metadata: Metadata = {
   title: "Job Application Tracker | Raza Mahmood's Portfolio",
@@ -35,7 +32,7 @@ export default async function BlogHome() {
       </Desktop>
 
       <Window name='Job Application Tracker' active icon={{ src: FileWrite, alt: '' }}>
-        <div className='w-dvw max-w-5xl bg-white p-2'>
+        <div className='w-dvw max-w-2xl bg-white p-2'>
           <div className='flex flex-col gap-2'></div>
         </div>
       </Window>
