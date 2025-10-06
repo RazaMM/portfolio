@@ -7,8 +7,8 @@ import './globals.css';
 const w95 = localFont({ src: './w95fa.woff2', display: 'swap' });
 
 export const metadata: Metadata = {
-  title: "Raza Mahmood's Portfolio",
-  description: 'Raza Mahmood is a software engineer and web developer based in Toronto, Canada.',
+  title: "Ray M's Portfolio",
+  description: 'Ray M is a software engineer and web developer based in Toronto, Canada.',
 };
 
 export default function RootLayout({ children }: { children: React.ReactNode }) {
