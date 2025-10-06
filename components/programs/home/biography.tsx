@@ -30,13 +30,9 @@ const Biography: React.FC = () => {
 
   return (
     <div className='flex h-[30rem] min-h-full w-72 max-w-screen min-w-full flex-col items-center justify-center gap-4 bg-white p-2 text-center'>
-      <Image
-        src={me}
-        alt={'Raza Mahmood wearing a black shirt and sunglasses'}
-        className='w-56 rounded-xs select-none'
-      />
+      <Image src={me} alt={'Ray M wearing a black shirt and sunglasses'} className='w-56 rounded-xs select-none' />
 
-      <h1 className='text-xl'>Raza Mahmood</h1>
+      <h1 className='text-xl'>Ray M</h1>
 
       <p>
         I am a {age} year old {isBirthday && '(happy birthday to me!)'} software developer who specializes in front end
@@ -44,8 +40,8 @@ const Biography: React.FC = () => {
       </p>
 
       <div className='flex flex-col'>
-        <a className='text-w95-blue hover:underline' href='mailto:razammahmood@gmail.com'>
-          razammahmood@gmail.com
+        <a className='text-w95-blue hover:underline' href='mailto:ray@raymm.dev'>
+          ray@raymm.dev
         </a>
         <a className='text-w95-blue hover:underline' href='https://github.com/RazaMM'>
           github.com/RazaMM
