@@ -35,7 +35,7 @@ const Biography: React.FC = () => {
       <h1 className='text-xl'>Ray M</h1>
 
       <p>
-        I am a {age} year old {isBirthday && '(happy birthday to me!)'} software developer who specializes in front end
+        I am a {age} year old {isBirthday && '(happy birthday to me!)'} software developer who specializes in full stack
         web development.
       </p>
 
