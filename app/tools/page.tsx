@@ -3,7 +3,7 @@ import { programs, shortcuts } from '@/components/programs/tools';
 import type { Metadata } from 'next';
 
 export const metadata: Metadata = {
-  title: "Tools | Raza Mahmood's Portfolio",
+  title: "Tools | Ray M's Portfolio",
   description: 'Tools and utilities for various tasks.',
 };
 

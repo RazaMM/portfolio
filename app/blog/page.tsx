@@ -16,7 +16,7 @@ import Link from 'next/link';
 const formatter = new Intl.DateTimeFormat();
 
 export const metadata: Metadata = {
-  title: "Blog Posts | Raza Mahmood's Portfolio",
+  title: "Blog Posts | Ray M's Portfolio",
   description: 'Various blog posts about programming, technology, and more.',
 };
 
@@ -57,7 +57,7 @@ export default async function BlogHome() {
       </Window>
 
       <Taskbar>
-        <TaskbarMenu title="Raza's Blog">
+        <TaskbarMenu title="Ray's Blog">
           <TaskbarMenuItem as={Link} href='/' icon={{ src: HomePage, alt: '' }}>
             Back to Homepage
           </TaskbarMenuItem>

@@ -12,7 +12,7 @@ type TaskbarStartMenuProps = PropsWithChildren<{
   title?: string;
 }>;
 
-export const TaskbarMenu = ({ children, title = "Raza's Portfolio" }: TaskbarStartMenuProps) => {
+export const TaskbarMenu = ({ children, title = "Ray's Portfolio" }: TaskbarStartMenuProps) => {
   const [ref, focused] = useFocusWithin<HTMLDivElement>();
   const [showStartMenu, setShowStartMenu] = useState(false);
   const [showShutdownScreen, setShowShutdownScreen] = useState(false);

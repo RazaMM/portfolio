@@ -11,7 +11,7 @@ import Link from 'next/link';
 import type { Metadata } from 'next';
 
 export const metadata: Metadata = {
-  title: "Playground | Raza Mahmood's Portfolio",
+  title: "Playground | Ray M's Portfolio",
   description: 'Random games and other playground stuff.',
 };
 
@@ -25,7 +25,7 @@ export default async function FunHome() {
       </Desktop>
 
       <Taskbar>
-        <TaskbarMenu title="Raza's Playground">
+        <TaskbarMenu title="Ray's Playground">
           <TaskbarMenuItem as={Link} href='/' icon={{ src: HomePage, alt: '' }}>
             Back to Homepage
           </TaskbarMenuItem>

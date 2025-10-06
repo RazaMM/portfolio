@@ -24,7 +24,7 @@ export async function generateMetadata({ params }: BlogPageProps, parent: Resolv
   const { metadata } = await getPost(slug);
 
   return {
-    title: `${metadata.title} | Raza Mahmood's Portfolio`,
+    title: `${metadata.title} | Ray M's Portfolio`,
     description: metadata.description ?? '',
   };
 }
@@ -36,7 +36,7 @@ export default async function BlogPage({ params }: BlogPageProps) {
   return (
     <>
       <Head>
-        <title>{metadata.title} | Raza Mahmood&#39;s Portfolio</title>
+        <title>{metadata.title} | Ray M&#39;s Portfolio</title>
       </Head>
       <Desktop>
         <DesktopShortcut as={Link} href='/blog' icon={{ src: Notepad, alt: '' }}>
@@ -61,7 +61,7 @@ export default async function BlogPage({ params }: BlogPageProps) {
       </Window>
 
       <Taskbar>
-        <TaskbarMenu title="Raza's Blog">
+        <TaskbarMenu title="Ray's Blog">
           <TaskbarMenuItem as={Link} href='/blog' icon={{ src: Notepad, alt: '' }}>
             Back to Blog Home
           </TaskbarMenuItem>
