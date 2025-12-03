@@ -88,7 +88,7 @@ const Experience: React.FC = () => {
         return (
           <div
             key={title + start + end + company + location}
-            className={twJoin('flex w-full shrink-0 flex-col bg-white p-4 sm:w-96')}
+            className={twJoin('flex w-full shrink-0 flex-col bg-white p-4 sm:w-96 sm:h-96')}
           >
             <span className='text-2xl'>{title}</span>
             <span>

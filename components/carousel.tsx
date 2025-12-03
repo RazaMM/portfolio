@@ -11,9 +11,9 @@ export const Carousel = ({ builder, count }: CarouselProps) => {
 
   const classes = tv({
     slots: {
-      base: 'relative flex h-full w-fit flex-col bg-white',
-      content: 'flex w-full flex-1',
-      buttonContainer: 'sticky top-0 flex w-full justify-between border-b border-black bg-white px-4 py-2',
+      base: 'relative flex w-fit flex-col bg-white',
+      content: 'flex w-full flex-1 overflow-auto mb-12',
+      buttonContainer: 'absolute left-0 bottom-0 flex w-full justify-between border-t border-black bg-white px-4 py-2',
       button: 'cursor-pointer text-sm select-none',
     },
     variants: {

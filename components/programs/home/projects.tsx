@@ -39,7 +39,7 @@ const Projects: React.FC = () => {
         const { title, description } = projects[index];
 
         return (
-          <div key={title} className={twJoin('flex w-full shrink-0 flex-col bg-white p-4 sm:w-96')}>
+          <div key={title} className={twJoin('flex w-full shrink-0 flex-col bg-white p-4 sm:w-96 sm:h-96')}>
             <span className='mb-2 text-2xl'>{title}</span>
 
             <ul className='mt-2 flex list-inside list-disc flex-col items-start gap-2'>
