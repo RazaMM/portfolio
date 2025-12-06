@@ -1,4 +1,6 @@
 import * as fg from 'fast-glob';
+import matter from 'gray-matter';
+import * as fs from 'node:fs/promises';
 import path from 'node:path';
 
 export const getAllSlugs = async () => {
@@ -18,7 +20,9 @@ type PostMetadata = {
 };
 
 export const getPost = async (slug: string) => {
-  const { default: Post, frontmatter } = await import(`@/posts/${slug}.mdx`);
+  const file = await fs.readFile(path.join(process.cwd(), 'posts', `${slug}.mdx`), 'utf8');
+  const { default: Post } = await import(`@/posts/${slug}.mdx`);
+  const { data: frontmatter } = matter(file);
 
   if (!frontmatter.title) {
     throw new Error(`In Post ${slug}: title is missing from frontmatter.`);

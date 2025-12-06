@@ -22,6 +22,7 @@ export const metadata: Metadata = {
 
 export default async function BlogHome() {
   const slugs = await getAllSlugs();
+  console.log(slugs);
   const posts = await Promise.all(
     slugs.map(async (slug) => {
       const { metadata } = await getPost(slug.slug);
