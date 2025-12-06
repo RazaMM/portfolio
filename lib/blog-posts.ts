@@ -4,8 +4,8 @@ import * as fs from 'node:fs/promises';
 import path from 'node:path';
 
 export const getAllSlugs = async () => {
-  const dir = path.join(process.cwd(), 'posts');
-  const paths = await fg.glob(path.join(dir, '*.mdx'));
+  const dir = path.join(process.cwd(), 'posts', '*.mdx');
+  const paths = await fg.glob(dir);
 
   return paths.map((path: string) => ({
     slug: path.replace(dir, '').substring(1).replace('.mdx', ''),
